@@ -1,0 +1,25 @@
+{
+  "name": "nosh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lizkane222/nosh.git"
+  },
+  "author": "Liz Kane lizkane222@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lizkane222/nosh/issues"
+  },
+  "homepage": "https://github.com/lizkane222/nosh#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.6"
+  }
+}
