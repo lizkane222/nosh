@@ -79,7 +79,7 @@ router.get("/newPantry",  (req, res) => {
 
 });
 // post new pantry info
-// show user with recipes references (saved) similar to authors showing articles tehy are associated with, user populte recipes
+// show user with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
 router.get("/:id", function (req, res) {
     db.User.findById(req.params.id, (err, foundUser) => {
       if (err) {
@@ -91,12 +91,30 @@ router.get("/:id", function (req, res) {
     });
 });
     // get (edit)  pantry info
-router.get("/editPantry",  (req, res) => {
-    res.render('user/edit');
-
+router.get("/:id/edit",  (req, res) => {
+    // res.render('user/edit');
+    db.User.findById(req.params.id, function (err, foundUser) {
+        if (err) {
+        console.log(err);
+        return res.send(err);
+        }
+        const context = { user: foundUser };
+        res.render("user/edit", context);
+    });
 });
 
 // put (update) pantry info
+router.put("/:id", (req, res) => {
+    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err,updatedUser
+    ) {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+  
+      res.redirect(`users/${updatedUser._id}`);
+    });
+  });
 // delete user (this will need ot look thoough recipies too) similar to autors and articles example removes from user & recipe
 
 
