@@ -7,15 +7,16 @@ const bcrypt = require('bcrypt');
 
 
 
-/* ===== do first ===== */
+/* SECTION ===== do first ===== */
 /* ===== REGISTER, LOGIN, LOGOUT USER ===== */
 // in auth controller
 
 
-/* ===== do third ===== */
+/* TODO ===== do third ===== */
 /* ===== USER NOSH ===== */
 // get index 
         //once user selects (save) it executes post below
+    
 // post recipe to user nosh 
         //(when items in nosh for user, show (unsave) on save button in index & show page)
 // get index
@@ -26,9 +27,25 @@ const bcrypt = require('bcrypt');
 
 
 
-/* ===== do second ===== */
+/* TODO ===== do second ===== */
 /* ===== USER PANTRY ===== */
 // index
+router.get("/",  (req, res) => {
+    res.render('user/index');
+    // 1. async/await keywords
+    // 2. try/catch block
+    // try {
+    //     const foundUser = await db.User.find({});
+    //     const context = {
+    //     user: foundUser,
+    //     }
+    //     res.render("user/index", context);
+    // } catch (error) {
+    //     console.log(error);
+    //     res.send({ message: "Internal Server Error" });
+    // }
+});
+
 // get new pantry form
 // post new pantry info
 // show user with recipes references (saved) similar to authors showing articles tehy are associated with, user populte recipes
@@ -41,7 +58,7 @@ const bcrypt = require('bcrypt');
 
 
 
-/* ===== do fourth ===== */
+/* TODO ===== do fourth ===== */
 /* ===== USER RECIPE ===== */
 // simialr to nosh above
 

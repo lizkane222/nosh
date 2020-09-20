@@ -46,14 +46,16 @@ app.get('/', (req, res) => {
 
 // view routes
 
+//auth route (in user)
+app.use('/', controllers.auth);
+
 // recipe Routes
 // app.use('/recipes', controllers.recipe);
 
 // user Routes
-// app.use('/users', controllers.user);
+app.use('/users', controllers.user);
 
-//auth route (in user)
-app.use('/', controllers.auth);
+
 
 
 /* Server Listener */

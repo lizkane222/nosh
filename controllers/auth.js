@@ -51,7 +51,8 @@ router.post("/login", async function(req, res) {
         const foundUser = await db.User.findOne({ email: req.body.email });
         // if they do not exist, send error
         if(!foundUser) {
-            return res.redirect('/register');
+            // return res.redirect('/register');
+            return res.send({ message: "Email or Password spelled incorrectly, or you have not registered with nosh" });
         }
         // if they do exist, compare db password with entered password using bcrypt (return true/false)
         const match = await bcrypt.compare(req.body.password, foundUser.password);
