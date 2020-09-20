@@ -3,33 +3,13 @@ const router = require('express').Router();
 const db =  require('../models');
 const bcrypt = require('bcrypt');
 
-// base psth /
+// base path /user
 
 
 
 /* ===== do first ===== */
 /* ===== REGISTER, LOGIN, LOGOUT USER ===== */
-// get register form
-router.get('/register', (req, res) => {
-    res.render("get a register ping back")
-})
-
-// post register info
-router.post('/register', (req, res) => {
-    res.render("post a register ping back")
-})
-// get login form
-router.get('/login', (req, res) => {
-    res.render(" get a login ping back")
-})
-// post login info <== authentication
-router.post('/login', (req, res) => {
-    res.render("post a login ping back")
-})
-// delete, logout <= thsi destroys teh session
-router.get('/logout', (req, res) => {
-    res.render("get a logout ping back")
-})
+// in auth controller
 
 
 /* ===== do third ===== */

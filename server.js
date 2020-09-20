@@ -15,6 +15,7 @@ const PORT = 4000;
 app.set('view engine', 'ejs');
 
 /* middleware */
+// app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
@@ -23,8 +24,8 @@ app.get('/', (req, res) => {
     // render("file", context)
     // console.log('hi')
     // res.send('NOSH IS OFFICIALLY CONNECTED!')
-    res.send('nosh is going to be a pretty cool app if we can get it up and running in time!')   
-    // res.render('index');
+    // res.send('nosh is going to be a pretty cool app if we can get it up and running in time!')   
+    res.render('index');
 });
 
 
@@ -35,6 +36,9 @@ app.get('/', (req, res) => {
 
 // user Routes
 // app.use('/users', controllers.user);
+
+//auth route (in user)
+app.use('/', controllers.auth);
 
 
 /* Server Listener */
