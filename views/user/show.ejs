@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <h1>A single Users page</h1>
+    <section>
+        <a href="/users/<%= user._id %>/edit">Edit</a>
+        <ul>
+            <li>UserName: <%= user.username %></li>
+        </ul>
+    </section>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>

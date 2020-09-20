@@ -29,46 +29,68 @@ const bcrypt = require('bcrypt');
 /* TODO ===== do second ===== */
 /* ===== USER PANTRY ===== */
 // index
-router.get("/",  (req, res) => {
-    res.render('user/index');
+router.get("/",  async (req, res) => {
+    // res.render('user/index');
+    try {
+        const foundUser = await db.User.find({});
+        const context = {
+        users: foundUser,
+        }
+        res.render("user/index", context);
+    } catch (error) {
+        console.log(error);
+        res.send({ message: "Internal Server Error" });
+    }
+
 
 });
 
 // get new user form
-router.get("/newUser",  (req, res) => {
+router.get("/newUser",  async (req, res) => {
     res.render('user/newUser');
     // 1. async/await keywords
     // 2. try/catch block
     // try {
     //     const foundUser = await db.User.find({});
     //     const context = {
-    //     user: foundUser,
+    //     users: foundUser,
     //     }
-    //     res.render("user/index", context);
+    //     res.render("user/newUser", context);
     // } catch (error) {
     //     console.log(error);
     //     res.send({ message: "Internal Server Error" });
     // }
 });
 // post new user (for now so I can make pantry without login)
-router.post("/", function (req, res) {
+router.post("/newUser", function (req, res) {
     db.User.create(req.body, function (err, createdUser) {
+        console.log(createdUser);
       if (err) {
         console.log(err);
         return res.send(err);
       }
-  
-      res.redirect("/user/index");
+      res.redirect("/users");
     });
   });
-// get new pantry form
+
+  // get new pantry form
 router.get("/newPantry",  (req, res) => {
     res.render('user/newPantry');
 
 });
 // post new pantry info
 // show user with recipes references (saved) similar to authors showing articles tehy are associated with, user populte recipes
-// get (edit)  pantry info
+router.get("/:id", function (req, res) {
+    db.User.findById(req.params.id, (err, foundUser) => {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+      const context = { user: foundUser };
+      res.render("user/show", context);
+    });
+});
+    // get (edit)  pantry info
 router.get("/editPantry",  (req, res) => {
     res.render('user/edit');
 
