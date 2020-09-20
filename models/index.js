@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const connectionString = 'mongodb://localhost:27017/blog';
+/// Updating blog to noshdb
+const connectionString = 'mongodb://localhost:27017/noshdb';
 
 mongoose
   .connect(connectionString, {
