@@ -41,28 +41,15 @@ router.get("/",  async (req, res) => {
         console.log(error);
         res.send({ message: "Internal Server Error" });
     }
-
-
 });
 
 // get new user form
-router.get("/newUser",  async (req, res) => {
+router.get("/newUser",  (req, res) => {
     res.render('user/newUser');
-    // 1. async/await keywords
-    // 2. try/catch block
-    // try {
-    //     const foundUser = await db.User.find({});
-    //     const context = {
-    //     users: foundUser,
-    //     }
-    //     res.render("user/newUser", context);
-    // } catch (error) {
-    //     console.log(error);
-    //     res.send({ message: "Internal Server Error" });
-    // }
 });
+
 // post new user (for now so I can make pantry without login)
-router.post("/newUser", function (req, res) {
+router.post("/newUser", (req, res) => {
     db.User.create(req.body, function (err, createdUser) {
         console.log(createdUser);
       if (err) {
@@ -73,14 +60,16 @@ router.post("/newUser", function (req, res) {
     });
   });
 
-  // get new pantry form
+// get new user pantry form
 router.get("/newPantry",  (req, res) => {
     res.render('user/newPantry');
-
 });
-// post new pantry info
-// show user with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
-router.get("/:id", function (req, res) {
+
+// TODO post new pantry info
+
+// show user - DONE 
+// TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
+router.get("/:id", (req, res) => {
     db.User.findById(req.params.id, (err, foundUser) => {
       if (err) {
         console.log(err);
@@ -90,7 +79,8 @@ router.get("/:id", function (req, res) {
       res.render("user/show", context);
     });
 });
-    // get (edit)  pantry info
+
+// get (edit)  pantry info
 router.get("/:id/edit",  (req, res) => {
     // res.render('user/edit');
     db.User.findById(req.params.id, function (err, foundUser) {
@@ -105,19 +95,28 @@ router.get("/:id/edit",  (req, res) => {
 
 // put (update) pantry info
 router.put("/:id", (req, res) => {
-    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, function (err,updatedUser
-    ) {
-      if (err) {
+    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error,updatedUser) => {
+      if (error) {
+        console.log(error);
+        return res.send(error);
+      }
+      console.log(`updated user, ${updatedUser}`);
+      res.redirect(`${updatedUser._id}`);
+    });
+  });
+
+  // delete user - DONE 
+// TODO (this will need ot look thoough recipies too) similar to autHors and articles example
+router.delete("/:id", function (req, res) {
+    db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
+      if (error) {
         console.log(err);
         return res.send(err);
       }
-  
-      res.redirect(`users/${updatedUser._id}`);
+      console.log(deletedUser);
+      res.redirect("/users");
     });
-  });
-// delete user (this will need ot look thoough recipies too) similar to autors and articles example removes from user & recipe
-
-
+});
 
 
 

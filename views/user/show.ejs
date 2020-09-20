@@ -6,11 +6,28 @@
 <body>
     <h1>A single Users page</h1>
     <section>
-        <a href="/users/<%= user._id %>/edit">Edit</a>
         <ul>
             <li>UserName: <%= user.username %></li>
+            <li>Nosh: <%= user.nosh%></li>
+            <li>Pantry: <%= user.pantry %></li>
         </ul>
     </section>
+    <hr>
+    <div class="btn-group-vertical">
+        <a 
+        class="btn btn-primary btn-sm" 
+        href="/users/<%= user._id %>/edit" 
+        role="button">Edit User</a>
+        
+        <form 
+        action="/users/<%= user._id %>?_method=DELETE" 
+        method="POST">
+            <input 
+            class="btn btn-danger btn-sm" 
+            type="submit" 
+            value="Delete User">
+        </form> 
+    </div>
     <footer>
         <%- include('../partials/footer') %>
     </footer>

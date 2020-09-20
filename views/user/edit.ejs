@@ -6,7 +6,7 @@
 <body>
     <h1>Edit username (evntually pantry items)</h1>
     <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-        <input type="text" name="name" value="<%= user.name %>" />
+        <input type="text" name="username" value="<%= user.username %>" />
       </form>
     <footer>
         <%- include('../partials/footer') %>
