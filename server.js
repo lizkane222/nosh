@@ -22,7 +22,8 @@ app.use(methodOverride('_method'));
 app.get('/', (req, res) => {
     // render("file", context)
     // console.log('hi')
-    res.send('NOSH IS OFFICIALLY CONNECTED!')   
+    // res.send('NOSH IS OFFICIALLY CONNECTED!')
+    res.send('nosh is going to be a pretty cool app if we can get it up and running in time!')   
     // res.render('index');
 });
 
