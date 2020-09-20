@@ -9,8 +9,15 @@
 
 
     <!-- for now some login and logout buttons here -->
+    <% if(user) { %>
+        <p>Welcome, <%= user.username %></p>
+        <form action="/logout?_method=DELETE" method="POST">
+          <input type="submit" value="Logout">
+        </form>
+      <% } else { %> 
         <a href="/login">Login</a>
         <a href="/register">Register</a>
+      <% } %>
     <footer>
         <%- include('partials/footer') %>
     </footer>
