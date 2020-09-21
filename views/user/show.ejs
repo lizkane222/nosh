@@ -4,12 +4,30 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>A single Users page</h1>
+    <h3>Welcome back,&nbsp<%= user.username %> </h3>
     <section>
-        <ul>
-            <li>UserName: <%= user.username %></li>
+        <!-- <ul class="nosh">
             <li>Nosh: <%= user.nosh%></li>
-            <li>Pantry: <%= user.pantry %></li>
+        </ul> -->
+        <hr>
+        <section class="new__foodItem">
+            <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+              <input type="text" name="foodItem" placeholder="New Food Item" />
+              <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+              <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+              <input id="button" type="submit" value="New Pantry Item"/>
+            </form>
+        </section>
+        <hr>
+        <ul class="pantry"></ul>
+            <% user.pantry.forEach(pantry => { %>
+                <li>
+                  <a> <%= pantry.foodItem %> &nbsp <%= pantry.quantity %> &nbsp <%= pantry.unit %> </a>
+                </li>
+                <% }) %>
+              <% if(user.pantry.length === 0) { %>
+              <p>There are no pantry items yet, edit user to update.</p>
+              <% } %>
         </ul>
     </section>
     <hr>
@@ -17,16 +35,7 @@
         <a 
         class="btn btn-primary btn-sm" 
         href="/users/<%= user._id %>/edit" 
-        role="button">Edit User</a>
-        
-        <form 
-        action="/users/<%= user._id %>?_method=DELETE" 
-        method="POST">
-            <input 
-            class="btn btn-danger btn-sm" 
-            type="submit" 
-            value="Delete User">
-        </form> 
+        role="button">Edit Username</a>
     </div>
     <footer>
         <%- include('../partials/footer') %>
