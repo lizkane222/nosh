@@ -4,7 +4,13 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>New User</h1>
+    <h1>Create new user-no auth for now</h1>
+    <section class="new__user">
+        <form action="/users/newUser" method="POST">
+          <input type="text" name="username" placeholder="create user" />
+          <input id="button" type="submit" value="New User"/>
+        </form>
+    </section>
     <footer>
         <%- include('../partials/footer') %>
     </footer>

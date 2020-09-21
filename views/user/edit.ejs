@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <h1>Edit username (evntually pantry items)</h1>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+        <input type="text" name="username" value="<%= user.username %>" />
+      </form>
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>
