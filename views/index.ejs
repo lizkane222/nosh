@@ -5,10 +5,10 @@
 </head>
 <body>
     <h1>Index</h1>
-
+    <p> All recipe cards go in this page </p>
 
     <!-- for now some login and logout buttons here -->
-    <% if(user) { %>
+    <!-- <% if(user) { %>
         <p>Welcome, <%= user.username %></p>
         <form action="/logout?_method=DELETE" method="POST">
           <input type="submit" value="Logout">
@@ -16,14 +16,8 @@
       <% } else { %> 
         <a href="/login">Login</a>
         <a href="/register">Register</a>
-      <% } %>
-      <!-- development link only, take out after working -->
-      <ul>
-        <li>
-          <a href="/users">jump to users</a>
-        </li>
-      </ul>
-
+      <% } %> -->
+  
       <br/><br/><br/><br/>
 
       <p><a href="/:id">Artichoke Dip</a></p>
@@ -37,14 +31,14 @@
 
 
 
-       __________________________________________________
+       <!-- __________________________________________________
        <div>
       |  <h5>| RECIPE NAME</h5>
       |  <p>| RECIPE IMAGE</p><img src="recipe.image" alt="">
       |<p><a href="/recipe/:id">| jump to recipe</a></p>   
       |</div>                                            
       |__________________________________________________
-
+ -->
 
 <!-- 
       FOR USER MODEL USE:
