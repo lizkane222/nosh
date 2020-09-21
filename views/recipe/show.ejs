@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
 </head>
 <body>
-    <h1> Recipe</h1>
+    <!-- <p>FOR USER MODEL USE: 
+        <a href="">/recipe/show.ejs</a> TO SHOW ONE RECIPE</p>
+
+    <p>FOR RECIPE MODEL USE: 
+        <a href="">/show.ejs</a> TO SHOW ONE RECIPE</p> -->
+    
+    <h1>Recipe</h1>
+    <br/><br/>
+
+    <section>
+        <form action="/recipe" method="POST">
+            Name:
+            Quantity:
+            Unit:
+            Calories:
+        </form>
+    </section><br/><br/><br/><br/>
+
+    <a href="/recipe/newForm">Create A New Recipe</a>
+
 
 </body>
 <%- include('../partials/footer') %>

@@ -1,10 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('partials/header') %>
+    <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Make A New Recipe</h1>
+    <h1>Create New Recipe</h1>
+    <section>
+        <form action="/recipe" method="POST">
+
+            <p><input type="text" name="recipeName" placeholder="Recipe Name"/></p>
+            <p><input type="text" name="source" placeholder="Image Link"/></p>
+            <p><input type="text" name="servesPeople" placeholder="Serving Size"/></p>
+            <p><input id="button" type="submit" value="Create Recipe"/></p>
+
+
+            <input type="text" name="foodItems" placeholder="Ingredient"/>
+        </form>
+    </section>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+------------------------------------------------------------
+<h5>Display The Recipe That was just added BELOW</h5>
+<br/><br/>
+
+
+
+
+<p><a href="/recipe/:id">jump to this recipe</a></p>
+<p><a href="">add♾ to nosh⧁</a></p>
+
+
 
 </body>
 <%- include('../partials/footer') %>
