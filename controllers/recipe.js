@@ -12,19 +12,38 @@ const db = require('../models');
 
 // new recipe   /recipes    //new.ejs
 router.get('/newForm', (req,res) => {
-    res.render('recipe/new.ejs');
+    db.Recipe.find({}, (err, foundRecipe) => {
+        if(eff) return res.send(err);
+
+        const context = {
+            recipes : foundRecipe,
+        }
+
+        res.render('recipe/new.ejs', context);
+    })
 });
 
 // create recipe  /recipes     //new.ejs
 router.post('/newForm', (req,res) => {
+    console.log(req.body);
     db.Recipe.create(req.body, (err, createdRecipeInDB) => {
         if(err) {
-            console.log(err)
-        } else {
-            console.log(createdRecipeInDB)
-            res.redirect('/recipe/newForm');
+            console.log(err);
+            return res.send(err);
         }
-    })
+        db.User.findById(req.body.recipe, (err, foundUser) => {
+            if(err) {
+                console.log(err);
+                return res.send(err)
+            }
+
+            foundUser.recipes.push(createdRecipeInDB);
+            foundUser.save();
+            
+            res.redirect('/newForm');
+        })
+        }
+    )
 });
 
 // show ONLY ONE recipe  /recipes      //show.ejs

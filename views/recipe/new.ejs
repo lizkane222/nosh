@@ -7,10 +7,11 @@
     <h1>Create New Recipe</h1>
     <section>
         <form action="/recipe" method="POST">
-            <input type="text" name="recipeName" placeholder="Recipe Name"/>
-            <input type="text" name="source" placeholder="External Link"/>
-            <input type="text" name="servesPeople" placeholder="Serving Size"/>
-            <input id="button" type="submit" value="Create Recipe"/>
+
+            <p><input type="text" name="recipeName" placeholder="Recipe Name"/></p>
+            <p><input type="text" name="source" placeholder="External Link"/></p>
+            <p><input type="text" name="servesPeople" placeholder="Serving Size"/></p>
+            <p><input id="button" type="submit" value="Create Recipe"/></p>
 
 
             <input type="text" name="foodItems" placeholder="Ingredient"/>
@@ -20,8 +21,18 @@
 ------------------------------------------------------------
 <h5>Display The Recipe That was just added BELOW</h5>
 <br/><br/>
-<p><a href="">This recipe</a></p>
+
+
+
+
+
+
+
+
+
+<p><a href="/recipe/:id">jump to this recipe</a></p>
 <p><a href="">add♾ to nosh⧁</a></p>
+
 
 
 </body>

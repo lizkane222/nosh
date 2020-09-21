@@ -50,6 +50,17 @@ app.get('/', (req,res) => {
       res.render('index.ejs')
   });
 
+app.get('./controllers/recipe', (req, res) => {
+
+  db.Recipe.find({}, (error, allRecipesFromDB) => {
+    if(error) return res.send(error);
+    
+    const context = allRecipes = allRecipesFromDB
+      res.render('index.ejs', context)
+  });
+})
+
+
 //auth route (in user)
 app.use('/', controllers.auth);
 
