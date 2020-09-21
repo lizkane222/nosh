@@ -45,12 +45,16 @@ app.get('/', (req, res) => {
 
 
 // view routes
+// CREATE INDEX HERE FOR ALL OF RECIPES
+app.get('/', (req,res) => {
+      res.render('index.ejs')
+  });
 
 //auth route (in user)
 app.use('/', controllers.auth);
 
 // recipe Routes
-// app.use('/recipes', controllers.recipe);
+app.use('/recipe', controllers.recipe);
 
 // user Routes
 app.use('/users', controllers.user);
