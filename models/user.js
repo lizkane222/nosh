@@ -2,8 +2,9 @@ const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true },
-    email: { type: String, required: true, unique: true},
-    password: {type: String, required: true },
+    // TODO  REFACTOR for now had to make these not required and not unique to get 
+    email: { type: String, },
+    password: { type: String },
     // this is a person chosen recipes (ref recipe ._id) not required, it is  simlar to author/articles in example
     nosh: [
         { type: mongoose.Schema.Types.ObjectId,
