@@ -2,6 +2,7 @@
 const router = require('express').Router();
 const db =  require('../models');
 const bcrypt = require('bcrypt');
+const { findByIdAndUpdate } = require('../models/User');
 
 
 
@@ -50,11 +51,11 @@ router.get("/newUser",  (req, res) => {
 
 // post new user (for now so I can make pantry without login)
 router.post("/newUser", (req, res) => {
-    db.User.create(req.body, function (err, createdUser) {
+    db.User.create(req.body, (err, createdUser) => {
         console.log(createdUser);
-      if (err) {
-        console.log(err);
-        return res.send(err);
+      if (error) {
+        console.log(error);
+        return res.send(error);
       }
       res.redirect("/users");
     });
@@ -99,11 +100,23 @@ router.put("/:id", (req, res) => {
       if (error) {
         console.log(error);
         return res.send(error);
-      }
+      };
       console.log(`updated user, ${updatedUser}`);
-      res.redirect(`${updatedUser._id}`);
-    });
+//     db.User.findByIdAndUpdate(
+//       req.params.id.pantry, 
+//       { foodItem: req.body.foodItem },
+//       { quantity: req.body.quantity },
+//       { unit:  req.body.unit },
+//       { new: true }, 
+//       (error, updatedUser) => {
+//       if (error) {
+//           console.log(error);
+//           return res.send(error);
+//       };
+//     res.redirect(`${updatedUser._id}`);
+//   });
   });
+});
 
   // delete user - DONE 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example

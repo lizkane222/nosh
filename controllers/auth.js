@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 // base psth /
 
 
-
 // get register form
 router.get('/register', (req, res) => {
     // res.send(" get a registration  ping back")
