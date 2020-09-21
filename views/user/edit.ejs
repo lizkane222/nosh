@@ -10,10 +10,10 @@
     </form>
     <hr>
     <section class="new__foodItem">
-        <form action="/users/<%= user._id %>?_method=PUT" " method="POST">
-          <input type="text" name="user.pantry[0]" placeholder="New Food Item" />
-          <input type="text" name="user.pantry[1]" placeholder="Quantity, - (number)" />
-          <input type="text" name="user.pantry[2]" placeholder="Unit - (lbs, cups, etc)" />
+        <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+          <input type="text" name="foodItem" placeholder="New Food Item" />
+          <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+          <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
           <input id="button" type="submit" value="New Food Item"/>
         </form>
     </section>

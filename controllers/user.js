@@ -102,15 +102,21 @@ router.put("/:id", (req, res) => {
         return res.send(error);
       };
       console.log(`updated user, ${updatedUser}`);
-    //   db.User,findByIdAndUpdate(req.params.pantry, req.body, { new: true }, (error, updatedUser) => {
-    //     if (error) {
-    //         console.log(error);
-    //         return res.send(error);
-    //     };
-      res.redirect(`${updatedUser._id}`);
-    });
+//     db.User.findByIdAndUpdate(
+//       req.params.id.pantry, 
+//       { foodItem: req.body.foodItem },
+//       { quantity: req.body.quantity },
+//       { unit:  req.body.unit },
+//       { new: true }, 
+//       (error, updatedUser) => {
+//       if (error) {
+//           console.log(error);
+//           return res.send(error);
+//       };
+//     res.redirect(`${updatedUser._id}`);
+//   });
   });
-// });
+});
 
   // delete user - DONE 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
