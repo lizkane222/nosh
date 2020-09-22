@@ -65,7 +65,7 @@ Beginner
 chicken
 1
 lbs
-188
+235
 
 Step 1:
 -Set oven to 350' Fahrenheit.
@@ -82,3 +82,21 @@ With thermometer, check chicken is above 160 degrees, is so remove and serve.
 tasty
 TAGS: "rice" "chicken" "honey mustard sauce" I love this recipe because it takes very little prep-time and only requires a few ingredients. I cook this most often when we want a simple but ${tasty} meal. 
 ____________________________________________________________
+
+
+
+
+EDIT.EJS
+
+      <!-- <ul>
+        <% for(let i =0; i< allRecipes.length; i++) { %>
+            <li>
+              <a href="/recipe/<%= allRecipes[i]._id %>">
+                <%= allFruits[i].name %>
+              </a>   
+              <form action="/recipe/<%= allRecipes[i]._id %>?_method=DELETE" method="POST">
+                <input type="submit" value=" ">
+              </form>
+            </li>
+          <%} %>
+      </ul> -->

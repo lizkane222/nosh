@@ -10,21 +10,31 @@
     <p>FOR RECIPE MODEL USE: 
         <a href="">/:id</a> TO SHOW ONE RECIPE</p> -->
 
-    <h1>Recipe</h1>
+    <h1><%= recipe.recipeName %></h1>
     <br/><br/>
 
     <section>
-        <form action="/recipe" method="POST">
-            Name:
-            Quantity:
-            Unit:
-            Calories:
-        </form>
+            <ul>
+        <% Recipe.forEach(recipe => { %>
+            <li>Recipe: <a href="#"><% recipe.recipeName %></a></li>
+            <li>Servings: <a href="#"><% recipe.servesPeople %></a></li> 
+            <li>Cook Time:   <a href="#"><% recipe.cookTime.numHours %></a>    hours   <a href="#"><% recipe.cookTime.numMinutes %></a>    minutes</li>
+            <li>Photo: <a href="#"><% recipe.imageSource.skillLevel %></a></li>
+            <li>Each food item:  <a href="#"><% recipe.foodItems.foodName %></a></li>   <a href="#"><% recipe.foodItems.quantity %></a>     <a href="#"><% recipe.foodItems.unit %></a>     <a href="#"><% recipe.foodItems.calories %></a></li>
+            
+            <li>Recipe Instructions: <a href="#"><% recipe.narrativeDescription %></a></li>
+            Tags: <li><a href="#"><% recipe.tag.tagName %></a></li>      <li><a href="#"><% recipe.tag.saverDescription %></a></li>
+            
+            <li>Comments: <a href="#"><% recipe. %></a></li>    
+        <% }) %>
+        </ul>
+
         <a href="/recipe/:id">Edit Recipe</a>&nbsp&nbsp&nbsp
         <a href="/recipe/:id">Transfer Owner</a>&nbsp&nbsp
     </section><br/><br/><br/><br/>
 
     <a href="/recipe/new">Create A New Recipe</a>
+
     <!-- <a href="/recipes/:id">EDIT RECIPE</a>
     <a href="/recipes/:id">Transfer Owner</a> -->
 

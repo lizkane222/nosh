@@ -14,7 +14,7 @@ const recipeSchema = new mongoose.Schema({
     // must provide numMinutes, minutes is already filled in NO Option to choose,
     cookTime: [
         // {numMinutes: {type: String, required: true}},
-        {numHours: {type: Number, required: true}},
+        {numHours: {type: Number, required: false}},
         {numMinutes: {type: Number, required: true}},
     ],
     // restrict to available options ("beginner","intermediate", "expert" )
