@@ -5,13 +5,10 @@
 </head>
 <body>
     <h3>Welcome back,&nbsp<%= user.username %> </h3>
-    <div class="btn-group-vertical">
+    <!-- <div class="btn-group-vertical">
         <a class="btn btn-primary btn-sm" href="/users/<%= user._id %>/edit" role="button">Edit Username</a>
-    </div>
+    </div>  -->
     <section>
-        <!-- <ul class="nosh">
-            <li>Nosh: <%= user.nosh%></li>
-        </ul> -->
         <hr>
         <section class="new__foodItem">
             <form action="/users/<%= user._id %>?_method=PUT" method="POST">
@@ -31,7 +28,6 @@
             <% if(user.pantry.length === 0) { %>
                 <p>There are no pantry items yet</p>
             <% } %>
-        <%= user.pantry %>
         </div>
     </section>
     <footer>

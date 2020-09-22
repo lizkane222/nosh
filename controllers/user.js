@@ -76,18 +76,18 @@ router.get("/:id", loginReqired, (req, res) => {
 // PUT  (update) PANTRY FOOD ITEM
 router.put("/:id", loginReqired, async (req, res) => {
   try {
-    const pantryData = {
+    const updatedItem = {
       $push: {pantry: {
               foodItem: req.body.foodItem,
               quantity: req.body.quantity,
               unit: req.body.unit,
       }},
     };
-    const updatedPantry = await db.User.findByIdAndUpdate(req.params.id, pantryData, { new: true });
+    const updatedPantry = await db.User.findByIdAndUpdate(req.params.id, updatedItem, { new: true });
     res.redirect(`/users/${req.params.id}`)
   } catch (error) {
     console.log(error);
-    res.send( {message: "Something went horribly wrong please go back... in time"} );
+    res.send( {message: "Something went horribly wrong [in your PUT Pantry route] please go back... in time"} );
   }
 }); 
 
@@ -115,12 +115,43 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
     console.log(error)
     return res.send(err);
     }
+    // this grabs the user above and the we narrow down in the code below to get the pantry item by id
     const context = { item: foundUser.pantry.id(req.params.id) };
-    console.log(context);
+    // console.log(context);
     res.render("user/editItem", context );
   });
 });  
   
+router.put("/:id/updateItem", loginReqired, async (req, res) => {
+  // res.send(' hello I PUT route for item ')
+    try {
+      // const updatedItem = {
+      //   $push: {pantry: {
+      //           foodItem: req.body.foodItem,
+      //           quantity: req.body.quantity,
+      //           unit: req.body.unit,
+      //   }},
+      // };
+      const newItem = {foodItem: req.body.foodItem, quantity: req.body.quantity, unit: req.body.unit,}
+      console.log(` newitem ${newItem}`);
+
+      const foundUser = await db.User.findById(req.session.currentUser.id)
+      console.log(` params id ${req.params.id}`)
+      
+     let item = foundUser.pantry.id(req.params.id)
+      console.log(item)
+
+      item = {...item,...newItem};
+      // foundUser.pantry.splice(item, newItem);
+      await foundUser.save();
+
+      const context = { user: foundUser }
+      res.render(`user/show`, context);
+    } catch (error) {
+      console.log(error);
+      res.send( {message: "Something went horribly wrong [in your PUT Item route] please go back... in time"} );
+    }
+});
 // DELETE (user) (no auth) 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
 router.delete("/:id", function (req, res) {
@@ -133,7 +164,6 @@ router.delete("/:id", function (req, res) {
       res.redirect("/users");
     });
 });
-
 
 
 
