@@ -121,7 +121,7 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
     res.render("user/editItem", context );
   });
 });  
-  {foodItem: req.body.foodItem, quantity: req.body.quantity, unit: req.body.unit,}
+
 router.put("/:id/updateItem", loginReqired, async (req, res) => {
   // res.send(' hello I PUT route for item ')
     try {
