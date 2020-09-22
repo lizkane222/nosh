@@ -33,7 +33,7 @@ router.post('/new', (req,res) => {
             console.log(err)
         } else {
             console.log(createdRecipeInDB)
-            res.redirect('recipe/:id');
+            res.redirect('/recipe/:id');
         }
     })
 });

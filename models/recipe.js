@@ -4,30 +4,36 @@ const mongoose = require("mongoose");
 // Schema("template", optional configuration obj)
 const recipeSchema = new mongoose.Schema({
     recipeName: {type: String, required: true},
-        // quantity value should be set to 1, unit value should be set to foodItems.name+"s"
-    foodItems: [
-        {
-            foodName: {type: String, required: true},
-            quantity: {type: Number, required: true},
-            unit: {type: String, required: true},
-            calories: {type: Number, required: true},
-        },
-    ],
-        //narrative Description are the recipe's exact instructions, NOT owner's thoughts about dish which will be at tag.text
+    //narrative Description are the recipe's exact instructions, NOT owner's thoughts about dish which will be at tag.text
     narrativeDescription: {type: String, required: false},
-        // if outside source exists provide it, if source does not exist not required
+    // if outside source exists provide it, if source does not exist not required
     imageSource: {type: String, required: false},
-        // serving size per recipe
+    // serving size per recipe
     servesPeople: {type: Number, required: true},
-        // must provide numHours, hours is already filled in NO Option to choose,
-        // must provide numMinutes, minutes is already filled in NO Option to choose,
+    // must provide numHours, hours is already filled in NO Option to choose,
+    // must provide numMinutes, minutes is already filled in NO Option to choose,
     cookTime: [
         // {numMinutes: {type: String, required: true}},
         {numHours: {type: Number, required: true}},
         {numMinutes: {type: Number, required: true}},
     ],
-        // restrict to available options ("beginner","intermediate", "expert" )
+    // restrict to available options ("beginner","intermediate", "expert" )
     skillLevel: {type: String, required: false},
+    // quantity value should be set to 1, unit value should be set to foodItems.name+"s"
+foodItems: [
+    {
+        foodName: {type: String, required: false},
+        quantity: {type: Number, required: false},
+        unit: {type: String, required: false},
+        calories: {type: Number, required: false},
+    },
+    {
+        foodName: {type: String, required: false},
+        quantity: {type: Number, required: false},
+        unit: {type: String, required: false},
+        calories: {type: Number, required: false},
+    },
+],
     //     // totalCalories is a function that sums foodItem.calories
     //     // DON'T PUT totalCALORIES IN FORM
     totalCalories: {type: Number, required: false},
