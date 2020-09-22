@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <h1>Create new user-no auth for now</h1>
+    <!-- <section class="food__item">
+        <form action="/users/foodItem" method="POST">
+          <input type="text" name="username" placeholder="create user" />
+          <input id="button" type="submit" value="New User"/>
+        </form>
+    </section> -->
+    <section class="food_item">
+        <form action="/users/foodItem/<%= pantry._id %>?_method=PUT" method="POST">
+          <input type="text" name="foodItem" placeholder="New Food Item" />
+          <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+          <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+          <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Pantry Item"/>
+        </form>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>

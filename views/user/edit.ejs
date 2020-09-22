@@ -4,19 +4,19 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Edit username (evntually pantry items)</h1>
-    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-        <input type="text" name="username" value="<%= user.username %>" />
-    </form>
+    <h1>Welcome back,&nbsp<%= user.username %></h1>
     <hr>
-    <section class="new__foodItem">
-        <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-          <input type="text" name="foodItem" placeholder="New Food Item" />
-          <input type="text" name="quantity" placeholder="Quantity, - (number)" />
-          <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
-          <input id="button" type="submit" value="New Food Item"/>
-        </form>
-    </section>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+        change username <input type="text" name="username" value="<%= user.username %>" />
+        <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update username"/>
+    </form>
+    <br>
+    <hr>
+    <div>
+        <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+            <input class="btn btn-danger btn-sm" type="submit" value="Delete User">
+        </form> 
+    </div>
     <footer>
         <%- include('../partials/footer') %>
     </footer>

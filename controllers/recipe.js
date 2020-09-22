@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+
 /* base path *//*    /recipe     */
 // for file path use /recipe/__.ejs
 
