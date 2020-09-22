@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+
 /* base path *//*    /recipe     */
 // for file path use /recipe/__.ejs
 
@@ -28,14 +29,15 @@ router.get('/new', (req,res) => {
 
 // create recipe  /recipe     //new.ejs
 router.post('/new', (req,res) => {
-    db.Recipe.create(req.body, (err, createdRecipeInDB) => {
-        if(err) {
-            console.log(err)
-        } else {
-            console.log(createdRecipeInDB)
-            res.redirect('/recipe/:id');
-        }
-    })
+    res.send('this recipe is connected')
+    // db.Recipe.create(req.body, (err, createdRecipeInDB) => {
+    //     if(err) {
+    //         console.log(err)
+    //     } else {
+    //         console.log(createdRecipeInDB)
+    //         // res.redirect('/recipe/:id');
+    //     }
+    // })
 });
 
 
@@ -67,8 +69,9 @@ router.get('/:id', (req,res) => {
     res.render('recipe/show.ejs')
 });
 
+
 // edit recipe  <- view   /recipe      //edit.ejs
-router.get
+// router.get
 
 // update <- db change   /recipe       //edit.ejs & index.ejs
 

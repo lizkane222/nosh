@@ -6,14 +6,14 @@
 <body>
     <h1>Create New Recipe (NEW.EJS)</h1>
     <section>
-        <form action="/recipe/:id" method="POST">
+        <form action="/recipe/new" method="POST">
             <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
             <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
             <p>Cook Time: 
                 <input type="text" name="cookTime.numHours" placeholder="0 *"/> hours
                 <input type="text" name="cookTime.numMinutes" placeholder="0 *"/> minutes
             </p>
-            <p>Photo: <input type="text" name="imageSource" placeholder="Image Link"/>
+            <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/>
                 Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/>
             </p>
             <p>Each food item:
@@ -34,7 +34,7 @@
         </form>
     </section><br/><br/><br/><br/><br/><br/><br/><br/>
 
-<!-- ------------------------------------------------------------
+<!--  ------------------------------------------------------------ -->
 <h5>Display The Recipe That was just added BELOW</h5>
 <br/><br/>
    

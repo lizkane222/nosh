@@ -6,7 +6,6 @@
 <body>
     <!-- <p>FOR USER MODEL USE: 
         <a href="">/recipe/:id</a> TO SHOW ONE RECIPE</p>
-
     <p>FOR RECIPE MODEL USE: 
         <a href="">/:id</a> TO SHOW ONE RECIPE</p> -->
 
@@ -17,15 +16,15 @@
             <ul>
         <% Recipe.forEach(recipe => { %>
             <li>Recipe: <a href="#"><% recipe.recipeName %></a></li>
-            <li>Servings: <a href="#"><% recipe.servesPeople %></a></li> 
-            <li>Cook Time:   <a href="#"><% recipe.cookTime.numHours %></a>    hours   <a href="#"><% recipe.cookTime.numMinutes %></a>    minutes</li>
-            <li>Photo: <a href="#"><% recipe.imageSource.skillLevel %></a></li>
-            <li>Each food item:  <a href="#"><% recipe.foodItems.foodName %></a></li>   <a href="#"><% recipe.foodItems.quantity %></a>     <a href="#"><% recipe.foodItems.unit %></a>     <a href="#"><% recipe.foodItems.calories %></a></li>
+            <!-- <li>Servings: <a href="#"><% recipe.servesPeople %></a></li>  -->
+            <!-- <li>Cook Time:   <a href="#"><% recipe.cookTime.numHours %></a>    hours   <a href="#"><% recipe.cookTime.numMinutes %></a>    minutes</li> -->
+            <!-- <li>Photo: <a href="#"><% recipe.imageSource.skillLevel %></a></li> -->
+            <!-- <li>Each food item:  <a href="#"><% recipe.foodItems.foodName %></a></li>   <a href="#"><% recipe.foodItems.quantity %></a>     <a href="#"><% recipe.foodItems.unit %></a>     <a href="#"><% recipe.foodItems.calories %></a></li> -->
             
-            <li>Recipe Instructions: <a href="#"><% recipe.narrativeDescription %></a></li>
-            Tags: <li><a href="#"><% recipe.tag.tagName %></a></li>      <li><a href="#"><% recipe.tag.saverDescription %></a></li>
+            <!-- <li>Recipe Instructions: <a href="#"><% recipe.narrativeDescription %></a></li> -->
+            <!-- Tags: <li><a href="#"><% recipe.tag.tagName %></a></li>      <li><a href="#"><% recipe.tag.saverDescription %></a></li> -->
             
-            <li>Comments: <a href="#"><% recipe. %></a></li>    
+            <!-- <li>Comments: <a href="#"><% recipe. %></a></li>     -->
         <% }) %>
         </ul>
 
