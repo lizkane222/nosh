@@ -35,14 +35,14 @@ const loginReqired = function(req, res, next) {
 /* TODO ===== do second ===== */
 /* ===== USER PANTRY ===== */
 // index
-router.get("/",  async (req, res) => {
-    // res.render('user/index');
+router.get("/", loginReqired,  async (req, res) => {
     try {
-        const foundUser = await db.User.find({});
-        const context = {
-        users: foundUser,
-        }
-        res.render("user/index", context);
+        // const foundUser = await db.User.find({});
+        const foundUser = db.User.findById(req.session.currentUser.id)
+        // console.log(foundUser);
+        const context = { user: foundUser }
+        // console.log(context);
+        res.render('user/index', context);
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal Server Error" });
@@ -67,8 +67,7 @@ router.post("/", (req, res) => {
 });
 
 // get new user pantry form
-router.get("/newPantry", loginReqired, (req, res) => {
-  // const context = { user: req.session.currentUser.id }
+router.get("/pantry", loginReqired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
     if(error) {
       console.log(error);

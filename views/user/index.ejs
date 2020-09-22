@@ -4,20 +4,21 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>All Users Page (no-auth)</h1>
-    <ul>
-        <li>
-            <a href="/users/newUser">Dont see your username, make new</a>
-        </li>
-        <% users.forEach(user => { %>
-        <li>
-          <a href="/users/<%= user._id %>"> <%= user.username %> </a>
-        </li>
-        <% }) %>
-      </ul>
-      <% if(users.length === 0) { %>
-      <p>There are no users yet.</p>
-      <% } %>
+    <h1>Welcome back,&nbsp<%= user.username %></h1>
+    <hr>
+    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+        change username <input type="text" name="username" value="<%= user.username %>" />
+    </form>
+    <div>
+        <form 
+        action="/users/<%= user._id %>?_method=DELETE" 
+        method="POST">
+            <input 
+            class="btn btn-danger btn-sm" 
+            type="submit" 
+            value="Delete User">
+        </form> 
+    </div>
     <footer>
         <%- include('../partials/footer') %>
     </footer>

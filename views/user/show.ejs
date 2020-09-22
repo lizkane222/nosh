@@ -5,6 +5,9 @@
 </head>
 <body>
     <h3>Welcome back,&nbsp<%= user.username %> </h3>
+    <!-- <div class="btn-group-vertical">
+        <a class="btn btn-primary btn-sm" href="/users/<%= user._id %>/edit" role="button">Edit Username</a>
+    </div> -->
     <section>
         <!-- <ul class="nosh">
             <li>Nosh: <%= user.nosh%></li>
@@ -15,28 +18,22 @@
               <input type="text" name="foodItem" placeholder="New Food Item" />
               <input type="text" name="quantity" placeholder="Quantity, - (number)" />
               <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
-              <input id="button" type="submit" value="New Pantry Item"/>
+              <input class="btn btn-primary btn-sm" id="button" type="submit" value="New Pantry Item"/>
             </form>
         </section>
         <hr>
-        <ul class="pantry"></ul>
+        <div class="list-group">
+            <%= user.pantry %>
             <% user.pantry.forEach(pantry => { %>
-                <li>
-                  <a> <%= pantry.foodItem %> &nbsp <%= pantry.quantity %> &nbsp <%= pantry.unit %> </a>
-                </li>
-                <% }) %>
-              <% if(user.pantry.length === 0) { %>
-              <p>There are no pantry items yet, edit user to update.</p>
-              <% } %>
-        </ul>
+                <a href="" class="list-group-item list-group-item-action">
+                    <%= pantry.foodItem %>: &nbsp&nbsp <%= pantry.quantity %> <%= pantry.unit %>
+                </a>
+            <% }) %>
+            <% if(user.pantry.length === 0) { %>
+                <p>There are no pantry items yet</p>
+            <% } %>
+          </div>
     </section>
-    <hr>
-    <div class="btn-group-vertical">
-        <a 
-        class="btn btn-primary btn-sm" 
-        href="/users/<%= user._id %>/edit" 
-        role="button">Edit Username</a>
-    </div>
     <footer>
         <%- include('../partials/footer') %>
     </footer>
