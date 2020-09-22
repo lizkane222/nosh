@@ -4,23 +4,60 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Create New Recipe</h1>
+    <h1>Create New Recipe (NEW.EJS)</h1>
     <section>
-        <form action="/recipe" method="POST">
-
-            <p><input type="text" name="recipeName" placeholder="Recipe Name"/></p>
-            <p><input type="text" name="source" placeholder="Image Link"/></p>
-            <p><input type="text" name="servesPeople" placeholder="Serving Size"/></p>
+        <form action="/recipe/new" method="POST">
+            <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
+            <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
+            <p>Cook Time: 
+                <input type="text" name="cookTime.numHours" placeholder="0 *"/> hours
+                <input type="text" name="cookTime.numMinutes" placeholder="0 *"/> minutes
+            </p>
+            <p>Photo: <input type="text" name="imageSource" placeholder="Image Link"/>
+                Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/>
+            </p>
+            <p>Each food item:
+                <input type="text" name="foodItems.foodName" placeholder="Ingredient Name *"/>
+                <input type="text" name="foodItems.quantity" placeholder="quantity *"/>
+                <input type="text" name="foodItems.unit" placeholder="unit *"/>
+                <input type="text" name="foodItems.calories" placeholder="calories *"/>
+            </p>
+            <p><textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+            <p>Tags: <i>(Adjectives & Nouns of Recipe) </i> <input type="text" name="tag" placeholder="meat? breakfast? spicy? *"/>
+            <p><textarea type="text" name="saverDescription" placeholder="Your Take On This Recipe"></textarea></p></p>
+            <br><br>
             <p><input id="button" type="submit" value="Create Recipe"/></p>
-
-
-            <input type="text" name="foodItems" placeholder="Ingredient"/>
         </form>
-    </section>
-    <br/><br/><br/><br/><br/><br/><br/><br/>
-------------------------------------------------------------
+    </section><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<!-- ------------------------------------------------------------
 <h5>Display The Recipe That was just added BELOW</h5>
 <br/><br/>
+   
+
+(HOW THE FORM ABOVE NEEDS TO BE SITUATED)<br/>
+
+
+Recipe.recipeName  Recipe.servesPeople Savers: savers.userName<br/>
+Recipe.imageSource  Recipe.totalCalories  Recipe.skillLevel<br/>
+Recipe.narrativeDescription {Recipe.cookTime.numHours  Recipe.cookTime.numMinutes}<br/>
+
+Recipe.foodItems.foodName  Recipe.foodItems.quantity  Recipe.foodItems.unit  Recipe.foodItems.calories  
+
+Recipe.tag.Pyramid  Recipe.tag.Taste  Recipe.tag.Origin  <br/>
+Recipe.tag.All Origins  Recipe.tag.Method  Recipe.tag.Healthy  Recipe.tag.Adj  <br/>
+Owner: user.userName    <br/>
+
+
+<br/><br/>
+(HOW THE RECIPE NEEDS TO BE DISPLAYED ON SHOW PAGE)<br/>
+
+Recipe.tag.tagName.Pyramid  Recipe.tag.tagName.Taste  Recipe.tag.tagName.Origin  Recipe.tag.tagName.All Origins  Recipe.tag.tagName.Method  Recipe.tag.tagName.Healthy  Recipe.tag.tagName.Adj -->
+
+
+
+
+
 
 
 

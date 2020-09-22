@@ -1,0 +1,84 @@
+External References:
+
+
+Food Pyramid:   "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/10/WebMedium.jpg"
+Recipe Origins: "https://en.wikipedia.org/wiki/List_of_cuisines"
+
+
+
+
+
+Food Drop Down Categories: "https://englishstudyhere.com/wp-content/uploads/2018/08/Descriptive-Words-For-FOOD.png"
+
+    - Pyramid: Veggie, Grains, Fats & Oils, Fish, Eggs, Poultry, Nuts, Seeds, Beans, Tofu, 
+    - Drinks: Water, 
+    - Taste: Sugary, Sweet, Sour, Spicy (Hot), Juicy, Crispy, Fresh, Gooey, Soft, Icy, Ripe, Lemony, Tangy, Savory, 
+    
+    - Origin: American, Cajun, Chinese, Ethiopian, French, Greek, Indian, Italian, Jamaican, Japanese, Jewish, Korean, Lebanese, Mediterranean, Mexican, Middle Eastern, Native American, New Mexican, Spanish, Taiwanese, Texan, Thai, Turkish, Vietnamese,
+        - All Origins: Ainu, Albanian, Argentine, Andhra, Anglo-Indian, Arab, Armenian, Assyrian, Awadhi, Azerbaijani, Balochi, Belarusian, Bangladeshi, Bengali, Berber, Brazilian, British, Buddhist, Bulgarian, Cajun, Cantonese, Caribbean, Chechen, Chinese cuisine, Chinese Islamic, Circassian, Crimean, Tatar, Cypriot, Danish, English, Ethiopian, Eritrean, Estonian, French, Filipino, Georgian, German, Goan, Goan Catholic, Greek, Gujarati, Huderabad, Indian cuisine, Indian Chinese, Indian Singaporean cuisine, Indonesian, Inuit, Irish, Italian-American, Italian cuisine, Jamaican, Jewish, Karnataka, Kazakh, Keralite, Korean, Kurdish, Laotian, Lebanese, Latvian, Lithuanian, Louisiana Creole, Maharashtrian, Mangalorean, Malay, Malaysian Chinese cusine, Malaysian Indian cuisine, Mennonite, Mexican, Mordovian, Mughal, Native American, Nepalese, New Mexican, Nepalese, New Mexican, Odia, Parsi, Pashtun, Polish, Pennsylvania Dutch, Pakistani, Peranakan, Persian, Peruvian, Portuguese, Punjabi, rajasthani, Romanian, Russian, Sami, Serbian, Sindhi, Slovak, Slovenian, Somali, South Indian, Soviet, Spanish, Sri Lankan, Taiwanese, Tatar, Texan, Thai, Turkish, Tamil, Udupi, Ukrainian, Vietnamese, Yamal, Zambian, Zanzibari
+    
+    - Style : Homestyle, Loaded, Breaded, Bite-Sized, 
+    
+    - Method: Grilled, Roasted, Braised, Baked, 
+    
+    - Healthy: Low Sugar, Low Carbs, Low Fat, Low Sodium, Low Cholesterol, Lean, 
+    
+    - Adj: Satisfying, Tasty,
+
+    //stretch goal: have option to insert each of these into narrativeDescription or saversDescription
+
+
+
+
+
+USER ACCOUNTS:
+
+username        email       password
+---------------------------------------------
+liz         liz@liz         liz
+
+kane        kane@kane       kane
+
+helen       helen@helen     helen
+
+zack        zack@zack       zack
+
+swarles     swarles@swarles swarles
+
+jason       jason@jason     jason
+
+andersen    andersen@andersen   andersen
+
+
+
+
+RECIPES:
+
+(1)____________________________________________________________
+Honey Mustard Chicken
+3
+0
+45
+https://www.evolvingtable.com/wp-content/uploads/2015/12/Honey-Mustard-Baked-Chicken-19.jpg
+Beginner
+
+chicken
+1
+lbs
+188
+
+Step 1:
+-Set oven to 350' Fahrenheit.
+-Cook ${rice} as instructed on box,(best practice, wash ${rice} until water is clear, pour rice into pot and fill water until first knuckle on finger). When the ${rice} is ready line a large pan with the contents. 
+-Pour ${1/4} ${cup} of ${water} into pan.
+-Carefully pour water across entire pan. 
+-Grab your ${24} ${oz} bottle of ${Honey Mustard Sauce} and pour half the contents across rice (zig-zagging), stir well. 
+Step 2:
+-While ${rice} is cooking, remove {$chicken} from packaging and wash off, then place ${chicken} atop ${rice} in the pan. ${chicken} should be side-by-side, minimal over-lap.
+-Grab your ${24} ${oz} bottle of ${Honey Mustard Sauce} and cover pour the remainder of its contents across rice (zig-zagging), DON'T STIR.
+Cover with aluminum-foil, place in oven. Bake at ${350} degrees ${Fahrenheit} for ${time-cook}.
+With thermometer, check chicken is above 160 degrees, is so remove and serve.
+
+tasty
+TAGS: "rice" "chicken" "honey mustard sauce" I love this recipe because it takes very little prep-time and only requires a few ingredients. I cook this most often when we want a simple but ${tasty} meal. 
+____________________________________________________________
