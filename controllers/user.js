@@ -50,8 +50,8 @@ router.get("/", loginReqired,  async (req, res) => {
 });
 
 // get new user form
-router.get("/newUser",  (req, res) => {
-    res.render('user/newUser');
+router.get("/foodItem",  (req, res) => {
+    res.render('user/foodItem');
 });
 
 // post new user (for now so I can make pantry without login)
@@ -82,29 +82,43 @@ router.get("/pantry", loginReqired, (req, res) => {
 
 // show user - DONE 
 // TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
-router.get("/:id", loginReqired, (req, res) => {
-    db.User.findById(req.params.id, (err, foundUser) => {
-      if (err) {
-        console.log(err);
-        return res.send(err);
-      }
-      const context = { user: foundUser };
-      res.render("user/show", context);
-    });
-});
+// router.get("/:id", loginReqired, (req, res) => {
+//     db.User.findById(req.params.id, (err, foundUser) => {
+//       if (err) {
+//         console.log(err);
+//         return res.send(err);
+//       }
+//       const context = { user: foundUser };
+//       res.render("user/show", context);
+//     });
+// });
 
 // get (edit)  pantry info
-router.get("/:id/edit", loginReqired, (req, res) => {
-    // res.render('user/edit');
-    db.User.findById(req.params.id, function (err, foundUser) {
-        if (err) {
-        console.log(err);
-        return res.send(err);
-        }
-        const context = { user: foundUser };
-        res.render("user/edit", context);
-    });
+// router.get("/:id/edit", loginReqired, (req, res) => {
+//     // res.render('user/edit');
+//     db.User.findById(req.params.id, function (err, foundUser) {
+//         if (err) {
+//         console.log(err);
+//         return res.send(err);
+//         }
+//         const context = { user: foundUser };
+//         res.render("user/edit", context);
+//     });
+// });
+
+// get (edit)  pantry info
+router.get("/foodItem/:id", loginReqired, (req, res) => {
+  // res.render('user/edit');
+  db.User.findById(req.params.id, function (err, foundItem) {
+      if (err) {
+      console.log(err);
+      return res.send(err);
+      }
+      const context = { item: foundItem };
+      res.render("user/foodEdit", context);
+  });
 });
+
 
 // put (update) pantry info
 router.put("/:id", loginReqired, async (req, res) => {
