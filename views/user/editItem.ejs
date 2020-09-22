@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <h1>Create new user-no auth for now</h1>
+    <section class="food_item">
+        <form action="" method="POST">
+          <input type="text" name="foodItem" value="<%= item.foodItem %>" />
+          <input type="text" name="quantity" value="<%= item.quantity %>" />
+          <input type="text" name="unit" value="<%= item.unit %>" />
+          <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Item"/>
+        </form>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>
