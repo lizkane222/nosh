@@ -29,44 +29,30 @@ router.get('/new', (req,res) => {
 
 // create recipe  /recipe     //new.ejs
 router.post('/new', (req,res) => {
-    res.send('this recipe is connected')
-    // db.Recipe.create(req.body, (err, createdRecipeInDB) => {
-    //     if(err) {
-    //         console.log(err)
-    //     } else {
-    //         console.log(createdRecipeInDB)
-    //         // res.redirect('/recipe/:id');
-    //     }
-    // })
+    // res.send('this recipe is connected')
+    db.Recipe.create(req.body, (err, createdRecipeInDB) => {
+        if(err) {
+            console.log(err)
+        } else {
+            console.log(createdRecipeInDB)
+            res.redirect(`/recipe/${createdRecipeInDB._id}`);
+        }
+    })
 });
 
 
-// router.post('/newForm', (req,res) => {
-//     console.log(req.body);
-    // db.Recipe.create(req.body, (err, createdRecipeInDB) => {
-    //     if(err) {
-    //         console.log(err);
-    //         return res.send(err);
-    //     }
-    //     db.User.findById(req.body.recipe, (err, foundUser) => {
-    //         if(err) {
-    //             console.log(err);
-    //             return res.send(err)
-    //         }
 
-    //         foundUser.recipes.push(createdRecipeInDB);
-    //         foundUser.save();
-            
-    //         res.redirect('/newForm');
-    //     })
-    //     }
-    // )
-    // 
-// });
 
 // show ONLY ONE recipe  /recipe      //show.ejs
 router.get('/:id', (req,res) => {
-    res.render('recipe/show.ejs')
+    db.Recipe.findById(req.params.id, (err, foundRecipe) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { recipe: foundRecipe};
+        res.render('recipe/show.ejs', context);
+    });
 });
 
 
