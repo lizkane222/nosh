@@ -10,25 +10,16 @@
             <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
             <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
             <p>Cook Time: 
-                <input type="text" name="cookTime.numHours" placeholder="0 *"/> hours
-                <input type="text" name="cookTime.numMinutes" placeholder="0 *"/> minutes
+                <input type="text" name="cookTime" placeholder="0 *"/> minutes
             </p>
-            <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/>
-                Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/>
-            </p>
-            <p>Each food item:
-                <input type="text" name="foodItems.foodName" placeholder="Ingredient Name *"/>
-                <input type="text" name="foodItems.quantity" placeholder="quantity *"/>
-                <input type="text" name="foodItems.unit" placeholder="unit *"/>
-                <input type="text" name="foodItems.calories" placeholder="calories *"/>
-            </p>            
-            <p>Recipe Instructions: </p>
-                <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea>
+            <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
+            <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
             
-            <p>Tags: <i>(Adjectives & Nouns of Recipe) </i> <input type="text" name="tag" placeholder="meat? breakfast? spicy? *"/></p>
-            <p>
-                    <textarea type="text" name="saverDescription" placeholder="Your Take On This Recipe"></textarea>
-            </p>
+           
+            <p>Recipe Instructions: 
+                <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+            
+
             <br><br>
             <input type="submit" value="Create Recipe"/>
         </form>

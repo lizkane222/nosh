@@ -15,6 +15,10 @@
     <section>
             <ul>
                 <li>Recipe: <a href="#"><%= recipe.recipeName %></a></li>
+                <li>Servings: <%= recipe.servesPeople %></li> 
+            <li>Cook Time:   <%= recipe.cookTime %>  minutes</li>
+            <li>Photo: <img src="<%= recipe.imageSource %>" alt=""></li>
+            <li>Recipe Instructions: <%= recipe.narrativeDescription %></li>
             </ul>
 
         <a href="/recipe/:id">Edit Recipe</a>&nbsp&nbsp&nbsp

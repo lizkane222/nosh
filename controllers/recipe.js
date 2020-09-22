@@ -58,9 +58,34 @@ router.get('/:id', (req,res) => {
 
 // edit recipe  <- view   /recipe      //edit.ejs
 // router.get
+router.get("/:id/edit", (req, res) => {
+    db.Recipe.findById(req.params.id, (err, foundRecipe) => {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+      const context = { recipe: foundRecipe };
+      res.render("article/edit", context);
+    });
+  });
+
+
 
 // update <- db change   /recipe       //edit.ejs & index.ejs
-
+router.put("/:id", (req, res) => {
+    db.Recipe.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      (err, updatedRecipe) => {
+        if (err) {
+          console.log(err);
+          return res.send(err);
+        }
+        res.redirect(`/recipe/${updatedRecipe._id}`);
+      }
+    );
+  });
 
 // delete   N/A
 
