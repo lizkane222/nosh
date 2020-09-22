@@ -6,8 +6,9 @@
 <body>
   
   <section>
-    <h2>Edit Your Recipe </h2>
-    <form action="" method="POST">
+    <h2>Edit Your Recipe <%= recipe.recipeName %> </h2>
+
+    <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
     
     <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
     

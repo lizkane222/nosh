@@ -66,18 +66,23 @@ router.get("/:id/edit", (req, res) => {
 
 
 // update <- db change   /recipe       //edit.ejs & index.ejs
-// router.put("/:id", (req, res) => {
-//     db.Recipe.findByIdAndUpdate( req.params.id,req.body,{ new: true },(error, updatedRecipe) => {
-//         if (error) {
-//           console.log(error);
-//           return res.send(error);
-//         }
-//         const context = { recipe: updatedRecipe };
+router.put("/:id", (req, res) => {
+    // res.send('UPDATE IS READ')
+    db.Recipe.findByIdAndUpdate( 
+        req.params.id, req.body,
+        { new: true },
+        (error, updatedRecipe) => {
+
+        if (error) {
+          console.log(error);
+          return res.send(error);
+        }
+        // const context = { recipe: updatedRecipe };
         
-//         // res.redirect(`/recipe/${updatedRecipe._id}`, context);
-//       }
-//     );
-//   });
+        res.redirect(`/recipe/${updatedRecipe._id}`);
+      }
+    );
+  });
 
 // delete   N/A
 

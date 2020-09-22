@@ -234,16 +234,6 @@ RECIPE CONTROLLER DATA
 
 
 
-FUTURE NEW ROUTE THAT CONNECTS TO USER
-    db.User.find({}, (error, foundUsers) {
-        if(error) return res.send(error);
-    
-    const context = {
-        recipes = foundUsers,
-    }
-    })
-    res.render('user/new.ejs', context);
-
 
 
 recipe? 🤢 🤮 all recipes here
