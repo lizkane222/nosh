@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+
+<h1>ALL RECIPES (FUTURE USER PAGE)</h1>
+
+
+        <ul>
+        <% recipes.forEach(recipe => { %>
+          <li>
+              <a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a>
+          </li>
+        </ul>
+    
+      <% }); %>
+
+
+
+
+        <br/><br/><br/><br/>
+    <h4><a href="/recipe/new">Create A New Recipe</a></h4>
+
+</body>
+<%- include('../partials/footer') %>
+</html>

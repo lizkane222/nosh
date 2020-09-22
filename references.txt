@@ -101,11 +101,14 @@ https://suebeehomemaker.com/wp-content/uploads/2019/09/backlit-berry-smoothies.j
 Mix ingredients in a blender and serve.
 
 ____________________________________________________________
+Green Chile
+5
+50
+https://www.spendwithpennies.com/wp-content/uploads/2019/08/Green-Chili-SpendWithPennies-6.jpg
 
+Recipe Instructions: Broil tomatillos until golden. Sear pork shoulder in a bit of olive oil. Blend sauce ingredients (per recipe below). Simmer until pork is melt in your mouth tender. Like most chili recipes, this is great with toppings! Chili toppers we love include sour cream, jalapenos, green onions and slices of lime. Green chili stew is a meal unto itself but it’s really great with tortillas and of course bread for dipping! Dinner rolls, Garlic Bread or thick slabs of French bread are great for dipping and soaking, but flour tortillas are the standard if you want to keep it real! A hand full of crushed tortilla chips add automatic crunch! Green chili is one of those recipes that that freezes and reheats beautifully! Adjust the flavors by adding a few more chopped green chilis, jalapeños, and some extra salt and pepper to taste. Refrigerate: Leftover green chili will keep in the fridge about 4 days. Reheat on the stovetop or in the microwave. Freeze: Freeze in individual portions for lunches or meals for one in freezer bags or tightly sealed containers. Defrost in the refrigerator overnight and reheat on the stovetop or in the microwave.
 
-
-
-
+____________________________________________________________
 
 
 
@@ -212,7 +215,7 @@ RECIPE CONTROLLER DATA
 
         EDIT RECIPE:
 /recipe/<%= recipe._id %>?_method=PUT
-       
+
 <p>Recipe: <input type="text" name="recipeName" value="recipe.recipeName"/></p>
 
       <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
@@ -226,4 +229,20 @@ RECIPE CONTROLLER DATA
       <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"></textarea><p>
       
         <input type="submit" value="Update Recipe" />
+
+
+
+FUTURE NEW ROUTE THAT CONNECTS TO USER
+    db.User.find({}, (error, foundUsers) {
+        if(error) return res.send(error);
     
+    const context = {
+        recipes = foundUsers,
+    }
+    })
+    res.render('user/new.ejs', context);
+
+
+
+
+

@@ -8,21 +8,20 @@
     <p> All recipe cards go in this page </p>
 
     <!-- for now some login and logout buttons here -->
-    <% if(user) { %>
-        <p>Welcome, <%= user.username %></p>
-        <form action="/logout?_method=DELETE" method="POST">
-          <input type="submit" value="Logout">
-        </form>
-      <% } else { %> 
         <a href="/login">Login</a>
         <a href="/register">Register</a>
-      <% } %>
   
       <p><i>These recipe names were manually inputted</i></p>
         <p><a href="/recipe/5f6a3e097426c26a5c094a30">Honey Mustard Chicken</a></p>
         <p><a href="/recipe/5f6a3ed8165fb86ad0381088">Strawberry Chicken Spinach Salad</a></p>
         <p><a href="/recipe/5f6a4b84454e736c267fc11b">Banana-Berry-Peanutter Smoothie</a></p>
-  
+
+
+
+
+        
+
+
 
 
 <!-- 

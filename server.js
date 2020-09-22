@@ -50,16 +50,29 @@ app.get('/', (req,res) => {
       res.render('index.ejs')
   });
 
-app.get('./controllers/recipe', (req, res) => {
 
-  db.Recipe.find({}, (error, allRecipesFromDB) => {
-    if(error) return res.send(error);
+
+// PUT RECIPE INDEX HERE
+// app.get('./controllers/recipe', (req, res) => {
+
+//   db.Recipe.find({}, (error, allRecipesFromDB) => {
+//     if(error) return res.send(error);
     
-    const context = allRecipes = allRecipesFromDB
-      res.render('index.ejs', context)
-  });
-})
+//     const context = {recipes : allRecipesFromDB};
+//     res.render('index.ejs', context)
+//   });
+// })
 
+// app.get('/', (req,res) => {
+//     // res.send
+// ("ROUTE'S CONNECTED TO THE ALL RECIPES PAGE")
+//     db.Recipe.find({}, (error, foundRecipe) => {
+//         if(error) return res.send(error)
+    
+//     const context = {recipes: foundRecipe};
+//     res.render('index.ejs', context);
+// });
+// });
 
 //auth route (in user)
 app.use('/', controllers.auth);
