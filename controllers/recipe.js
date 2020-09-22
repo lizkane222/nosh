@@ -6,13 +6,13 @@ const db = require('../models');
 /* base path *//*    /recipe     */
 // for file path use /recipe/__.ejs
 
-// // index view of recipes    /recipes  //index.ejs (MAIN INDEX.EJS)
+// // index view of recipes    /recipe  //index.ejs (MAIN INDEX.EJS)
 // router.get('/', (req,res) => {
 //     res.render('index.ejs')
 // });
 
-// new recipe   /recipes    //new.ejs
-router.get('/newForm', (req,res) => {
+// new recipe   /recipe    //new.ejs
+router.get('/new', (req,res) => {
     res.render('recipe/new.ejs');
 });
 // router.get('/newForm', (req,res) => {
@@ -27,52 +27,65 @@ router.get('/newForm', (req,res) => {
     // })
 // });
 
-// create recipe  /recipes     //new.ejs
-router.post('/newForm', (req,res) => {
+// create recipe  /recipe     //new.ejs
+router.post('/new', (req,res) => {
+    // res.send('this recipe is connected')
     db.Recipe.create(req.body, (err, createdRecipeInDB) => {
         if(err) {
             console.log(err)
         } else {
             console.log(createdRecipeInDB)
-            res.redirect('/recipe/newForm');
+            res.redirect(`/recipe/${createdRecipeInDB._id}`);
         }
     })
 });
 
 
-// router.post('/newForm', (req,res) => {
-//     console.log(req.body);
-    // db.Recipe.create(req.body, (err, createdRecipeInDB) => {
-    //     if(err) {
-    //         console.log(err);
-    //         return res.send(err);
-    //     }
-    //     db.User.findById(req.body.recipe, (err, foundUser) => {
-    //         if(err) {
-    //             console.log(err);
-    //             return res.send(err)
-    //         }
 
-    //         foundUser.recipes.push(createdRecipeInDB);
-    //         foundUser.save();
-            
-    //         res.redirect('/newForm');
-    //     })
-    //     }
-    // )
-    // 
-// });
 
-// show ONLY ONE recipe  /recipes      //show.ejs
+// show ONLY ONE recipe  /recipe      //show.ejs
 router.get('/:id', (req,res) => {
-    res.render('recipe/show.ejs')
+    db.Recipe.findById(req.params.id, (err, foundRecipe) => {
+        if (err) {
+            console.log(err);
+            return res.send(err);
+        }
+        const context = { recipe: foundRecipe};
+        res.render('recipe/show.ejs', context);
+    });
 });
 
-// edit recipe  <- view   /recipes      //edit.ejs
+
+// edit recipe  <- view   /recipe      //edit.ejs
+// router.get
+router.get("/:id/edit", (req, res) => {
+    db.Recipe.findById(req.params.id, (err, foundRecipe) => {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+      const context = { recipe: foundRecipe };
+      res.render("article/edit", context);
+    });
+  });
 
 
-// update <- db change   /recipes       //edit.ejs & index.ejs
 
+// update <- db change   /recipe       //edit.ejs & index.ejs
+router.put("/:id", (req, res) => {
+    db.Recipe.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true },
+      (err, updatedRecipe) => {
+        if (err) {
+          console.log(err);
+          return res.send(err);
+        }
+        res.redirect(`/recipe/${updatedRecipe._id}`);
+      }
+    );
+  });
 
 // delete   N/A
 
