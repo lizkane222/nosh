@@ -4,35 +4,19 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Edit Your Recipe <%= recipe.recipeName %></h1>
+  
+  <section>
+    <h2>Edit Your Recipe </h2>
+    <form action="" method="POST">
+    
+    <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
 
-    <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
-      <form action="/recipe/new" method="POST">
-        <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
-        <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
-        <p>Cook Time: 
-            <input type="text" name="cookTime" placeholder="0 *"/> minutes
-        </p>
-        <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
-        <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
-        
-       
-        <p>Recipe Instructions: 
-            <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
-        
-
+      </form>
+          
         <br><br>
         <input type="submit" value="Create Recipe"/>
-
-
-    </form>
-
-
-
-
-
-
-
+      </form>
+  </section>
 </body>
 <%- include('../partials/footer') %>
 </html>

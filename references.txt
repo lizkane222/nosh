@@ -4,10 +4,6 @@ External References:
 Food Pyramid:   "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/10/WebMedium.jpg"
 Recipe Origins: "https://en.wikipedia.org/wiki/List_of_cuisines"
 
-
-
-
-
 Food Drop Down Categories: "https://englishstudyhere.com/wp-content/uploads/2018/08/Descriptive-Words-For-FOOD.png"
 
     - Pyramid: Veggie, Grains, Fats & Oils, Fish, Eggs, Poultry, Nuts, Seeds, Beans, Tofu, 
@@ -55,6 +51,9 @@ andersen    andersen@andersen   andersen
 RECIPES:
 
 (1)____________________________________________________________
+
+_id: 5f6a3e097426c26a5c094a30
+
 Honey Mustard Chicken
 3
 0
@@ -81,7 +80,35 @@ With thermometer, check chicken is above 160 degrees, is so remove and serve.
 
 tasty
 TAGS: "rice" "chicken" "honey mustard sauce" I love this recipe because it takes very little prep-time and only requires a few ingredients. I cook this most often when we want a simple but ${tasty} meal. 
+(2)____________________________________________________________
+
+_id: 5f6a3ed8165fb86ad0381088
+
+Strawberry Chicken Spinach Salad
+1
+30
+https://www.foodiecrush.com/wp-content/uploads/2016/05/Strawberry-and-Avocado-Spinach-Salad-with-Chicken-foodiecrush.com-016.jpg
+Recipe Instructions: Whisk together the balsamic dressing and pour half over the chicken. Set the chicken aside to marinate for at least 30 minutes. Once the chicken has had time to soak up some flavor, grill until done. Then, it’s just a matter of assembling the strawberry spinach salad and digging in!
+
+(3)____________________________________________________________
+
+_id: 5f6a4b84454e736c267fc11b
+
+Banana-Berry-Peanutter Smoothie
+2
+10
+https://suebeehomemaker.com/wp-content/uploads/2019/09/backlit-berry-smoothies.jpg
+Mix ingredients in a blender and serve.
+
 ____________________________________________________________
+
+
+
+
+
+
+
+
 
 
 
@@ -181,3 +208,22 @@ RECIPE CONTROLLER DATA
             Tags: <li><% recipe.tag.tagName %></li>      <li><% recipe.tag.saverDescription %></li>
             
         <%#    <li>Comments: <% recipe. %></li>    %>
+
+
+        EDIT RECIPE:
+/recipe/<%= recipe._id %>?_method=PUT
+       
+<p>Recipe: <input type="text" name="recipeName" value="recipe.recipeName"/></p>
+
+      <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+      
+      <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+      
+      <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+      
+      <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+      
+      <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"></textarea><p>
+      
+        <input type="submit" value="Update Recipe" />
+    
