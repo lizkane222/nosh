@@ -80,18 +80,18 @@ router.get("/pantry", loginReqired, (req, res) => {
 
 // TODO post new pantry info
 
-// show user - DONE 
+// show user pantry - DONE 
 // TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
-// router.get("/:id", loginReqired, (req, res) => {
-//     db.User.findById(req.params.id, (err, foundUser) => {
-//       if (err) {
-//         console.log(err);
-//         return res.send(err);
-//       }
-//       const context = { user: foundUser };
-//       res.render("user/show", context);
-//     });
-// });
+router.get("/:id", loginReqired, (req, res) => {
+    db.User.findById(req.params.id, (err, foundUser) => {
+      if (err) {
+        console.log(err);
+        return res.send(err);
+      }
+      const context = { user: foundUser };
+      res.render("user/show", context);
+    });
+});
 
 // get (edit)  pantry info
 // router.get("/:id/edit", loginReqired, (req, res) => {
