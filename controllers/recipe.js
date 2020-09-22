@@ -85,5 +85,20 @@ router.put("/:id", (req, res) => {
   });
 
 // delete   N/A
+// router.delete("/:id", (req,res) => {
+//     db.Recipe.findByIdAndDelete(req.params.id,
+//         (error, deletedRecipe) => {
+//             if(err) {
+//                 console.log(err);
+//                 return res.send(err);
+//             }
+            
+//         })
+// })
+
+
+
+
+
 
 module.exports = router;
