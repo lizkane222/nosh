@@ -121,7 +121,7 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
     res.render("user/editItem", context );
   });
 });  
-  
+  {foodItem: req.body.foodItem, quantity: req.body.quantity, unit: req.body.unit,}
 router.put("/:id/updateItem", loginReqired, async (req, res) => {
   // res.send(' hello I PUT route for item ')
     try {
@@ -141,7 +141,7 @@ router.put("/:id/updateItem", loginReqired, async (req, res) => {
      let item = foundUser.pantry.id(req.params.id)
       console.log(item)
 
-      item = {...item,...newItem};
+      // item = {...item,...newItem};
       // foundUser.pantry.splice(item, newItem);
       await foundUser.save();
 
