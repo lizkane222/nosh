@@ -49,7 +49,6 @@ router.get('/:id', (req,res) => {
     });
 });
 
-
 // edit recipe  <- view   /recipe      //edit.ejs
 // router.get
 router.get("/:id/edit", (req, res) => {

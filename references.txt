@@ -110,10 +110,12 @@ Recipe Instructions: Broil tomatillos until golden. Sear pork shoulder in a bit 
 
 ____________________________________________________________
 
-
-
-
-
+Vanilla Latté
+1
+2
+https://www.asweetpeachef.com/wp-content/uploads/2019/03/healthy-vanilla-latte-recipe-683x1024.jpg
+Beginner
+yummy coffee
 
 
 EDIT.EJS
@@ -244,5 +246,13 @@ FUTURE NEW ROUTE THAT CONNECTS TO USER
 
 
 
-
+recipe? 🤢 🤮 all recipes here
+    <ul>
+    <% recipes.forEach(recipe => { %>
+        <li>
+            <%= recipe.recipeName %>
+        </li>
+        
+    <% }); %>
+    </ul>
 

@@ -34,6 +34,30 @@ app.use(session({
     }
   }));
 
+
+//auth route (in user)
+app.use('/', controllers.auth);
+
+
+// user Routes
+app.use('/users', controllers.user);
+
+// recipe Routes
+app.use('/recipe', controllers.recipe);
+
+
+// recipe routes
+// INDEX HERE FOR ALL RECIPES @ NOSH
+app.use('/', (req,res) => {
+    db.Recipe.find({}, (error, foundRecipe) => {
+      if (error) return res.send(error)
+
+      const context = {recipes: foundRecipe};
+      res.render('index.ejs', context)
+    })
+});
+
+
 /* Routes */
 app.get('/', (req, res) => {
     // render("file", context)
@@ -44,46 +68,7 @@ app.get('/', (req, res) => {
 });
 
 
-// view routes
-// CREATE INDEX HERE FOR ALL OF RECIPES
-app.get('/', (req,res) => {
-      res.render('index.ejs')
-  });
 
-
-
-// PUT RECIPE INDEX HERE
-// app.get('./controllers/recipe', (req, res) => {
-
-//   db.Recipe.find({}, (error, allRecipesFromDB) => {
-//     if(error) return res.send(error);
-    
-//     const context = {recipes : allRecipesFromDB};
-//     res.render('index.ejs', context)
-//   });
-// })
-
-// app.get('/', (req,res) => {
-//     // res.send
-// ("ROUTE'S CONNECTED TO THE ALL RECIPES PAGE")
-//     db.Recipe.find({}, (error, foundRecipe) => {
-//         if(error) return res.send(error)
-    
-//     const context = {recipes: foundRecipe};
-//     res.render('index.ejs', context);
-// });
-// });
-
-//auth route (in user)
-app.use('/', controllers.auth);
-
-// recipe Routes
-app.use('/recipe', controllers.recipe);
-
-
-
-// user Routes
-app.use('/users', controllers.user);
 
 
 
