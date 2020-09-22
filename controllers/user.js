@@ -4,7 +4,12 @@ const db =  require('../models');
 const bcrypt = require('bcrypt');
 const { findByIdAndUpdate } = require('../models/User');
 
-
+const loginReqired = function(req, res, next) {
+  if(!req.session.currentUser) {
+      res.redirect('/login')
+  }
+  next();
+}
 
 
 // base path /
@@ -30,14 +35,14 @@ const { findByIdAndUpdate } = require('../models/User');
 /* TODO ===== do second ===== */
 /* ===== USER PANTRY ===== */
 // index
-router.get("/",  async (req, res) => {
-    // res.render('user/index');
+router.get("/", loginReqired,  async (req, res) => {
     try {
-        const foundUser = await db.User.find({});
-        const context = {
-        users: foundUser,
-        }
-        res.render("user/index", context);
+        // const foundUser = await db.User.find({});
+        const foundUser = db.User.findById(req.session.currentUser.id)
+        // console.log(foundUser);
+        const context = { user: foundUser }
+        // console.log(context);
+        res.render('user/index', context);
     } catch (error) {
         console.log(error);
         res.send({ message: "Internal Server Error" });
@@ -45,12 +50,12 @@ router.get("/",  async (req, res) => {
 });
 
 // get new user form
-router.get("/newUser",  (req, res) => {
-    res.render('user/newUser');
+router.get("/foodItem",  (req, res) => {
+    res.render('user/foodItem');
 });
 
 // post new user (for now so I can make pantry without login)
-router.post("/newUser", (req, res) => {
+router.post("/", (req, res) => {
     db.User.create(req.body, (err, createdUser) => {
         console.log(createdUser);
       if (error) {
@@ -59,66 +64,82 @@ router.post("/newUser", (req, res) => {
       }
       res.redirect("/users");
     });
-  });
+});
 
 // get new user pantry form
-router.get("/newPantry",  (req, res) => {
-    res.render('user/newPantry');
+router.get("/pantry", loginReqired, (req, res) => {
+  db.User.findById(req.session.currentUser.id, (error, foundUser) => {
+    if(error) {
+      console.log(error);
+      return res.send(error)
+    }
+    const context = { user: foundUser }
+    res.render(`user/show`, context);
+  })
 });
 
 // TODO post new pantry info
 
 // show user - DONE 
 // TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
-router.get("/:id", (req, res) => {
-    db.User.findById(req.params.id, (err, foundUser) => {
-      if (err) {
-        console.log(err);
-        return res.send(err);
-      }
-      const context = { user: foundUser };
-      res.render("user/show", context);
-    });
-});
+// router.get("/:id", loginReqired, (req, res) => {
+//     db.User.findById(req.params.id, (err, foundUser) => {
+//       if (err) {
+//         console.log(err);
+//         return res.send(err);
+//       }
+//       const context = { user: foundUser };
+//       res.render("user/show", context);
+//     });
+// });
 
 // get (edit)  pantry info
-router.get("/:id/edit",  (req, res) => {
-    // res.render('user/edit');
-    db.User.findById(req.params.id, function (err, foundUser) {
-        if (err) {
-        console.log(err);
-        return res.send(err);
-        }
-        const context = { user: foundUser };
-        res.render("user/edit", context);
-    });
-});
+// router.get("/:id/edit", loginReqired, (req, res) => {
+//     // res.render('user/edit');
+//     db.User.findById(req.params.id, function (err, foundUser) {
+//         if (err) {
+//         console.log(err);
+//         return res.send(err);
+//         }
+//         const context = { user: foundUser };
+//         res.render("user/edit", context);
+//     });
+// });
 
-// put (update) pantry info
-router.put("/:id", (req, res) => {
-    db.User.findByIdAndUpdate(req.params.id, req.body, { new: true }, (error,updatedUser) => {
-      if (error) {
-        console.log(error);
-        return res.send(error);
-      };
-      console.log(`updated user, ${updatedUser}`);
-//     db.User.findByIdAndUpdate(
-//       req.params.id.pantry, 
-//       { foodItem: req.body.foodItem },
-//       { quantity: req.body.quantity },
-//       { unit:  req.body.unit },
-//       { new: true }, 
-//       (error, updatedUser) => {
-//       if (error) {
-//           console.log(error);
-//           return res.send(error);
-//       };
-//     res.redirect(`${updatedUser._id}`);
-//   });
+// get (edit)  pantry info
+router.get("/foodItem/:id", loginReqired, (req, res) => {
+  // res.render('user/edit');
+  db.User.findById(req.params.id, function (err, foundItem) {
+      if (err) {
+      console.log(err);
+      return res.send(err);
+      }
+      const context = { item: foundItem };
+      res.render("user/foodEdit", context);
   });
 });
 
-  // delete user - DONE 
+
+// put (update) pantry info
+router.put("/:id", loginReqired, async (req, res) => {
+      try {
+        const pantryData = {
+          $push: {pantry: {
+                  foodItem: req.body.foodItem,
+                  quantity: req.body.quantity,
+                  unit: req.body.unit,
+          }},
+        };
+        const updatedPantry = await db.User.findByIdAndUpdate(req.params.id, pantryData, { new: true });
+        res.redirect(`/users/${req.params.id}`)
+      } catch (error) {
+        console.log(error);
+        res.send( {message: "Something went wrong please go back."} );
+      }
+ });   
+
+
+// delete user - DONE 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
 router.delete("/:id", function (req, res) {
     db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
@@ -130,6 +151,8 @@ router.delete("/:id", function (req, res) {
       res.redirect("/users");
     });
 });
+
+
 
 
 
