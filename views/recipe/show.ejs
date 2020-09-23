@@ -27,12 +27,49 @@
         <a href="/recipe">back to my recipes</a>&nbsp&nbsp&nbsp
         
         <form action="/recipe/<%= recipe._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="delete" />
+            <input class="btn btn-primary btn-sm" id="button" type="submit" value="delete" />
         </form>
         </div>
         <!--<a href="/recipes/:id">Transfer Owner</a> -->&nbsp&nbsp&nbsp
 
     </section>
+
+--------------
+<section>
+    <h2>Edit Your Recipe <%= recipe.recipeName %> </h2>
+
+    <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
+    
+    <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
+    
+    <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+      
+    <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+    
+    <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+    
+    <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+    
+    <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"><%= recipe.narrativeDescription %></textarea></p>
+
+      <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Recipe" />
+      </form>
+
+    </section>
+
+
+
+        <br><br>
+      </form>
+  </section>
+
+
+
+
+
+
+
+
 </body>
 <%- include('../partials/footer') %>
 </html>

@@ -119,26 +119,8 @@ yummy coffee
 ____________________________________________________________
 
 
-EDIT.EJS
 
-      <!-- <ul>
-        <% for(let i =0; i< allRecipes.length; i++) { %>
-            <li>
-              <a href="/recipe/<%= allRecipes[i]._id %>">
-                <%= allFruits[i].name %>
-              </a>   
-              <form action="/recipe/<%= allRecipes[i]._id %>?_method=DELETE" method="POST">
-                <input type="submit" value=" ">
-              </form>
-            </li>
-          <%} %>
-      </ul> -->
-
-
-
-
-
-RECIPE CONTROLLER DATA
+RECIPE MODEL DATA
 
     narrative Description are the recipe's exact instructions, NOT owner's thoughts about dish which will be at tag.text
     narrativeDescription: {type: String, required: false},
@@ -200,8 +182,66 @@ RECIPE CONTROLLER DATA
     },
 
 
+NEW EJS LAYOUT
+
+<form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
+<form action="" method="POST">
+
+<p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
+    
+<p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+  
+<p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+
+<p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+
+<p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+
+<p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"><%= recipe.narrativeDescription %></textarea></p>
+
+  <input type="submit" value="Update Recipe" />
+</form>
+
+</section> 
+
+SECOND PORTION OF FORM ON NEW.EJS
+<section class="food_item">
+    <form action="/recipe/new" method="POST">
+      <input type="text" name="foodItem" placeholder="<%= recipeID.foodItem.foodName %>" />
+      <input type="text" name="quantity" placeholder="<%= recipeID.foodItem.quantity %>" />
+      <input type="text" name="unit" placeholder="<%= recipeID.foodItem.unit %>" />
+      <input type="text" name="calories" placeholder="<%= recipeID.foodItem.calories %>" />
+      <p>Recipe Instructions: 
+          <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+          
+      <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Item"/>
+</form>
 
 
+
+
+
+
+<h5>Display The Recipe That was just added BELOW</h5>
+<br/><br/>
+(HOW THE FORM ABOVE NEEDS TO BE SITUATED)<br/>
+Recipe.recipeName  Recipe.servesPeople Savers: savers.userName<br/>
+Recipe.imageSource  Recipe.totalCalories  Recipe.skillLevel<br/>
+Recipe.narrativeDescription {Recipe.cookTime.numHours  Recipe.cookTime.numMinutes}<br/>
+
+Recipe.foodItems.foodName  Recipe.foodItems.quantity  Recipe.foodItems.unit  Recipe.foodItems.calories  
+
+Recipe.tag.Pyramid  Recipe.tag.Taste  Recipe.tag.Origin  <br/>
+Recipe.tag.All Origins  Recipe.tag.Method  Recipe.tag.Healthy  Recipe.tag.Adj  <br/>
+Owner: user.userName    <br/>
+
+<br/><br/>
+(HOW THE RECIPE NEEDS TO BE DISPLAYED ON SHOW PAGE)<br/>
+
+TYPES OF TAGS:
+Recipe.tag.tagName.Pyramid  Recipe.tag.tagName.Taste
+Recipe.tag.tagName.Origin  Recipe.tag.tagName.All Origins
+Recipe.tag.tagName.Method  Recipe.tag.tagName.Healthy  Recipe.tag.tagName.Adj 
 
     RECIPE SHOW EJS
 
@@ -214,6 +254,28 @@ RECIPE CONTROLLER DATA
             Tags: <li><% recipe.tag.tagName %></li>      <li><% recipe.tag.saverDescription %></li>
             
         <%#    <li>Comments: <% recipe. %></li>    %>
+
+
+/recipe/<%= recipe._id %>?_method=PUT"
+
+      <section class="food_item">
+        <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
+          <input type="text" name="foodItem" value="<%= foodItem.foodName %>" />
+          <input type="text" name="quantity" value="<%= foodItem.quantity %>" />
+          <input type="text" name="unit" value="<%= foodItem.unit %>" />
+          <input type="text" name="calories" value="<%= foodItem.calories %>" />
+          <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Item"/>
+        </form>
+
+      <section class="food_item">
+        <form action="/recipe/<%= item._id %>/updateItem?_method=PUT" method="POST">
+          <input type="text" name="foodName" value="<%= foodItems.foodName %>" />
+          <input type="text" name="quantity" value="<%= foodItems.quantity %>" />
+          <input type="text" name="unit" value="<%= foodItems.unit %>" />
+          <input type="text" name="calories" value="<%= foodItems.calories %>" />
+          <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Item"/>
+        </form>
+
 
 
         EDIT RECIPE:

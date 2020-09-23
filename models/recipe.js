@@ -5,17 +5,17 @@ const mongoose = require("mongoose");
 const recipeSchema = new mongoose.Schema({
     recipeName: {type: String, required: true},
     // narrative Description are the recipe's exact instructions, NOT owner's thoughts about dish which will be at tag.text
-    narrativeDescription: {type: String, required: true},
+    narrativeDescription: {type: String, required: false},
             // if outside source exists provide it, if source does not exist not required
-    imageSource: {type: String, required: true},
+    imageSource: {type: String, required: false},
             // serving size per recipe
-    servesPeople: {type: Number, required: true},
+    servesPeople: {type: Number, required: false},
             // must provide numHours, hours is already filled in NO Option to choose,
             // must provide numMinutes, minutes is already filled in NO Option to choose,
-    cookTime: {type: Number, required: true
+    cookTime: {type: Number, required: false},
         // {numHours: {type: Number, required: false}},
         // numMinutes: 
-    },
+
             // restrict to available options ("beginner","intermediate", "expert" )
     skillLevel: {type: String, required: false},
 
@@ -29,28 +29,23 @@ const recipeSchema = new mongoose.Schema({
     //     {numMinutes: {type: Number, required: true}},
     // ],
 
-    // foodItems: [
-    //     {
-    //         foodName: {type: String, required: false},
-    //         quantity: {type: Number, required: false},
-    //         unit: {type: String, required: false},
-    //         calories: {type: Number, required: false},
-    //     },
-    //     {
-    //         foodName: {type: String, required: false},
-    //         quantity: {type: Number, required: false},
-    //         unit: {type: String, required: false},
-    //         calories: {type: Number, required: false},
-    //     },
-    // ],
+    foodItems: [
+        {
+            foodName: {type: String, required: false},
+            quantity: {type: Number, required: false},
+            unit: {type: String, required: false},
+            calories: {type: Number, required: false},
+        },
 
-    //     tag: [
-    //     {  //add a minimum requirement of 3 tags
-    //         tagName: {type:String, required: false},
-    //         count: {type: Number, required: false},
-    //         saverDescription: {type: String, required: false},
-    //     },
-    // ],
+    ],
+
+        tag: [
+        {  //add a minimum requirement of 3 tags
+            tagName: {type:String, required: false},
+            count: {type: Number, required: false},
+            saverDescription: {type: String, required: false},
+        },
+    ],
 
     // // on save2Nosh recipe.savers = user._id    
     // savers: [{
