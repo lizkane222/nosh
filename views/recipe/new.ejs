@@ -13,15 +13,35 @@
             </p>
             <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
             <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
-            
-
-            
-
             <br><br>
-            <input type="submit" value="Create Recipe"/>
+            <input type="submit" value="Frame Recipe"/>
         </form>
-    </section><br/><br/><br/><br/><br/><br/><br/><br/>
+    </section><br/><br/><br/>
 
+    <% if(recipe ) { %>
+        <%= recipe.recipeName %>
+        <section class="food_item">
+            <form action="/recipe/new" method="POST">
+                <input type="text" name="foodItem" placeholder="New Food Item" />
+                <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+                <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+                <input type="text" name="calories" placeholder="Calories" />
+                <input id="button" type="submit" value="New Food Item"/>
+
+                
+                
+                <br/><br/>
+                <p>Recipe Instructions: 
+                    <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+                    
+                    <input class="btn btn-primary btn-sm" id="button" type="submit" value="Create Recipe"/>
+                </form>
+    <% } %>
+
+
+
+
+    <br/><br/><br/><br/><br/>
 <!--  ------------------------------------------------------------ -->
 <h5>Display The Recipe That was just added BELOW</h5>
 <br/><br/>

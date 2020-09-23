@@ -20,13 +20,17 @@ router.get('/', (req,res) => {
 // new recipe   /recipe    //new.ejs
 router.get('/new', async (req,res) => {
     try {
-        const foundRecipe = db.Recipe.findById({})
-        const context = {recipeID: foundRecipe};
+        const context = {recipe: ""};
+        if(req.query.recipeID){
+            const foundRecipe = await db.Recipe.findById(req.query.recipeID)
+            context.recipe = foundRecipe
+        }
+        // const context = {recipeID: foundRecipe};
 
         res.render('recipe/new.ejs', context)
     } catch (error) {
         console.log(error)
-        return res.send({message:'Internal Server Error: check recipe-controller create-route'})
+        return res.send({message:'Internal Server Error: check recipe-controller new-route'})
     }
 });
 
@@ -45,16 +49,17 @@ router.get('/new', async (req,res) => {
 
 // CREATE recipe  /recipe     //new.ejs
 
-// router.post('/new', async (req,res) => {
-    // try {
-    //     const createdRecipeInDB = await db.Recipe.create(req.body);
-    //     const context = {recipeID : createdRecipeInDB._id,}
+router.post('/new', async (req,res) => {
+    try {
+        const createdRecipeInDB = await db.Recipe.create(req.body);
+        const context = {recipeID : createdRecipeInDB._id,}
         
-    //     res.redirect(`recipe/${recipeID}`, context);
-    // } catch (error) {
-    //     console.log(error)
-    //     res.send({message:'Internal Server Error: check recipe-controller create-route'});
-    // } 
+        // res.redirect(`recipe/${recipeID}`, context);
+        res.redirect(`/recipe/new?recipeID=${createdRecipeInDB._id}`);
+    } catch (error) {
+        console.log(error)
+        res.send({message:'Internal Server Error: check recipe-controller create-route'});
+    } 
     
     
     // res.send('this recipe is connected')
@@ -66,21 +71,21 @@ router.get('/new', async (req,res) => {
     //         res.redirect(`/recipe/${createdRecipeInDB._id}`);
     //     }
     // })
-// });
+});
 
 // CREATE recipe  /recipe     //new.ejs     PRE-ASYNC
 
-router.post('/new', (req,res) => {
-    // res.send('this recipe is connected')
-    db.Recipe.create(req.body, (error, createdRecipeInDB) => {
-        if(error) {
-            console.log(error)
-        } else {
-            console.log(createdRecipeInDB)
-            res.redirect(`/recipe/${createdRecipeInDB._id}`);
-        }
-    })
-});
+// router.post('/new', (req,res) => {
+//     // res.send('this recipe is connected')
+//     db.Recipe.create(req.body, (error, createdRecipeInDB) => {
+//         if(error) {
+//             console.log(error)
+//         } else {
+//             console.log(createdRecipeInDB)
+//             res.redirect(`/recipe/${createdRecipeInDB._id}`);
+//         }
+//     })
+// });
 
 
 // show ONLY ONE recipe  /recipe      //show.ejs
