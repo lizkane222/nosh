@@ -122,36 +122,53 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
   });
 });  
 
+// PUT (updateItem) FOORITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
 router.put("/:id/updateItem", loginReqired, async (req, res) => {
-  // res.send(' hello I PUT route for item ')
     try {
-      // const updatedItem = {
-      //   $push: {pantry: {
-      //           foodItem: req.body.foodItem,
-      //           quantity: req.body.quantity,
-      //           unit: req.body.unit,
-      //   }},
-      // };
-      const newItem = {foodItem: req.body.foodItem, quantity: req.body.quantity, unit: req.body.unit,}
-      console.log(` newitem ${newItem}`);
-
+      // get the user from db
       const foundUser = await db.User.findById(req.session.currentUser.id)
-      console.log(` params id ${req.params.id}`)
       
-     let item = foundUser.pantry.id(req.params.id)
-      console.log(item)
-
-      // item = {...item,...newItem};
-      // foundUser.pantry.splice(item, newItem);
+      // get the user.pantry{foodites,qty,unit}
+      let item = foundUser.pantry.id(req.params.id)
+      
+      // update items from db (left) to items from form (right)
+      item.foodItem = req.body.foodItem;
+      item.quantity = req.body.quantity;
+      item.unit = req.body.unit;
+      
+      // just await then save the user
       await foundUser.save();
 
+      // construct user context to send back to page
       const context = { user: foundUser }
       res.render(`user/show`, context);
     } catch (error) {
       console.log(error);
-      res.send( {message: "Something went horribly wrong [in your PUT Item route] please go back... in time"} );
+      res.send( {message: "Something went horribly wrong [in your PUT Food Item route] please go back... in time"} );
     }
 });
+
+// DELETE (PANTRY ITEM)
+router.delete("/:id/updateItem", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findById(req.session.currentUser.id)
+
+    // get the user.pantry{foodites,qty,unit} and just dot remove & then save
+    let item = foundUser.pantry.id(req.params.id);
+    item.remove();
+    await foundUser.save();
+
+    // construct user context to send back to page
+    const context = { user: foundUser }
+    res.render(`user/show`, context);
+  } catch (error) {
+    console.log(error);
+    res.send( {message: "Something went horribly wrong [in your DELETE FOOD Item route] please go back... in time"} );
+  }
+}); 
+
+
 // DELETE (user) (no auth) 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
 router.delete("/:id", function (req, res) {
@@ -160,7 +177,7 @@ router.delete("/:id", function (req, res) {
         console.log(err);
         return res.send(err);
       }
-      console.log(deletedUser);
+      // console.log(deletedUser);
       res.redirect("/users");
     });
 });
