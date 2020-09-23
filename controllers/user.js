@@ -36,7 +36,8 @@ router.get("/", loginReqired,  (req, res) => {
 
 // post recipe to user nosh 
 router.get("/nosh", (req, res) => {
-  res.send('Hello noshers!');
+  // res.send('Hello noshers!');
+  console.log(req.body);
 });
 
 //(when items in nosh for user, show (unsave) on save button in index & show page)
