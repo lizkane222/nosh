@@ -30,17 +30,40 @@ router.get("/", loginReqired,  (req, res) => {
       };
       res.render("/user/index", context);
     });
+
 });
 
 // switch
 
-// post recipe to user nosh 
-router.get("/nosh", (req, res) => {
-  // res.send('Hello noshers!');
-  console.log(req.body);
+// OUT - NOSH IT ROUTE
+router.put("/:id/nosh", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$addToSet: { nosh: req.params.id }}, { new: true })
+    // set current user.nosh equal to what hey just pressesd
+    req.session.currentUser.nosh = foundUser.nosh
+    res.redirect(`/recipe/${req.params.id}`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT NOSHIT route] please go back... in time"} );
+  }
 });
 
-//(when items in nosh for user, show (unsave) on save button in index & show page)
+/// PUT NOSH OUT ROUTE
+router.put("/:id/noshout", loginReqired, async (req, res) => {
+  // res.send('Bye noshers!')
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$pull: { nosh: req.params.id }}, { new: true })
+    //set current user.nosh equal to what hey just pressesd
+    req.session.currentUser.nosh = foundUser.nosh
+    res.redirect(`/recipe/${req.params.id}`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT NOSHOUT route] please go back... in time"} );
+  }
+});
+
 // GET (show) USER PANTRY FROM NAVBAR
 router.get("/pantry", loginReqired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {

@@ -10,9 +10,9 @@
     <!-- for now some login and logout buttons here -->
         <a href="/login">Login</a>
         <a href="/register">Register</a><br/><br/><br/>
-  
-
-
+        <form action="/logout?_method=DELETE" method="POST">
+            <input class="btn btn-primary btn-sm" type="submit" value="LOGOUT!" />
+        </form>
 
         ALL CREATED RECIPES SHOW HERE<br/><br/>
         <div>
@@ -23,25 +23,11 @@
               
               <% }); %>
             </div>
-
-          <br/><br/>
-      
       <br/><br/>
-
-
-
-
-<!-- 
-      FOR USER MODEL USE:
+<!-- FOR USER MODEL USE:
       <p><a href="">/recipe/show.ejs</a> TO SHOW ONE RECIPE</p>
-      
-
-
       FOR RECIPE MODEL USE:
       <p><a href="">/show.ejs</a> TO SHOW ONE RECIPE</p> -->
-
-
-
       <footer>
         <%- include('partials/footer') %>
     </footer>

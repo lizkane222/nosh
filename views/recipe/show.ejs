@@ -10,9 +10,18 @@
         <a href="">/:id</a> TO SHOW ONE RECIPE</p> -->
 
     <h1><%= recipe.recipeName %></h1>
-    <button>
-        <a href="/users/nosh">Nosh It!</a>
-    </button>
+    <% if(!user.nosh.includes(recipe.id)) { %>
+        <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
+            <input class="btn btn-primary btn-sm" type="submit" value="Nosh it!" />
+        </form>
+    <% } else { %> 
+        <form action="/users/<%= recipe._id %>/noshout?_method=PUT" method="POST">
+            <input class="btn btn-primary btn-sm" type="submit" value="De - Nosh It!" />
+        </form>
+    <% } %>
+
+    <%= user.username  %> <%= user.nosh  %>
+    
     <hr>
     <section>
             <div>

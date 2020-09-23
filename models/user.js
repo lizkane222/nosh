@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema({
     email: { type: String, },
     password: { type: String },
     // this is a person chosen recipes (ref recipe ._id) not required, it is  simlar to author/articles in example
-    nosh: [
-        { type: mongoose.Schema.Types.ObjectId,
+    nosh: [{ 
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe" },
     ],
     // this is a persons pantry, it is not required, but of they choose they can add food item objects to db
