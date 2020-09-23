@@ -4,10 +4,6 @@ External References:
 Food Pyramid:   "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/10/WebMedium.jpg"
 Recipe Origins: "https://en.wikipedia.org/wiki/List_of_cuisines"
 
-
-
-
-
 Food Drop Down Categories: "https://englishstudyhere.com/wp-content/uploads/2018/08/Descriptive-Words-For-FOOD.png"
 
     - Pyramid: Veggie, Grains, Fats & Oils, Fish, Eggs, Poultry, Nuts, Seeds, Beans, Tofu, 
@@ -55,6 +51,9 @@ andersen    andersen@andersen   andersen
 RECIPES:
 
 (1)____________________________________________________________
+
+_id: 5f6a3e097426c26a5c094a30
+
 Honey Mustard Chicken
 3
 0
@@ -81,9 +80,43 @@ With thermometer, check chicken is above 160 degrees, is so remove and serve.
 
 tasty
 TAGS: "rice" "chicken" "honey mustard sauce" I love this recipe because it takes very little prep-time and only requires a few ingredients. I cook this most often when we want a simple but ${tasty} meal. 
+(2)____________________________________________________________
+
+_id: 5f6a3ed8165fb86ad0381088
+
+Strawberry Chicken Spinach Salad
+1
+30
+https://www.foodiecrush.com/wp-content/uploads/2016/05/Strawberry-and-Avocado-Spinach-Salad-with-Chicken-foodiecrush.com-016.jpg
+Recipe Instructions: Whisk together the balsamic dressing and pour half over the chicken. Set the chicken aside to marinate for at least 30 minutes. Once the chicken has had time to soak up some flavor, grill until done. Then, it’s just a matter of assembling the strawberry spinach salad and digging in!
+
+(3)____________________________________________________________
+
+_id: 5f6a4b84454e736c267fc11b
+
+Banana-Berry-Peanutter Smoothie
+2
+10
+https://suebeehomemaker.com/wp-content/uploads/2019/09/backlit-berry-smoothies.jpg
+Mix ingredients in a blender and serve.
+
+____________________________________________________________
+Green Chile
+5
+50
+https://www.spendwithpennies.com/wp-content/uploads/2019/08/Green-Chili-SpendWithPennies-6.jpg
+
+Recipe Instructions: Broil tomatillos until golden. Sear pork shoulder in a bit of olive oil. Blend sauce ingredients (per recipe below). Simmer until pork is melt in your mouth tender. Like most chili recipes, this is great with toppings! Chili toppers we love include sour cream, jalapenos, green onions and slices of lime. Green chili stew is a meal unto itself but it’s really great with tortillas and of course bread for dipping! Dinner rolls, Garlic Bread or thick slabs of French bread are great for dipping and soaking, but flour tortillas are the standard if you want to keep it real! A hand full of crushed tortilla chips add automatic crunch! Green chili is one of those recipes that that freezes and reheats beautifully! Adjust the flavors by adding a few more chopped green chilis, jalapeños, and some extra salt and pepper to taste. Refrigerate: Leftover green chili will keep in the fridge about 4 days. Reheat on the stovetop or in the microwave. Freeze: Freeze in individual portions for lunches or meals for one in freezer bags or tightly sealed containers. Defrost in the refrigerator overnight and reheat on the stovetop or in the microwave.
+
 ____________________________________________________________
 
-
+Vanilla Latté
+1
+2
+https://www.asweetpeachef.com/wp-content/uploads/2019/03/healthy-vanilla-latte-recipe-683x1024.jpg
+Beginner
+yummy coffee
+____________________________________________________________
 
 
 EDIT.EJS
@@ -181,3 +214,36 @@ RECIPE CONTROLLER DATA
             Tags: <li><% recipe.tag.tagName %></li>      <li><% recipe.tag.saverDescription %></li>
             
         <%#    <li>Comments: <% recipe. %></li>    %>
+
+
+        EDIT RECIPE:
+/recipe/<%= recipe._id %>?_method=PUT
+
+<p>Recipe: <input type="text" name="recipeName" value="recipe.recipeName"/></p>
+
+      <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+      
+      <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+      
+      <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+      
+      <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+      
+      <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"></textarea><p>
+      
+        <input type="submit" value="Update Recipe" />
+
+
+
+
+
+recipe? 🤢 🤮 all recipes here
+    <ul>
+    <% recipes.forEach(recipe => { %>
+        <li>
+            <%= recipe.recipeName %>
+        </li>
+        
+    <% }); %>
+    </ul>
+

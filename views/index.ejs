@@ -8,36 +8,27 @@
     <p> All recipe cards go in this page </p>
 
     <!-- for now some login and logout buttons here -->
-    <% if(user) { %>
-        <p>Welcome, <%= user.username %></p>
-        <form action="/logout?_method=DELETE" method="POST">
-          <input type="submit" value="Logout">
-        </form>
-      <% } else { %> 
         <a href="/login">Login</a>
-        <a href="/register">Register</a>
-      <% } %>
+        <a href="/register">Register</a><br/><br/><br/>
   
-      <br/><br/><br/><br/>
 
-      <p><a href="/recipe/:id">Artichoke Dip</a></p>
-      <p><a href="/recipe/:id">Chicken Salad</a></p>
-      <p><a href="/recipe/:id">Frito Pie</a></p>
 
+
+        ALL CREATED RECIPES SHOW HERE<br/><br/>
+        <div>
+          <% recipes.forEach(recipe => { %>
+              <p>
+                  <a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a>
+              </p>
+              
+              <% }); %>
+            </div>
+
+          <br/><br/>
+      
       <br/><br/>
 
 
-
-
-
-
-       __________________________________________________
-       <div>
-      |  <h5>| RECIPE NAME</h5>
-      |  <p>| RECIPE IMAGE</p><img src="#" alt="/recipe/:id">
-      |<p><a href="/recipe/:id">| jump to recipe</a></p>   
-      |</div>                                            
-      |__________________________________________________
 
 
 <!-- 
