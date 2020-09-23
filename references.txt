@@ -309,3 +309,26 @@ recipe? 🤢 🤮 all recipes here
     <% }); %>
     </ul>
 
+
+
+
+
+
+
+                <hr>
+                <div class="list-group">
+                    <% recipe.foodItems.forEach(item => { %>
+                        <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
+                            <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
+                        </a>
+                        <% }) %>
+                        <% if(recipe.foodItems.length === 0) { %>
+                            <p>There are no food items yet</p>
+                            <% } %>
+                        </div>
+
+
+                <%= recipe.foodItems %>
+
+
+                <%= recipe.narrativeDescription %>  
