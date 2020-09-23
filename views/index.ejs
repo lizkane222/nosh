@@ -4,6 +4,7 @@
     <%- include('partials/header') %>
 </head>
 <body>
+  <div class="top-section">
     <h1>Index</h1>
     <p> All recipe cards go in this page </p>
 
@@ -12,25 +13,33 @@
         <a href="/register" class="button badge badge-pill">Register</a><br/><br/><br/>
   
         ALL CREATED RECIPES SHOW HERE<br/><br/>
-
+  </div>
 
 <!-- <div id="grid-one"> -->
-  <div>
+  <div id="main-index">
     <% recipes.forEach(recipe => { %>
       
       <div class="container">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-<!--             <a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a> -->
-            <h5 class="card-title"><%= recipe.recipeName %></h5>
+            
+            <ul>
+            <h3 class="card-title"><%= recipe.recipeName %></h3>
             <p class="card-text"><%= recipe.servesPeople %></p>
             <p class="card-text"><%= recipe.numMinutes %> minutes</p>
-            <p class="card-text"><%= recipe.imageSource %></p>
             <p class="card-text"><%= recipe.skillLevel %></p>
+            <p class="card-text"><%= recipe.foodItems.foodName %></p>
+            <p class="card-text">
+
+
+              
+            </p>
             <p class="card-text"></p>
-            <p class="card-text"></p>
-            <p class="card-text"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a>
+            <div class="pic"><a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>"></a></div>
+            </ul> 
+            <button>
+            </button>
           </div>
         </div>
       </div>
