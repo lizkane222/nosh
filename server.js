@@ -55,7 +55,7 @@ app.use('/', (req,res) => {
     db.Recipe.find({}, (error, foundRecipe) => {
       if (error) return res.send(error)
 
-      const context = {recipes: foundRecipe};
+      const context = {recipes: foundRecipe, user: req.session.currentUser};
       res.render('index.ejs', context)
     })
 });

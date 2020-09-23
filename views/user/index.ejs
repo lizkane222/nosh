@@ -7,8 +7,11 @@
     <h1>All Users</h1>
     <hr>
     <div class="list-group">
-        
-        
+        <% users.forEach(user => { %>
+            <a href="" class="list-group-item list-group-item-action">
+                <%= user.username%>
+            </a>
+        <% }) %>
         <% if(users.length === 0) { %>
             <p>There are no user items yet</p>
         <% } %>

@@ -21,14 +21,14 @@ const loginReqired = function(req, res, next) {
 /* ===== USER  ROUTES ===== */
 // GET (user) index
 router.get("/", loginReqired,  (req, res) => {
-    db.User.find({}, (error, allUsers) => {
-      if (error) return res.send(error);
-      const context = { 
-        users: allUsers 
-      };
-      res.render("/user/index", context);
-    });
-
+  res.send(" Hello user!! ")
+    // db.User.find({}, (error, allUsers) => {
+    //   if (error) return res.send(error);
+    //   const context = { 
+    //     users: allUsers 
+    //   };
+    //   res.render("/user/index", context);
+    // });
 });
 
 // PUT (update) USER INFO FOR UPDATE
