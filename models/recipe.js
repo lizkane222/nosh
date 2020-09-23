@@ -22,7 +22,7 @@ const recipeSchema = new mongoose.Schema({
     // totalCalories is a function that sums foodItem.calories
     // DON'T PUT totalCALORIES IN FORM
 
-    totalCalories: {type: Number, required: false},
+    totalCalories: {type: String, required: false},
     
     // cookTime: [
     //     {numHours: {type: Number, required: false}},
@@ -32,9 +32,9 @@ const recipeSchema = new mongoose.Schema({
     foodItems: [
         {
             foodName: {type: String, required: false},
-            quantity: {type: Number, required: false},
+            quantity: {type: String, required: false},
             unit: {type: String, required: false},
-            calories: {type: Number, required: false},
+            calories: {type: String, required: false},
         },
 
     ],
@@ -42,7 +42,7 @@ const recipeSchema = new mongoose.Schema({
         tag: [
         {  //add a minimum requirement of 3 tags
             tagName: {type:String, required: false},
-            count: {type: Number, required: false},
+            count: {type: String, required: false},
             saverDescription: {type: String, required: false},
         },
     ],

@@ -143,23 +143,65 @@ router.get("/:id/edit", (req, res) => {
 
 
 // update <- db change   /recipe       //edit.ejs & index.ejs
-router.put("/:id", (req, res) => {
+router.put("/:id/foodItem", async (req, res) => {
     // res.send('UPDATE IS READ')
-    db.Recipe.findByIdAndUpdate( 
-        req.params.id, req.body,
-        { new: true },
-        (error, updatedRecipe) => {
+    try {
+        const updatedItem = {
+            $push: {foodItems: {
+                    foodName: req.body.foodItem,
+                    quantity: req.body.quantity,
+                    unit: req.body.unit,
+                    calories: req.body.unit,
+        }}};
+        console.log(updatedItem);
+        const updatedRecipe = await db.Recipe.findByIdAndUpdate( req.params.id, updatedItem,{ new: true })
+        console.log(updatedRecipe);
+        res.redirect(`/recipe/new?recipeID=${updatedRecipe._id}`);
+    } catch (error) {
+        console.log(error)
+        res.send({message:'Internal Server Error: check recipe-controller update-route'});
+    }
+    
+    
+    // db.Recipe.findByIdAndUpdate( 
+    //     req.params.id, req.body,
+    //     { new: true },
+    //     (error, updatedRecipe) => {
 
-        if (error) {
-          console.log(error);
-          return res.send(error);
-        }
-        // const context = { recipe: updatedRecipe };
+    //     if (error) {
+    //       console.log(error);
+    //       return res.send(error);
+    //     }
+    //     // const context = { recipe: updatedRecipe };
         
-        res.redirect(`/recipe/${updatedRecipe._id}`);
-      }
-    );
+    //     res.redirect(`/recipe/${updatedRecipe._id}`);
+    //   }
+    // );
   });
+
+
+// // PUT  (update) PANTRY FOOD ITEM
+// router.put("/:id", async (req, res) => {
+//     try {
+//       const updatedItem = {
+//         $push: {pantry: {
+//                 foodItem: req.body.foodItem,
+//                 quantity: req.body.quantity,
+//                 unit: req.body.unit,
+//         }},
+//       };
+//       const updatedPantry = await db.User.findByIdAndUpdate(req.params.id, updatedItem, { new: true });
+//       res.redirect(`/users/${req.params.id}`)
+//     } catch (error) {
+//       console.log(error);
+//       res.send( {message: "Something went horribly wrong [in your PUT Pantry route] please go back... in time"} );
+//     }
+//   }); 
+
+
+
+
+
 
 // delete   N/A
 router.delete("/:id", (req,res) => {
