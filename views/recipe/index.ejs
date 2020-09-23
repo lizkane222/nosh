@@ -8,18 +8,16 @@
 <h1>ALL RECIPES (FUTURE USER PAGE)</h1>
 
 
-        <ul>
+        <div>
         <% recipes.forEach(recipe => { %>
-          <li>
-              <a href="/<%= recipe._id %>"><%= recipe.recipeName %></a>
-          </li>
-        </ul>
+          <p>
+              <a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a>
+          </p>
+        </div>
     
       <% }); %>
 
-
-
-      
+     
         <br/>
     <p><a href="/recipe/new">Create A New Recipe</a></p>
 
