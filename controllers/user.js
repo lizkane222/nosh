@@ -22,7 +22,7 @@ const loginReqired = function(req, res, next) {
 /* ===== USER PANTRY ROUTES ===== */
 
 // GET (user) index
-router.get("/all", loginReqired,  (req, res) => {
+router.get("/", loginReqired,  (req, res) => {
     db.User.find({}, (error, allUsers) => {
       if (error) return res.send(error);
       const context = { 
@@ -32,6 +32,12 @@ router.get("/all", loginReqired,  (req, res) => {
     });
 });
 
+// post recipe to user nosh 
+router.get("/nosh", (req, res) => {
+  res.send('Hello noshers!');
+});
+
+//(when items in nosh for user, show (unsave) on save button in index & show page)
 // GET (show) USER PANTRY FROM NAVBAR
 router.get("/pantry", loginReqired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
@@ -155,7 +161,7 @@ router.delete("/:id/updateItem", loginReqired, async (req, res) => {
 
 // DELETE (user) (no auth) 
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
-router.delete("/:id", function (req, res) {
+router.delete("/:id", (req, res) => {
     db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
       if (error) {
         console.log(err);
@@ -172,10 +178,9 @@ router.delete("/:id", function (req, res) {
 /* TODO ===== do third ===== */
 /* ===== USER NOSH ROUTES ===== */
 // get index 
-        //once user selects (save) it executes post below
+//once user selects (save) it executes post below === NO GET ROUTE IN THIS CASE ===
     
-// post recipe to user nosh 
-        //(when items in nosh for user, show (unsave) on save button in index & show page)
+
 // get index
         //(if in nosh, the delete form nsoh and show button as (save))
 // delete recipe from nosh
