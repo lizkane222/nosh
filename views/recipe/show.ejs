@@ -13,25 +13,26 @@
     <br/><br/>
 
     <section>
-            <ul>
-                <li>Recipe: <a href="#"><%= recipe.recipeName %></a></li>
-                <li>Servings: <%= recipe.servesPeople %></li> 
-            <li>Cook Time:   <%= recipe.cookTime %>  minutes</li>
-            <li>Photo: <img src="<%= recipe.imageSource %>" alt=""></li>
-            <li>Recipe Instructions: <%= recipe.narrativeDescription %></li>
-            </ul>
+            <div>
+                <p>Recipe: <a href="#"><%= recipe.recipeName %></a></p>
+                <p>Servings: <%= recipe.servesPeople %></p> 
+                <p>Cook Time:   <%= recipe.cookTime %>  minutes</p>
+                <p><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>"></p>
+                <p>Recipe Instructions: <%= recipe.narrativeDescription %></p>
 
-        <a href="/recipe/:id">Edit Recipe</a>&nbsp&nbsp&nbsp
-        <a href="/recipe/:id">Transfer Owner</a>&nbsp&nbsp
-    </section><br/><br/><br/><br/>
+        <a href="/recipe/<%= recipe._id %>/edit">edit this recipe</a>&nbsp&nbsp&nbsp
 
-    <a href="/recipe/new">Create A New Recipe</a>
+        <a href="/recipe/new">create a new recipe</a>&nbsp&nbsp&nbsp
+        
+        <a href="/recipe">back to my recipes</a>&nbsp&nbsp&nbsp
+        
+        <form action="/recipe/<%= recipe._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="delete" />
+        </form>
+        </div>
+        <!--<a href="/recipes/:id">Transfer Owner</a> -->&nbsp&nbsp&nbsp
 
-    <!-- <a href="/recipes/:id">EDIT RECIPE</a>
-    <a href="/recipes/:id">Transfer Owner</a> -->
-
-
-
+    </section>
 </body>
 <%- include('../partials/footer') %>
 </html>
