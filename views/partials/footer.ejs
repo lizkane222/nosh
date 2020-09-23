@@ -1,13 +1,21 @@
 <!-- views/partials/footer.ejs -->
 <footer class="footer">
     <style>
+        :root {
+            --background-color-default: #D65B4D;
+            --background-color-active: #BD1F0D;
+            --background-color-inactive: #7C140A;
+            --text-color-active:#3D0705;
+            --text-color-inactive: #5C1714;
+            } 
+
         .footer {
            position: fixed;
            left: 0;
            bottom: 0;
            width: 100%;
-           background-color:whitesmoke;
-           color: black;
+           background-color:var(--background-color-default);
+           color: var(--text-color-inactive);
            text-align: center;
         }
         </style>
