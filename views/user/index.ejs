@@ -4,17 +4,14 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Welcome back,&nbsp<%= user.username %></h1>
+    <h1>All Users</h1>
     <hr>
-    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-        change username <input type="text" name="username" value="<%= user.username %>" />
-    </form>
-    <div>
-        <form 
-        action="/users/<%= user._id %>?_method=DELETE" 
-        method="POST">
-            <input class="btn btn-danger btn-sm" type="submit" value="Delete User">
-        </form> 
+    <div class="list-group">
+        
+        
+        <% if(users.length === 0) { %>
+            <p>There are no user items yet</p>
+        <% } %>
     </div>
     <footer>
         <%- include('../partials/footer') %>
