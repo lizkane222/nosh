@@ -22,31 +22,15 @@ const loginReqired = function(req, res, next) {
 /* ===== USER PANTRY ROUTES ===== */
 
 // GET (user) index
-router.get("/", loginReqired,  async (req, res) => {
-    try {
-        // const foundUser = await db.User.find({});
-        const foundUser = db.User.findById(req.session.currentUser.id)
-        // console.log(foundUser);
-        const context = { user: foundUser }
-        // console.log(context);
-        res.render('user/index', context);
-    } catch (error) {
-        console.log(error);
-        res.send({ message: "Internal Server Error" });
-    }
+router.get("/all", loginReqired,  (req, res) => {
+    db.User.find({}, (error, allUsers) => {
+      if (error) return res.send(error);
+      const context = { 
+        users: allUsers 
+      };
+      res.render("/user/index", context);
+    });
 });
-
-// POST  === NO LONGER NEEDED ===  NEW USER (WITH NO AUTH) 
-// router.post("/", (req, res) => {
-//     db.User.create(req.body, (err, createdUser) => {
-//         console.log(createdUser);
-//       if (error) {
-//         console.log(error);
-//         return res.send(error);
-//       }
-//       res.redirect("/users");
-//     });
-// });
 
 // GET (show) USER PANTRY FROM NAVBAR
 router.get("/pantry", loginReqired, (req, res) => {
@@ -109,7 +93,7 @@ router.get("/:id/edit", loginReqired, (req, res) => {
 
 // GET (edit) FOODITEM UPDATE FORM PANTRY
 router.get("/:id/editItem", loginReqired, (req, res) => {
-  // res.send("fooditem ping back!"
+  // res.send("fooditem ping back!)"
   db.User.findById(req.session.currentUser.id,  (err, foundUser) => {
     if (err) {
     console.log(error)

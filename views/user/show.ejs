@@ -19,7 +19,7 @@
             </form>
         </section>
         <hr>
-        <div class="list-group-flush">
+        <div class="list-group">
             <% user.pantry.forEach(pantry => { %>
                 <a href="/users/<%= pantry._id %>/editItem" class="list-group-item list-group-item-action">
                     <%= pantry.foodItem %>: &nbsp&nbsp <%= pantry.quantity %> <%= pantry.unit %>
