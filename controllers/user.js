@@ -18,9 +18,7 @@ const loginReqired = function(req, res, next) {
 
 
 // base path /users
-/* TODO ===== do second ===== */
-/* ===== USER PANTRY ROUTES ===== */
-
+/* ===== USER  ROUTES ===== */
 // GET (user) index
 router.get("/", loginReqired,  (req, res) => {
     db.User.find({}, (error, allUsers) => {
@@ -33,9 +31,28 @@ router.get("/", loginReqired,  (req, res) => {
 
 });
 
-// switch
+// PUT (update) USER INFO FOR UPDATE
+// TODO -- UPDATE USER INFORMATION (NOT PANTRY OR NOSH, they are below)
 
-// OUT - NOSH IT ROUTE
+// DELETE (user) (no auth) 
+// TODO (this will need ot look thoough recipies too) similar to autHors and articles example
+router.delete("/:id", (req, res) => {
+  db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
+    if (error) {
+      console.log(err);
+      return res.send(err);
+    }
+    // console.log(deletedUser);
+    res.redirect("/users");
+  });
+});
+
+
+
+
+
+/* === NOSH ONLY ROUTES === */
+// PUT - NOSH IT ROUTE
 router.put("/:id/nosh", loginReqired, async (req, res) => {
   try {
     // get the user from db
@@ -51,7 +68,6 @@ router.put("/:id/nosh", loginReqired, async (req, res) => {
 
 /// PUT NOSH OUT ROUTE
 router.put("/:id/noshout", loginReqired, async (req, res) => {
-  // res.send('Bye noshers!')
   try {
     // get the user from db
     const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$pull: { nosh: req.params.id }}, { new: true })
@@ -64,6 +80,12 @@ router.put("/:id/noshout", loginReqired, async (req, res) => {
   }
 });
 
+
+
+
+
+
+/* === PANTRY ROUTES === */
 // GET (show) USER PANTRY FROM NAVBAR
 router.get("/pantry", loginReqired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
@@ -120,9 +142,6 @@ router.get("/:id/edit", loginReqired, (req, res) => {
     });
 });
 
-// PUT (update) USER INFO FOR UPDATE
-// TODO -- UPDATE USER INFORMATION (NOT PANTRY OR NOSH)
-
 // GET (edit) FOODITEM UPDATE FORM PANTRY
 router.get("/:id/editItem", loginReqired, (req, res) => {
   // res.send("fooditem ping back!)"
@@ -138,7 +157,7 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
   });
 });  
 
-// PUT (updateItem) FOORITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
+// PUT (updateItem) FOODITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
 router.put("/:id/updateItem", loginReqired, async (req, res) => {
     try {
       // get the user from db
@@ -185,37 +204,8 @@ router.delete("/:id/updateItem", loginReqired, async (req, res) => {
 }); 
 
 
-// DELETE (user) (no auth) 
-// TODO (this will need ot look thoough recipies too) similar to autHors and articles example
-router.delete("/:id", (req, res) => {
-    db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
-      if (error) {
-        console.log(err);
-        return res.send(err);
-      }
-      // console.log(deletedUser);
-      res.redirect("/users");
-    });
-});
 
-
-
-
-/* TODO ===== do third ===== */
-/* ===== USER NOSH ROUTES ===== */
-// get index 
-//once user selects (save) it executes post below === NO GET ROUTE IN THIS CASE ===
-    
-
-// get index
-        //(if in nosh, the delete form nsoh and show button as (save))
-// delete recipe from nosh
-
-
-
-
-
-
+/* === USER OWNER RECIPES === */
 /* TODO ===== do fourth ===== */
 /* ===== USER RECIPE ===== */
 // simialr to nosh above

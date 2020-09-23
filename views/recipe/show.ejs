@@ -4,12 +4,8 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <!-- <p>FOR USER MODEL USE: 
-        <a href="">/recipe/:id</a> TO SHOW ONE RECIPE</p>
-    <p>FOR RECIPE MODEL USE: 
-        <a href="">/:id</a> TO SHOW ONE RECIPE</p> -->
-
     <h1><%= recipe.recipeName %></h1>
+    <!-- Nosh button for adding to your user account, all displayed in user.index -->
     <% if(!user.nosh.includes(recipe.id)) { %>
         <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
             <input class="btn btn-primary btn-sm" type="submit" value="Nosh it!" />
@@ -20,8 +16,6 @@
         </form>
     <% } %>
 
-    <%= user.username  %> <%= user.nosh  %>
-    
     <hr>
     <section>
             <div>
