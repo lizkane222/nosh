@@ -13,15 +13,74 @@
             </p>
             <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
             <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
-            
-
-            
-
             <br><br>
-            <input type="submit" value="Create Recipe"/>
+            <input type="submit" value="Frame Recipe"/>
         </form>
-    </section><br/><br/><br/><br/><br/><br/><br/><br/>
+    </section><br/><br/><br/>
 
+    <% if(recipe) { %>
+        <%= recipe.recipeName %>
+        <section class="food_item">
+            <form action="/recipe/<%= recipe._id %>/foodItem?_method=PUT" method="POST">
+                <input type="text" name="foodItem" placeholder="New Food Item" />
+                <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+                <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+                <input type="text" name="calories" placeholder="Calories" />
+                <input id="button" type="submit" value="New Food Item"/>
+
+                
+                
+                <br/><br/>
+                <p>Recipe Instructions: 
+                    <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+                    
+
+                <hr>
+                <div class="list-group">
+                    <% recipe.foodItems.forEach(item => { %>
+                        <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
+                            <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
+                        </a>
+                        <% }) %>
+                        <% if(recipe.foodItems.length === 0) { %>
+                            <p>There are no food items yet</p>
+                            <% } %>
+                        </div>
+
+
+                <%= recipe.foodItems %>
+
+
+
+
+
+                </form>
+
+                <br/><br/>
+                <%= recipe.recipeName %>
+                <%= recipe.servesPeople %>
+                <%= recipe.numMinutes %> minutes
+                <%= recipe.imageSource %>
+                <%= recipe.skillLevel %>
+                <br/><br/>
+
+                <!-- iterate through food items -->
+                
+                <%= recipe.foodItems.foodName %>
+                <%= recipe.foodItems.quantity %>
+                <%= recipe.foodItems.unit %>
+                <%= recipe.foodItems.calories %>
+
+                <%= recipe.narrativeDescription %>
+                
+ 
+
+
+
+
+                
+    <% } %>
+    <br/><br/><br/><br/><br/>
 <!--  ------------------------------------------------------------ -->
 <h5>Display The Recipe That was just added BELOW</h5>
 <br/><br/>

@@ -20,13 +20,17 @@ router.get('/', (req,res) => {
 // new recipe   /recipe    //new.ejs
 router.get('/new', async (req,res) => {
     try {
-        const foundRecipe = db.Recipe.findById({})
-        const context = {recipeID: foundRecipe};
+        const context = {recipe: ""};
+        if(req.query.recipeID){
+            const foundRecipe = await db.Recipe.findById(req.query.recipeID)
+            context.recipe = foundRecipe
+        }
+        // const context = {recipeID: foundRecipe};
 
         res.render('recipe/new.ejs', context)
     } catch (error) {
         console.log(error)
-        return res.send({message:'Internal Server Error: check recipe-controller create-route'})
+        return res.send({message:'Internal Server Error: check recipe-controller new-route'})
     }
 });
 
@@ -45,16 +49,17 @@ router.get('/new', async (req,res) => {
 
 // CREATE recipe  /recipe     //new.ejs
 
-// router.post('/new', async (req,res) => {
-    // try {
-    //     const createdRecipeInDB = await db.Recipe.create(req.body);
-    //     const context = {recipeID : createdRecipeInDB._id,}
+router.post('/new', async (req,res) => {
+    try {
+        const createdRecipeInDB = await db.Recipe.create(req.body);
+        const context = {recipeID : createdRecipeInDB._id,}
         
-    //     res.redirect(`recipe/${recipeID}`, context);
-    // } catch (error) {
-    //     console.log(error)
-    //     res.send({message:'Internal Server Error: check recipe-controller create-route'});
-    // } 
+        // res.redirect(`recipe/${recipeID}`, context);
+        res.redirect(`/recipe/new?recipeID=${createdRecipeInDB._id}`);
+    } catch (error) {
+        console.log(error)
+        res.send({message:'Internal Server Error: check recipe-controller create-route'});
+    } 
     
     
     // res.send('this recipe is connected')
@@ -66,21 +71,21 @@ router.get('/new', async (req,res) => {
     //         res.redirect(`/recipe/${createdRecipeInDB._id}`);
     //     }
     // })
-// });
+});
 
 // CREATE recipe  /recipe     //new.ejs     PRE-ASYNC
 
-router.post('/new', (req,res) => {
-    // res.send('this recipe is connected')
-    db.Recipe.create(req.body, (error, createdRecipeInDB) => {
-        if(error) {
-            console.log(error)
-        } else {
-            console.log(createdRecipeInDB)
-            res.redirect(`/recipe/${createdRecipeInDB._id}`);
-        }
-    })
-});
+// router.post('/new', (req,res) => {
+//     // res.send('this recipe is connected')
+//     db.Recipe.create(req.body, (error, createdRecipeInDB) => {
+//         if(error) {
+//             console.log(error)
+//         } else {
+//             console.log(createdRecipeInDB)
+//             res.redirect(`/recipe/${createdRecipeInDB._id}`);
+//         }
+//     })
+// });
 
 
 // show ONLY ONE recipe  /recipe      //show.ejs
@@ -138,23 +143,65 @@ router.get("/:id/edit", (req, res) => {
 
 
 // update <- db change   /recipe       //edit.ejs & index.ejs
-router.put("/:id", (req, res) => {
+router.put("/:id/foodItem", async (req, res) => {
     // res.send('UPDATE IS READ')
-    db.Recipe.findByIdAndUpdate( 
-        req.params.id, req.body,
-        { new: true },
-        (error, updatedRecipe) => {
+    try {
+        const updatedItem = {
+            $push: {foodItems: {
+                    foodName: req.body.foodItem,
+                    quantity: req.body.quantity,
+                    unit: req.body.unit,
+                    calories: req.body.unit,
+        }}};
+        console.log(updatedItem);
+        const updatedRecipe = await db.Recipe.findByIdAndUpdate( req.params.id, updatedItem,{ new: true })
+        console.log(updatedRecipe);
+        res.redirect(`/recipe/new?recipeID=${updatedRecipe._id}`);
+    } catch (error) {
+        console.log(error)
+        res.send({message:'Internal Server Error: check recipe-controller update-route'});
+    }
+    
+    
+    // db.Recipe.findByIdAndUpdate( 
+    //     req.params.id, req.body,
+    //     { new: true },
+    //     (error, updatedRecipe) => {
 
-        if (error) {
-          console.log(error);
-          return res.send(error);
-        }
-        // const context = { recipe: updatedRecipe };
+    //     if (error) {
+    //       console.log(error);
+    //       return res.send(error);
+    //     }
+    //     // const context = { recipe: updatedRecipe };
         
-        res.redirect(`/recipe/${updatedRecipe._id}`);
-      }
-    );
+    //     res.redirect(`/recipe/${updatedRecipe._id}`);
+    //   }
+    // );
   });
+
+
+// // PUT  (update) PANTRY FOOD ITEM
+// router.put("/:id", async (req, res) => {
+//     try {
+//       const updatedItem = {
+//         $push: {pantry: {
+//                 foodItem: req.body.foodItem,
+//                 quantity: req.body.quantity,
+//                 unit: req.body.unit,
+//         }},
+//       };
+//       const updatedPantry = await db.User.findByIdAndUpdate(req.params.id, updatedItem, { new: true });
+//       res.redirect(`/users/${req.params.id}`)
+//     } catch (error) {
+//       console.log(error);
+//       res.send( {message: "Something went horribly wrong [in your PUT Pantry route] please go back... in time"} );
+//     }
+//   }); 
+
+
+
+
+
 
 // delete   N/A
 router.delete("/:id", (req,res) => {
