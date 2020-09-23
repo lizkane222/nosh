@@ -32,19 +32,12 @@ router.get("/", loginReqired,  (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-// switch to populate user.nosh
-=======
 // switch
->>>>>>> submaster
 
 // post recipe to user nosh 
 router.get("/nosh", (req, res) => {
   // res.send('Hello noshers!');
-<<<<<<< HEAD
-=======
   console.log(req.body);
->>>>>>> submaster
 });
 
 //(when items in nosh for user, show (unsave) on save button in index & show page)
