@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/header') %>
+</head>
+<body>
+    <h3>Update food item</h3>
+    <hr>
+    <section class="food_item">
+        <form action="/users/<%= item._id %>/updateItem?_method=PUT" method="POST">
+          <input type="text" name="foodItem" value="<%= item.foodItem %>" />
+          <input type="text" name="quantity" value="<%= item.quantity %>" />
+          <input type="text" name="unit" value="<%= item.unit %>" />
+          <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Item"/>
+        </form>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>
