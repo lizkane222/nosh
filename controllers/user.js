@@ -15,23 +15,114 @@ const loginReqired = function(req, res, next) {
 // base path /
 /* ===== REGISTER, LOGIN, LOGOUT USER ===== */
 // --- ALL IN AUTH CONTROLLER ---
+// --- user: username made in this route for auth.
 
 
 // base path /users
-/* TODO ===== do second ===== */
-/* ===== USER PANTRY ROUTES ===== */
-
-// GET (user) index
-router.get("/all", loginReqired,  (req, res) => {
-    db.User.find({}, (error, allUsers) => {
-      if (error) return res.send(error);
-      const context = { 
-        users: allUsers 
-      };
-      res.render("/user/index", context);
-    });
+/* ===== USER  ROUTES ===== */
+// GET (users) index
+// router.get("/", loginReqired, (req, res) => {
+//   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
+//     if(error) {
+//       console.log(error);
+//       return res.send(error)
+//     }
+//     const context = { user: foundUser }
+//     res.render(`user/index`, context);
+//   })
+// });
+router.get("/", loginReqired, (req, res) => {
+  db.User.findById(req.session.currentUser.id)
+  .populate("nosh")
+  .exec(function (error, foundUser) {
+    if(error) {
+      console.log(error)
+      return res.send(error)
+    }
+    const context = {
+      user: foundUser
+    }
+    res.render(`user/index`, context);
+  })
 });
 
+// GET (edit) USER INFO FOR UPDATE
+router.get("/:id/edit", loginReqired, async (req, res) => {
+  // res.render('user/edit');
+  try {
+  const foundUser = await db.User.findById(req.params.id);
+  const context = { user: foundUser };
+  res.render("user/edit", context); 
+  } catch (error) {
+    console.log(error);
+    res.send( {message: "Something went horribly wrong [in your GET USERS/ID/EDIT route] please go back... in time"} );
+  }
+});
+
+// PUT (update) USER INFO FOR UPDATE (USED 'UPDATEUSER' IF NOT IT CONFLICTS WITH TEH PANTRY ITEM ROUTE)
+router.put("/:id/updateUser", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, req.body, { new: true })
+    res.redirect(`/users`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT UpdateUser route] please go back... in time"} );
+  }
+});
+
+// DELETE (user)
+// TODO (this will need ot look thoough recipies too) similar to autHors and articles example
+router.delete("/:id", (req, res) => {
+  db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
+    if (error) {
+      console.log(err);
+      return res.send(err);
+    }
+    // console.log(deletedUser);
+    res.redirect("/logout");
+  });
+});
+
+
+
+
+
+/* === NOSH ONLY ROUTES === */
+// PUT - NOSH IT ROUTE
+router.put("/:id/nosh", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$addToSet: { nosh: req.params.id }}, { new: true })
+    // set current user.nosh equal to what hey just pressesd
+    req.session.currentUser.nosh = foundUser.nosh
+    res.redirect(`/recipe/${req.params.id}`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT NOSHIT route] please go back... in time"} );
+  }
+});
+
+/// PUT NOSH OUT ROUTE
+router.put("/:id/noshout", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$pull: { nosh: req.params.id }}, { new: true })
+    //set current user.nosh equal to what hey just pressesd
+    req.session.currentUser.nosh = foundUser.nosh
+    res.redirect(`/recipe/${req.params.id}`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT NOSHOUT route] please go back... in time"} );
+  }
+});
+
+
+
+
+
+
+/* === PANTRY ROUTES === */
 // GET (show) USER PANTRY FROM NAVBAR
 router.get("/pantry", loginReqired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
@@ -75,22 +166,6 @@ router.put("/:id", loginReqired, async (req, res) => {
   }
 }); 
 
-// GET (edit) USER INFO FOR UPDATE
-router.get("/:id/edit", loginReqired, (req, res) => {
-    // res.render('user/edit');
-    db.User.findById(req.params.id, function (err, foundUser) {
-        if (err) {
-        console.log(err);
-        return res.send(err);
-        }
-        const context = { user: foundUser };
-        res.render("user/edit", context);
-    });
-});
-
-// PUT (update) USER INFO FOR UPDATE
-// TODO -- UPDATE USER INFORMATION (NOT PANTRY OR NOSH)
-
 // GET (edit) FOODITEM UPDATE FORM PANTRY
 router.get("/:id/editItem", loginReqired, (req, res) => {
   // res.send("fooditem ping back!)"
@@ -106,7 +181,7 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
   });
 });  
 
-// PUT (updateItem) FOORITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
+// PUT (updateItem) FOODITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
 router.put("/:id/updateItem", loginReqired, async (req, res) => {
     try {
       // get the user from db
@@ -153,38 +228,8 @@ router.delete("/:id/updateItem", loginReqired, async (req, res) => {
 }); 
 
 
-// DELETE (user) (no auth) 
-// TODO (this will need ot look thoough recipies too) similar to autHors and articles example
-router.delete("/:id", function (req, res) {
-    db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
-      if (error) {
-        console.log(err);
-        return res.send(err);
-      }
-      // console.log(deletedUser);
-      res.redirect("/users");
-    });
-});
 
-
-
-
-/* TODO ===== do third ===== */
-/* ===== USER NOSH ROUTES ===== */
-// get index 
-        //once user selects (save) it executes post below
-    
-// post recipe to user nosh 
-        //(when items in nosh for user, show (unsave) on save button in index & show page)
-// get index
-        //(if in nosh, the delete form nsoh and show button as (save))
-// delete recipe from nosh
-
-
-
-
-
-
+/* === USER OWNER RECIPES === */
 /* TODO ===== do fourth ===== */
 /* ===== USER RECIPE ===== */
 // simialr to nosh above
