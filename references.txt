@@ -5,6 +5,17 @@ $("#home").on("click", function() {
             console.log('HOME WAS CLICKED');
         })
 
+$("#recipe").on("click", function() {
+            console.log('recipe WAS CLICKED');
+        })
+
+$("#pantry").on("click", function() {
+            console.log('pantry WAS CLICKED');
+        })
+
+$("#nosh").on("click", function() {
+            console.log('nosh WAS CLICKED');
+        })
 
 
 

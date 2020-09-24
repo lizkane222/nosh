@@ -1,3 +1,5 @@
 node_modules
 sources.txt
-./views/recipe/edit.ejs
+.env
+
+references.txt
