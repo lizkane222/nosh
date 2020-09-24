@@ -14,7 +14,6 @@
             }
             
             :root {
-
                 --background-color-default: #D65B4D;
                 --background-color-active: #BD1F0D;
                 --background-color-inactive: #7C140A;
@@ -23,7 +22,6 @@
                 --slider-dark: #3D0622;
                 --saver: #CC4E00;
             } 
-
 
             body {
                background-color:var(--background-color-default);
@@ -57,7 +55,6 @@
                 transition: 300ms;
                 margin-left: -75px;
                 position: relative;
-
             }
 
             .nav-item:hover {
@@ -74,7 +71,6 @@
                 color: var(--text-color-active) !important;
                 border: 3px solid var(--text-color-active); 
                 border-radius: 50px;
-
             }
 
             .nosh {
@@ -98,7 +94,6 @@
                 z-index: 2;
             }
 
-            /*This is a button class we could add if we like the blue border to a button when it doesn't travel anywhere (i.e. SAVE) class="btn btn-primary" data-toggle="button" aria-pressed="false"  */
             /* buttons should have class="button badge badge-pill" */
             .button.badge.badge-pill {
                 background-color: var(--text-color-active);
@@ -113,40 +108,91 @@
                 height: 12vh;
             }
 
-/*             GRID AREA
-            #grid-one {
-                display: grid;
-                grid-template-columns: repeat(5,20%);
-                grid-
-            } */
-
-
-/* 
-$bg-color: #E6E5E1;
-$shdow-gray: #d3d3d5;
-$orange: #DA4D1D;
-$blue: #2b26c3;
-$img-url: "https://images.unsplash.com/photo-1525543907410-b2562b6796d6?ixlib=rb-0.3.5&s=9ff8e5e718a6a40cbd0e1471235912f4&auto=format&fit=crop&w=3452&q=80";
-$img-url2: "https://images.unsplash.com/photo-1528785198459-ec50485704c7?ixlib=rb-0.3.5&s=3a2fc3039516555bbb2e9cd2967bd321&auto=format&fit=crop&w=1537&q=80";
- */
-
             #main-index {
                 width: 100vw;
                 height: 85vh;
                 overflow: scroll;
             }
 
-
             #save {
                 background-color: var(--text-color-active);
                 border-radius: 100%;
                 padding: 15px 10px;
                 color: var(--background-color-default);
-                position: absolute;
+                position: relative;
+                
             }
             
-
+            .container {
+                margin-bottom: 20px;
+                background-color: blue;
             
+            /* width: 20%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column; */
+            }
+            .single-content {
+                position: relative;
+                transition: .5s;
+                box-shadow: 10px 20px 20px rgba(0,0,0,.8);
+            }
+
+            .single-content .text-content,
+            .single-content:after{
+                position:absolute;
+                left:20px;
+                right: 20px;
+            }
+
+            .single-content:after {
+                content: '';
+                display: block;
+                background: crimson;
+                top: 20px;
+                bottom: 20px;
+                opacity: 0;
+                transform: rotate3d(-1,1,0,100deg);
+                transition: .6s;
+            }
+
+            .single-content:hover:after{
+                opacity: .9;
+                transform: rotate3d(0,0,0,0deg);
+            }
+
+            .single-content img{
+                z-index: 100;
+                width: 100%;
+                height: 100%px;
+                background-image: url(recipe.imageSource);
+                background-size: 100% 100%;
+            }
+
+            .text-content{
+                top: 45%;
+                opacity: 0;
+                z-index: 1;
+                transform: translate(10%, -30%);
+                transition: .4s;
+                text-align: left;
+                color: #fff;
+            }
+
+            .text-content h4{
+                font-family: big john;
+            }
+
+            .single-content:hover .text-content{
+                opacity: 1;
+                transform: translate(0, -50%);
+                transition-delay: .3s;
+                margin-left: 20px;
+
+            }
+
 
 
 
