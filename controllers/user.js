@@ -15,30 +15,49 @@ const loginReqired = function(req, res, next) {
 // base path /
 /* ===== REGISTER, LOGIN, LOGOUT USER ===== */
 // --- ALL IN AUTH CONTROLLER ---
+// --- user: username made in this route for auth.
 
 
 // base path /users
 /* ===== USER  ROUTES ===== */
 // GET (users) index
-router.get("/", loginReqired,  async (req, res) => {
-  // res.send(" Hello user!! ")
-  try {
-    const foundUsers = await db.User.find({})
-    // console.log(req.session.currentUser)
-    const context = {
-      users: foundUsers,
+router.get("/", loginReqired, (req, res) => {
+  db.User.findById(req.session.currentUser.id, (error, foundUser) => {
+    if(error) {
+      console.log(error);
+      return res.send(error)
     }
-    res.render("user/index", context);
+    const context = { user: foundUser }
+    res.render(`user/index`, context);
+  })
+});
+
+// GET (edit) USER INFO FOR UPDATE
+router.get("/:id/edit", loginReqired, async (req, res) => {
+  // res.render('user/edit');
+  try {
+  const foundUser = await db.User.findById(req.params.id);
+  const context = { user: foundUser };
+  res.render("user/edit", context); 
   } catch (error) {
     console.log(error);
-    res.send( {message: "Something went horribly wrong [in your GET USERS route] please go back... in time"} );
+    res.send( {message: "Something went horribly wrong [in your GET USERS/ID/EDIT route] please go back... in time"} );
   }
-  });
+});
 
-// PUT (update) USER INFO FOR UPDATE
-// TODO -- UPDATE USER INFORMATION (NOT PANTRY OR NOSH, they are below)
+// PUT (update) USER INFO FOR UPDATE (USED 'UPDATEUSER' IF NOT IT CONFLICTS WITH TEH PANTRY ITEM ROUTE)
+router.put("/:id/updateUser", loginReqired, async (req, res) => {
+  try {
+    // get the user from db
+    const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, req.body, { new: true })
+    res.redirect(`/users`)
+  } catch (error) {
+  console.log(error);
+  res.send( {message: "Something went horribly wrong [in your PUT UpdateUser route] please go back... in time"} );
+  }
+});
 
-// DELETE (user) (no auth) 
+// DELETE (user)
 // TODO (this will need ot look thoough recipies too) similar to autHors and articles example
 router.delete("/:id", (req, res) => {
   db.User.findByIdAndDelete(req.params.id, (error, deletedUser) => {
@@ -47,7 +66,7 @@ router.delete("/:id", (req, res) => {
       return res.send(err);
     }
     // console.log(deletedUser);
-    res.redirect("/users");
+    res.redirect("/logout");
   });
 });
 
@@ -132,19 +151,6 @@ router.put("/:id", loginReqired, async (req, res) => {
     res.send( {message: "Something went horribly wrong [in your PUT Pantry route] please go back... in time"} );
   }
 }); 
-
-// GET (edit) USER INFO FOR UPDATE
-router.get("/:id/edit", loginReqired, (req, res) => {
-    // res.render('user/edit');
-    db.User.findById(req.params.id, function (err, foundUser) {
-        if (err) {
-        console.log(err);
-        return res.send(err);
-        }
-        const context = { user: foundUser };
-        res.render("user/edit", context);
-    });
-});
 
 // GET (edit) FOODITEM UPDATE FORM PANTRY
 router.get("/:id/editItem", loginReqired, (req, res) => {

@@ -19,7 +19,6 @@ app.set('view engine', 'ejs');
 
 /* middleware */
 // app.use(express.static(path.join(__dirname, "public")));
-// app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 /// auth exoress session
@@ -37,17 +36,14 @@ app.use(session({
     }
   }));
 
-
 //auth route (in user)
 app.use('/', controllers.auth);
-
 
 // user Routes
 app.use('/users', controllers.user);
 
 // recipe Routes
 app.use('/recipe', controllers.recipe);
-
 
 // recipe routes
 // INDEX HERE FOR ALL RECIPES @ NOSH
@@ -60,7 +56,6 @@ app.use('/', (req,res) => {
     })
 });
 
-
 /* Routes */
 app.get('/', (req, res) => {
     // render("file", context)
@@ -69,12 +64,6 @@ app.get('/', (req, res) => {
     // res.send('nosh is going to be a pretty cool app if we can get it up and running in time!')   
     res.render('index', { user: req.session.currentUser } );
 });
-
-
-
-
-
-
 
 /* Server Listener */
 app.listen(PORT, () => {

@@ -8,11 +8,11 @@
     <!-- Nosh button for adding to your user account, all displayed in user.index -->
     <% if(!user.nosh.includes(recipe.id)) { %>
         <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
-            <input class="btn btn-primary btn-sm" type="submit" value="Nosh it!" />
+            <input class="btn btn-primary btn-sm" type="submit" value="Save" />
         </form>
     <% } else { %> 
         <form action="/users/<%= recipe._id %>/noshout?_method=PUT" method="POST">
-            <input class="btn btn-primary btn-sm" type="submit" value="De - Nosh It!" />
+            <input class="btn btn-danger btn-sm" type="submit" value="Un-save!" />
         </form>
     <% } %>
 

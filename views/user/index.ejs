@@ -4,18 +4,15 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>All Users</h1>
+    <h3>Welcome back,&nbsp<%= user.username %> </h3>
+    <form action="/users/<%= user._id %>/edit">
+        <input class="btn btn-primary btn-sm" type="submit" value="Edit User"> &nbsp  &nbsp email: <%= user.email %>
+    </form>
     <hr>
-    <div class="list-group">
-        <% users.forEach(user => { %>
-            <a href="" class="list-group-item list-group-item-action">
-                <%= user.username%>
-            </a>
-        <% }) %>
-        <% if(users.length === 0) { %>
-            <p>There are no user items yet</p>
-        <% } %>
-    </div>
+    nosh: <%= user.nosh %><br>
+    <hr>
+    pantry: <%= user.pantry %><br>
+
     <footer>
         <%- include('../partials/footer') %>
     </footer>
