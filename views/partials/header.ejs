@@ -69,7 +69,7 @@
                 border-radius: 50px;
             }
 
-            .nosh {
+            #home {
                 z-index: 6;
                 margin-left: 30px;
                 position: absolute;
@@ -110,18 +110,18 @@
                     width: 70%;
                     }
                 
-            .recipe {
+            #recipe {
                 z-index: 5;
                 position: relative;
                 margin-left: 150px;
             }
-            .pantry {
+            #pantry {
                 z-index: 4;
                 position: relative;
                 margin-left: -75px;
             }
 
-            .user {
+            #nosh {
                 z-index: 3;
                 position: relative;
                 margin-left: -75px;
@@ -133,6 +133,11 @@
                 padding: 15px 30px;
                 margin-right: 30px;
             }
+
+            #login {
+                
+            }
+
             .register {
                 z-index: 2;
             }
@@ -249,10 +254,6 @@
 
 
 
-
-
-
-
 /* <a class="" href="/"></a> */
 
 
@@ -263,11 +264,11 @@
         <a class="navbar-brand"></a>
         <form class="form-inline">
                 <h4>
-                    <button type="button" class="nosh btn btn-2 nav-item badge badge-pill ">nosh</button>
-                    <button type="button" class="recipe btn nav-item badge badge-pill">recipe</button>
-                    <button type="button" class="pantry btn nav-item badge badge-pill">pantry</button>
-                    <button type="button" class="user btn nav-item badge badge-pill">user</button>
-                    <button type="button" class="login btn nav-item badge badge-pill pull-right">login</button>
+                    <button type="button" id="home" class=" btn btn-2 nav-item badge badge-pill ">home</button>
+                    <button type="button" id="recipe" class="recipe btn-2 btn nav-item badge badge-pill">recipe</button>
+                    <button type="button" id="pantry" class="pantry btn-2 btn nav-item badge badge-pill">pantry</button>
+                    <button type="button" id="nosh" class=" btn-2 btn nav-item badge badge-pill">nosh</button>
+                    <button type="button" id="login" class="login btn-2 btn nav-item badge badge-pill pull-right">login</button>
                     
                     <!-- <a class="recipe nav-item nav-link badge badge-pill" href="/recipe">recipe</a> &nbsp; -->
                     <!-- <a class="nav-item nav-link" href="/recipe/new">new recipe</a> &nbsp; -->
@@ -278,4 +279,12 @@
                 </h4>
             </form>
       </nav>
-    </div>
+      
+      
+      
+      
+      
+      
+
+
+</div>

@@ -1,6 +1,70 @@
 External References:
 
 
+$("#home").on("click", function() {
+            console.log('HOME WAS CLICKED');
+        })
+
+$("#recipe").on("click", function() {
+            console.log('recipe WAS CLICKED');
+        })
+
+$("#pantry").on("click", function() {
+            console.log('pantry WAS CLICKED');
+        })
+
+$("#nosh").on("click", function() {
+            console.log('nosh WAS CLICKED');
+        })
+
+    <%#                    <% if(recipe.foodItems.length === 0) { %> %>
+                            <p>There are no food items yet</p>
+    <%#                            <% } %> %>
+
+
+
+                <%= recipe.foodItems %>
+
+
+
+
+
+                </form>
+
+                <br/><br/>
+                <%= recipe.recipeName %>
+                <%= recipe.servesPeople %>
+                <%= recipe.numMinutes %> minutes
+                <%= recipe.imageSource %>
+                <%= recipe.skillLevel %>
+                <br/><br/>
+
+                <!-- iterate through food items -->
+                
+                <%= recipe.foodItems.foodName %>
+                <%= recipe.foodItems.quantity %>
+                <%= recipe.foodItems.unit %>
+                <%= recipe.foodItems.calories %>
+                <%= recipe.narrativeDescription %>
+                
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Food Pyramid:   "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/10/WebMedium.jpg"
 Recipe Origins: "https://en.wikipedia.org/wiki/List_of_cuisines"
 

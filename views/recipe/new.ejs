@@ -36,26 +36,20 @@
                     
 
                 <hr>
+                <hr>
                 <div class="list-group">
-                    <%= recipe.foodItems.foodName %>
+                    <% recipe.foodItems.forEach(item => { %>
                         <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
                             <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
                         </a>
-    <% } %>
+                        <% }) %>
                         <% if(recipe.foodItems.length === 0) { %>
                             <p>There are no food items yet</p>
                             <% } %>
-                </div>
-
-
+                        </div>
                 <%= recipe.foodItems %>
-
-
-
-
-
-                </form>
-
+                </form>	                
+    <% } %>	
                 <br/><br/>
                 <%= recipe.recipeName %>
                 <%= recipe.servesPeople %>
@@ -63,7 +57,6 @@
                 <%= recipe.imageSource %>
                 <%= recipe.skillLevel %>
                 <br/><br/>
-
                 <!-- iterate through food items -->
                 
                 <%= recipe.foodItems.foodName %>
@@ -73,26 +66,7 @@
                 <%= recipe.narrativeDescription %>
                 
  
-
-
-
-
                 
-    <%  %>
-    <br/><br/><br/><br/><br/>
-<!--  ------------------------------------------------------------ -->
-<h5>Display The Recipe That was just added BELOW</h5>
-<br/><br/>
-<div>
-
-</div>
-
-
-
-
-
-
-
 
 
 </body>
