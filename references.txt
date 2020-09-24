@@ -1,6 +1,15 @@
 External References:
 
 
+$("#home").on("click", function() {
+            console.log('HOME WAS CLICKED');
+        })
+
+
+
+
+
+
 Food Pyramid:   "https://cdn1.sph.harvard.edu/wp-content/uploads/sites/30/2012/10/WebMedium.jpg"
 Recipe Origins: "https://en.wikipedia.org/wiki/List_of_cuisines"
 
