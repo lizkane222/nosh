@@ -4,9 +4,9 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Welcome back,&nbsp<%= user.username %></h1>
+    <h1>Welcome back</h1>
     <hr>
-    <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+    <form action="/users/<%= user._id %>/updateUser?_method=PUT" method="POST">
         change username <input type="text" name="username" value="<%= user.username %>" />
         <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update username"/>
     </form>

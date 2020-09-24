@@ -4,13 +4,20 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>All Users</h1>
+    <h3>Welcome back,&nbsp<%= user.username %> </h3>
+    <form action="/users/<%= user._id %>/edit">
+        <input class="btn btn-primary btn-sm" type="submit" value="Edit User"> &nbsp  &nbsp email: <%= user.email %>
+    </form>
     <hr>
     <div class="list-group">
-        
-        
-        <% if(users.length === 0) { %>
-            <p>There are no user items yet</p>
+        <span><h5>Recipes you have saved to nosh:</h5></span>
+        <% user.nosh.forEach(item => { %>
+            <a href="/recipe/<%= item._id %>" class="list-group-item list-group-item-action">
+                <%= item.recipeName %>: &nbsp&nbsp skill level:<%= item.skillLevel %> 
+            </a>
+        <% }) %>
+        <% if(user.nosh.length === 0) { %>
+            <p>There are no items to nosh yet</p>
         <% } %>
     </div>
     <footer>

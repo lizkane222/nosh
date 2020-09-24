@@ -112,7 +112,7 @@ router.get('/:id', (req,res) => {
             console.log(error);
             return res.send(error);
         }
-        const context = { recipe: foundRecipe};
+        const context = { recipe: foundRecipe, user: req.session.currentUser };
         res.render('recipe/show.ejs', context);
     });
 });

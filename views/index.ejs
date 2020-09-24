@@ -4,52 +4,53 @@
     <%- include('partials/header') %>
 </head>
 <body>
-  <div class="top-section">
+    <h1>Index</h1>
+    <!-- for now some login and logout buttons here -->
+    <% if(user) { %>
+        <p>Welcome, <%= user.username %></p>
+        <form action="/logout?_method=DELETE" method="POST">
+            <input class="btn btn-primary btn-sm"type="submit" value="Logout">
+        </form>
+    <% } else { %> 
+        <a class="btn btn-primary btn-sm" href="/login">Login</a>
+        <a class="btn btn-primary btn-sm" href="/register">Register</a>
+    <% } %>
+    <br/>
+    ALL CREATED RECIPES SHOW HERE
+    <hr>
 
-        <a href="/login" class="button badge badge-pill">Login</a>
-        <a href="/register" class="button badge badge-pill">Register</a>
-        <button class="button badge badge-pill">Let's Jump To</button>
-  </div>
-
-
-  <div id="main-index">
-    <div class="container">
-      <div class="row">
-        <% recipes.forEach(recipe => { %>
-        <div class="col-md-4 col-sm-6">
-            <div class="single-content">
-              <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
-              <div class="text-content">
-                <h3 class=""><%= recipe.recipeName %></h3>
-                <p class=""><%= recipe.servesPeople %> servings</p>
-                <p class=""><%= recipe.numMinutes %> min</p>
-                <p class=""><%= recipe.skillLevel %> </p>
+    <div id="main-index">
+      <div class="container">
+        <div class="row">
+          <% recipes.forEach(recipe => { %>
+          <div class="col-md-4 col-sm-6">
+              <div class="single-content">
+                <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
+                <div class="text-content">
+                  <h3 class=""><%= recipe.recipeName %></h3>
+                  <p class=""><%= recipe.servesPeople %> servings</p>
+                  <p class=""><%= recipe.numMinutes %> min</p>
+                  <p class=""><%= recipe.skillLevel %> </p>
+              </div>
             </div>
           </div>
+          <% }); %>
         </div>
-        <% }); %>
       </div>
+          <!-- <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a> -->
+            <!-- <button class="saver"></button> -->
     </div>
 
-        
-        <!-- <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a> -->
 
 
 
 
-          <!-- <button class="saver"></button> -->
-
-
-
-
-  </div>
-
-            
-
-
-
-
-
+        <div>
+            <% recipes.forEach(recipe => { %>
+                <p><a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a></p>
+            <% }); %>
+        </div>
+    <br/><br/>
       <footer>
         <%- include('partials/footer') %>
     </footer>

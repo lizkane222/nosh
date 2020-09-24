@@ -64,6 +64,8 @@ router.post("/login", async function(req, res) {
         req.session.currentUser = {
             username: foundUser.username,
             id: foundUser._id,
+            nosh: foundUser.nosh,
+            pantry: foundUser.pantry,
         }
         console.log(`login after req dot body ${req.session.currentUser}`)
         // redirect to nosh/index
