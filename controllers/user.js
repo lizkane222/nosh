@@ -19,17 +19,21 @@ const loginReqired = function(req, res, next) {
 
 // base path /users
 /* ===== USER  ROUTES ===== */
-// GET (user) index
-router.get("/", loginReqired,  (req, res) => {
-  res.send(" Hello user!! ")
-    // db.User.find({}, (error, allUsers) => {
-    //   if (error) return res.send(error);
-    //   const context = { 
-    //     users: allUsers 
-    //   };
-    //   res.render("/user/index", context);
-    // });
-});
+// GET (users) index
+router.get("/", loginReqired,  async (req, res) => {
+  // res.send(" Hello user!! ")
+  try {
+    const foundUsers = await db.User.find({})
+    // console.log(req.session.currentUser)
+    const context = {
+      users: foundUsers,
+    }
+    res.render("user/index", context);
+  } catch (error) {
+    console.log(error);
+    res.send( {message: "Something went horribly wrong [in your GET USERS route] please go back... in time"} );
+  }
+  });
 
 // PUT (update) USER INFO FOR UPDATE
 // TODO -- UPDATE USER INFORMATION (NOT PANTRY OR NOSH, they are below)
