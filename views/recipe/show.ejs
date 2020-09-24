@@ -5,6 +5,8 @@
 </head>
 <body>
     <h1><%= recipe.recipeName %></h1>
+    <a href="/recipe/new">create a new recipe</a>&nbsp&nbsp&nbsp
+
     <!-- Nosh button for adding to your user account, all displayed in user.index -->
     <% if(!user.nosh.includes(recipe.id)) { %>
         <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">

@@ -17,6 +17,50 @@ $("#nosh").on("click", function() {
             console.log('nosh WAS CLICKED');
         })
 
+    <%#                    <% if(recipe.foodItems.length === 0) { %> %>
+                            <p>There are no food items yet</p>
+    <%#                            <% } %> %>
+
+
+
+                <%= recipe.foodItems %>
+
+
+
+
+
+                </form>
+
+                <br/><br/>
+                <%= recipe.recipeName %>
+                <%= recipe.servesPeople %>
+                <%= recipe.numMinutes %> minutes
+                <%= recipe.imageSource %>
+                <%= recipe.skillLevel %>
+                <br/><br/>
+
+                <!-- iterate through food items -->
+                
+                <%= recipe.foodItems.foodName %>
+                <%= recipe.foodItems.quantity %>
+                <%= recipe.foodItems.unit %>
+                <%= recipe.foodItems.calories %>
+                <%= recipe.narrativeDescription %>
+                
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

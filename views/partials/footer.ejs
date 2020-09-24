@@ -27,25 +27,32 @@
               });
 
             });
+
+
             $("#home").on("click", function() {
-            console.log('HOME WAS CLICKED');
+                console.log('HOME WAS CLICKED');
+                window.location.href="/";
             })
 
             $("#recipe").on("click", function() {
                 console.log('recipe WAS CLICKED');
+                window.location.href="/recipe";
             })
 
             $("#pantry").on("click", function() {
                 console.log('pantry WAS CLICKED');
+                window.location.href="/users/pantry";
             })
 
             $("#nosh").on("click", function() {
                 console.log('nosh WAS CLICKED');
+                window.location.href="/users";
             })
 
-            $("#login").on("click", function() {
-                console.log('login WAS CLICKED');
-            })
+            // $("#login").on("click", function() {
+            //     console.log('login WAS CLICKED');
+            //     window.location.href="";
+            // })
 
 
 
