@@ -21,13 +21,27 @@ const loginReqired = function(req, res, next) {
 // base path /users
 /* ===== USER  ROUTES ===== */
 // GET (users) index
+// router.get("/", loginReqired, (req, res) => {
+//   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
+//     if(error) {
+//       console.log(error);
+//       return res.send(error)
+//     }
+//     const context = { user: foundUser }
+//     res.render(`user/index`, context);
+//   })
+// });
 router.get("/", loginReqired, (req, res) => {
-  db.User.findById(req.session.currentUser.id, (error, foundUser) => {
+  db.User.findById(req.session.currentUser.id)
+  .populate("nosh")
+  .exec(function (error, foundUser) {
     if(error) {
-      console.log(error);
+      console.log(error)
       return res.send(error)
     }
-    const context = { user: foundUser }
+    const context = {
+      user: foundUser
+    }
     res.render(`user/index`, context);
   })
 });
