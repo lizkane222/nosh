@@ -135,14 +135,25 @@
             }
 
             #login {
-                
+
             }
 
             .register {
                 z-index: 2;
             }
 
-            /* buttons should have class="button badge badge-pill" */
+            /* buttons should have class="btn-2 btn-small button badge badge-pill" */
+            .btn-small {
+                background-color: var(--text-color-active);
+                color: var(--background-color-default);
+                text-align: center;
+                font-size: 10px;
+                padding: 5px 5px;
+                border: 2px solid var(--text-color-active);
+                border-radius: 50px;   
+            }
+
+            /* buttons should have class="btn-2 button badge badge-pill" */
             .button.badge.badge-pill {
                 background-color: var(--text-color-active);
                 color: var(--background-color-default);

@@ -360,6 +360,20 @@ Recipe.tag.tagName.Method  Recipe.tag.tagName.Healthy  Recipe.tag.tagName.Adj
         <input type="submit" value="Update Recipe" />
 
 
+UPDATE
+    <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
+    
+    <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
+    
+    <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+      
+    <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+    
+    <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+    
+    <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+    
+    <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"><%= recipe.narrativeDescription %></textarea></p>
 
 
 

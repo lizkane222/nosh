@@ -28,7 +28,9 @@
       <input type="submit" value="Update Recipe" />
       </form>
 
-      
+      <form action="/recipe/<%= recipe._id %>?_method=DELETE" method="POST">
+        <input class="btn btn-primary btn-sm" id="button" type="submit" value="delete" />
+    </form>
 
 
  
