@@ -28,7 +28,7 @@
                color: var(--text-color-active);
                margin: 20px;
                width: 100vw;
-               height: 100vh;
+               height: 80vh;
             }
 
             ul.nav li a, ul.nav li a:visited {
@@ -105,57 +105,62 @@
             
             .top-section {
                 width: 100vw;
-                height: 12vh;
+                height: 3vh;
             }
 
-            #main-index {
+            /* #main-index {
                 width: 100vw;
                 height: 85vh;
-                overflow: scroll;
-            }
+            } */
 
-            #save {
+            /* #save {
                 background-color: var(--text-color-active);
                 border-radius: 100%;
                 padding: 15px 10px;
                 color: var(--background-color-default);
                 position: relative;
-                
+            } */
+            
+            #main-index {
+                display: flex-box;
+                flex-direction: column;
             }
             
             .container {
-                margin-bottom: 20px;
-                background-color: blue;
-            
+                margin-top: 5%;
+                justify-content: flex-start;
+                background-color: gold;
+                width: 35vw;
+                height: 20vh;
             /* width: 20%;
-            height: 100%;
             display: flex;
-            justify-content: center;
+            height: 100%;
             align-items: flex-start;
-            flex-direction: column; */
+             */
             }
-            .single-content {
+            
+            .single-content{
                 position: relative;
-                transition: .5s;
-                box-shadow: 10px 20px 20px rgba(0,0,0,.8);
+                transition: .3s;
+                box-shadow: 10px 20px 20px rgba(0,0,0,0.8);
             }
 
             .single-content .text-content,
-            .single-content:after{
-                position:absolute;
-                left:20px;
+            .single-content:after {
+                position: absolute;
+                left: 20px;
                 right: 20px;
             }
 
-            .single-content:after {
+            .single-content:after{
                 content: '';
                 display: block;
-                background: crimson;
-                top: 20px;
-                bottom: 20px;
+                background: var(--slider-dark);
+                /* top:20px; */
+                /* bottom:20px;  */
                 opacity: 0;
                 transform: rotate3d(-1,1,0,100deg);
-                transition: .6s;
+                transition: .4s;
             }
 
             .single-content:hover:after{
@@ -164,35 +169,48 @@
             }
 
             .single-content img{
-                z-index: 100;
                 width: 100%;
-                height: 100%px;
-                background-image: url(recipe.imageSource);
-                background-size: 100% 100%;
+                height: auto;
             }
 
             .text-content{
-                top: 45%;
-                opacity: 0;
+                top:45%;
+                opacity:0;
                 z-index: 1;
-                transform: translate(10%, -30%);
-                transition: .4s;
-                text-align: left;
-                color: #fff;
+                transform: translate(10%,-30%);
+                transition: .3s;
+                text-align: center;
+                color: #fff
             }
 
             .text-content h4{
-                font-family: big john;
+                font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
             }
 
-            .single-content:hover .text-content{
+            .single-content:hover .text-content {
                 opacity: 1;
                 transform: translate(0, -50%);
                 transition-delay: .3s;
-                margin-left: 20px;
-
             }
 
+
+            /* .container.card {
+                justify-content: flex-start;
+                position: relative;
+                width: 500px;
+                height: 200px;
+                background-image: url( recipe.imageSource );
+                background-color: var(--background-color-inactive);
+                overflow: hidden;
+                margin-bottom: 4px; */
+            /* } */
+
+            /* .pic { */
+                /* z-index: 100;
+                width: 100%;
+                height: 100%px;
+                background-image: url(recipe.imageSource);
+                background-size: 100% 100%; */
 
 
 

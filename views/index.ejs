@@ -5,44 +5,44 @@
 </head>
 <body>
   <div class="top-section">
-    <!-- <h1>Index</h1> -->
-    <!-- <p> All recipe cards go in this page </p> -->
 
-    <!-- for now some login and logout buttons here -->
         <a href="/login" class="button badge badge-pill">Login</a>
         <a href="/register" class="button badge badge-pill">Register</a>
         <button class="button badge badge-pill">Let's Jump To</button>
   </div>
 
-<!-- <div id="grid-one"> -->
+
   <div id="main-index">
     <% recipes.forEach(recipe => { %>
       <div class="container">
-        <div class="col-md-4 col-sm-6">
-          <div class="single-content">
-            <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
-            <div class="text-content">
-              <h3 class="card-title"><%= recipe.recipeName %></h3>
-              <li class="card-text"><%= recipe.servesPeople %> servings</li>
-              <li class="card-text"><%= recipe.numMinutes %>min</li>
-              <li class="card-text"><%= recipe.skillLevel %></li>
+        <div class="row">
+          <div class="col-md-4 col-sm-6">
+            <div class="single-content">
+              <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
+              <div class="text-content">
+              <h3 class=""><%= recipe.recipeName %></h3>
+              <p class=""><%= recipe.servesPeople %> servings</p>
+              <p class=""><%= recipe.numMinutes %> min</p>
+              <p class=""><%= recipe.skillLevel %> </p>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
+    </div>
+
+        
+        <!-- <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a> -->
 
 
 
 
-
-          <!-- <button class="save"></button> -->
-
+          <!-- <button class="saver"></button> -->
 
 
 
 
-<% }); %>
-</div>
+    <% }); %>
+  </div>
 
             
 
