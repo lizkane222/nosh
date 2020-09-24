@@ -37,15 +37,15 @@
 
                 <hr>
                 <div class="list-group">
-                    <% recipe.foodItems.forEach(item => { %>
+                    <%= recipe.foodItems.foodName %>
                         <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
                             <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
                         </a>
-                        <% }) %>
+    <% } %>
                         <% if(recipe.foodItems.length === 0) { %>
                             <p>There are no food items yet</p>
                             <% } %>
-                        </div>
+                </div>
 
 
                 <%= recipe.foodItems %>
@@ -70,7 +70,6 @@
                 <%= recipe.foodItems.quantity %>
                 <%= recipe.foodItems.unit %>
                 <%= recipe.foodItems.calories %>
-
                 <%= recipe.narrativeDescription %>
                 
  
@@ -79,7 +78,7 @@
 
 
                 
-    <% } %>
+    <%  %>
     <br/><br/><br/><br/><br/>
 <!--  ------------------------------------------------------------ -->
 <h5>Display The Recipe That was just added BELOW</h5>
@@ -93,12 +92,6 @@
 
 
 
-
-
-
-
-<p><a href="/recipe/:id">jump to this recipe</a></p>
-<p><a href="">add♾ to nosh⧁</a></p>
 
 
 

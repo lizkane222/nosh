@@ -90,19 +90,19 @@ router.post('/new', async (req,res) => {
 
 // show ONLY ONE recipe  /recipe      //show.ejs
 // router.get('/:id', async (req,res) => {
-    // try {
-    //     const foundRecipe = await db.Recipe.findById(req.body);
-    //     const recipe = foundRecipe._id;
-    //     const context = {
-    //         recipeID : recipe,
-    //     }
+//     try {
+//         const foundRecipe = await db.Recipe.findById(req.body);
+//         const recipe = foundRecipe._id;
+//         const context = {
+//             recipeID : recipe,
+//         }
 
-    //     res.render('recipe/show.ejs', context);
+//         res.render('recipe/show.ejs', context);
 
-    // } catch (error) {
-    //     console.log(error);
-    //     res.send({message:'Internal Server Error: check recipe-controller show-route'})
-    // }
+//     } catch (error) {
+//         console.log(error);
+//         res.send({message:'Internal Server Error: check recipe-controller show-route'})
+//     }
 // });
 
 // show ONLY ONE recipe  /recipe      //show.ejs
