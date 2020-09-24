@@ -55,6 +55,29 @@
       <input class="btn btn-primary btn-sm" id="button" type="submit" value="Update Recipe" />
       </form>
 
+      <% if(recipe) { %>
+        <%= recipe.recipeName %>
+        <section class="food_item">
+            <form action="/recipe/<%= recipe._id %>/foodItem?_method=PUT" method="POST">
+                <input type="text" name="foodItem" placeholder="New Food Item" />
+                <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+                <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+                <input type="text" name="calories" placeholder="Calories" />
+                <input id="button" type="submit" value="Update Food Item"/>
+
+                
+                
+                <br/><br/>
+
+
+
+
+
+
+
+    
+
+
     </section>
 
 

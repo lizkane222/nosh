@@ -5,14 +5,13 @@
 </head>
 <body>
   <div class="top-section">
-    <h1>Index</h1>
-    <p> All recipe cards go in this page </p>
+    <!-- <h1>Index</h1> -->
+    <!-- <p> All recipe cards go in this page </p> -->
 
     <!-- for now some login and logout buttons here -->
         <a href="/login" class="button badge badge-pill">Login</a>
-        <a href="/register" class="button badge badge-pill">Register</a><br/><br/><br/>
-  
-        ALL CREATED RECIPES SHOW HERE<br/><br/>
+        <a href="/register" class="button badge badge-pill">Register</a>
+        <button class="button badge badge-pill">Let's Jump To</button>
   </div>
 
 <!-- <div id="grid-one"> -->
@@ -25,21 +24,15 @@
             
             <ul>
             <h3 class="card-title"><%= recipe.recipeName %></h3>
-            <p class="card-text"><%= recipe.servesPeople %></p>
-            <p class="card-text"><%= recipe.numMinutes %> minutes</p>
-            <p class="card-text"><%= recipe.skillLevel %></p>
-            <p class="card-text"><%= recipe.foodItems.foodName %></p>
-            <p class="card-text">
+            <li class="card-text"><%= recipe.servesPeople %></li>
+            <li class="card-text"><%= recipe.numMinutes %> minutes</li>
+            <li class="card-text"><%= recipe.skillLevel %></li>
 
-
-              
-            </p>
-            <p class="card-text"></p>
             <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a>
             <div class="pic"><a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>"></a></div>
-            </ul> 
-            <button>
-            </button>
+          </ul>
+
+          <button class="save"></button>
           </div>
         </div>
       </div>
@@ -49,23 +42,10 @@
 
 <% }); %>
 </div>
-<!-- </div>ß
- --><h></h>
-          <br/><br/>
-      
-      <br/><br/>
 
-            <button class="button badge badge-pill">Let's Jump To</button>
+            
 
 
-<!-- 
-      FOR USER MODEL USE:
-      <p><a href="">/recipe/show.ejs</a> TO SHOW ONE RECIPE</p>
-      
-
-
-      FOR RECIPE MODEL USE:
-      <p><a href="">/show.ejs</a> TO SHOW ONE RECIPE</p> -->
 
 
 
