@@ -6,6 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>nosh</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <style>
             body {
                background-color:whitesmoke;
@@ -23,15 +25,14 @@
     <nav class="navbar navbar-light bg-light justify-content-between>
         <a class="navbar-brand"></a>
         <form class="form-inline">
-                <h4>
-                    <a class="nav-item nav-link" href="/">nosh</a> &nbsp;
-                    <a class="nav-item nav-link" href="/recipe">recipe</a> &nbsp;
-                    <!-- <a class="nav-item nav-link" href="/recipe/new">new recipe</a> &nbsp; -->
-                    <a class="nav-item nav-link" href="/users/pantry">pantry</a> &nbsp;
-                    <a class="nav-item nav-link" href="/users">user</a> &nbsp;
-                    <!-- <a class="nav-item nav-link" href="/login">login</a> &nbsp; -->
-                    <!-- <a class="nav-item nav-link" href="/register">register</a> &nbsp; -->
-                </h4>
-            </form>
+            <h4>
+                <a class="nav-item nav-link" href="/">nosh</a> &nbsp;
+                <a class="nav-item nav-link" href="/recipe">recipe</a> &nbsp;
+                <!-- <a class="nav-item nav-link" href="/recipe/new">new recipe</a> &nbsp; -->
+                <a class="nav-item nav-link" href="/users/pantry">pantry</a> &nbsp;
+                <a class="nav-item nav-link" href="/users">user</a> &nbsp;
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal"> Login(modal) </button>
+            </h4>
+        </form>
       </nav>
-</div
+    </div>
