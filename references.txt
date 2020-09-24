@@ -652,3 +652,77 @@ CODE PEN GRAB FOR CARD EDIT
             }
             
             
+
+
+
+
+
+
+
+
+NOOOOOSSSSHHHHH
+JASON's NOSH FORMULA FOR EACH CARD THAT IS SAVED
+
+    <main>
+        <div class="mobile">
+            <div class="cards">       
+            <% user.nosh.forEach(recipe => { %>
+                <div class="cards__card"><div class="cards__card__content">
+                </div><a href="/recipe/<%= recipe._id %>" class="list-group-item list-group-item-action">
+                    <%= recipe.recipeName %>: &nbsp&nbsp skill level:<%= recipe.skillLevel %> 
+                </a></div></div>
+                <% }) %>
+                <% if(user.nosh.length === 0) { %>
+                    <p>There are no recipes to nosh yet</p>
+                <% } %>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <div class="list-group">
+        <span><h5>Recipes you have saved to nosh:</h5></span>
+        <% user.nosh.forEach(item => { %>
+            <a href="/recipe/<%= item._id %>" class="list-group-item list-group-item-action">
+                <%= item.recipeName %>: &nbsp&nbsp skill level:<%= item.skillLevel %> 
+            </a>
+
+
+        <% }) %>
+        <% if(user.nosh.length === 0) { %>
+            <p>There are no items to nosh yet</p>
+        <% } %>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- if user is recipe owner then border: 2px outset rgba(250,250,250,.5) -->
+            <div>
+            <% recipes.forEach(recipe => { %>
+              <p>
+                  <a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a>
+              </p>
+            </div>
+    
+            <div>
+    
+              <!-- put tag display info here -->
+            </div>
+    
+    
+    
+    
+          <% }); %>

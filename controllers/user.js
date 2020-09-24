@@ -94,7 +94,7 @@ router.put("/:id/nosh", loginReqired, async (req, res) => {
   try {
     // get the user from db
     const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$addToSet: { nosh: req.params.id }}, { new: true })
-    // set current user.nosh equal to what hey just pressesd
+    // set current user.nosh equal to what hey just pressed
     req.session.currentUser.nosh = foundUser.nosh
     res.redirect(`/recipe/${req.params.id}`)
   } catch (error) {
