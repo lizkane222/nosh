@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-/// auth exoress session
+/// auth express session
 app.use(session({
     resave: false,
     saveUninitialized: false,
