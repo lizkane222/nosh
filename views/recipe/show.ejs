@@ -7,34 +7,31 @@
 <body>
     <h1><%= recipe.recipeName %></h1>
 
+    <div>
     <!-- Nosh button for adding to your user account, all displayed in user.index -->
-    <% if(!user.nosh.includes(recipe.id)) { %>
-        <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
-            <input class="btn-small button badge-pill" type="submit" value="Save" />
-        </form>
-    <% } else { %> 
-        <form action="/users/<%= recipe._id %>/noshout?_method=PUT" method="POST">
-            <input class="btn-small button  badge-pill" type="submit" value="Un-save!" />
-        </form>
-    <% } %>
-
+        <% if(!user.nosh.includes(recipe.id)) { %>
+            <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
+                <input class="btn-small button badge-pill" type="submit" value="Save" />
+            </form>
+        <% } else { %> 
+            <form action="/users/<%= recipe._id %>/noshout?_method=PUT" method="POST">
+                <input class="btn-small button  badge-pill" type="submit" value="Un-save!" />
+            </form>
+        <% } %>
+        <button class="btn-small button badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
+    </div>
+    
     <hr>
-    <button class="btn-small button badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
-    <hr>
 
-    <div id="main-index">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <div class="single-content">
-                  <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
-                  <div class="text-content">
+    <div id="main-index m-show">
+        <div class="container c-show">
+            <div class="single-content s-c-show">
+                <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="cardImg i-show"></a>
+                <div class="text-content t-show">
                     <h3 class=""><%= recipe.recipeName %></h3>
                     <p class=""><%= recipe.servesPeople %> servings</p>
                     <p class=""><%= recipe.cookTime %> min</p>
                     <p class=""><%= recipe.skillLevel %> </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

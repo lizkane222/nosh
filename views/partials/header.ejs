@@ -253,26 +253,25 @@
             }
             .left-form{
                 width: 20%;
-                align-items: center;
+                align-self: flex-start;
                 text-align: center;
 
             }
 
             .build input{
-                background-color: var(--background-color-inactive);
+                text-align: center;
+                background-color: var(--background-color-active);
                 margin: 5px 0;
                 border-radius: 5px;
+                color: var(--text-color-inactive)
             }
+
+            .build input{}            
 
             .right-form{
                 width: 25%;
                 margin-right: 5%;
             }
-
-            .rec-frame{
-
-            }
-
 
             #rec-pic{
                 width: 40%;
@@ -282,6 +281,26 @@
             #rec-pic img{
                 width: 100%;
                 height: 90%;
+            }
+
+            #m-show{
+                width: 100%;
+                height: 90vh;
+            }
+
+            #c-show{
+                display: flex;
+                justify-content: space-evenly;
+                align-items: stretch;
+            }
+
+            .i-show{
+                width: 100%;
+                height: 100%;
+            }
+
+            .t-show{
+
             }
 
             .container {
@@ -302,7 +321,6 @@
                 margin-bottom: 2vh;
                 overflow: hidden;
                 background-color: var(--background-color-active);
-
             }
 
             .single-content .text-content,
