@@ -22,8 +22,8 @@
                 --background-color-default: #D65B4D;
                 --background-color-inactive: #a14c43;
                 --background-color-inactive-dark: #8b433b;
-                --background-color-active: #BD1F0D;
-                --background-color-active-dark: #570a03;
+                --background-color-active: #a04439;
+                --background-color-active-dark: #5c1109;
                 --text-color-active:#3D0A04;
                 --text-color-inactive: #682824;
                 --slider-dark: #3D0622;
@@ -37,14 +37,13 @@
                width: 100vw;
                height: 80vh;
                font-family: 'Baloo Tammudu 2', cursive;
-               text
             }
 
-            /* .nav-item:visited {
+            .nav-item:visited {
                 background-color: var(--background-color-inactive);
                 color: var(--text-color-inactive) !important;
                 border: 3px solid var(--text-color-inactive);
-            } */
+            }
 
             .nav-item {
                 font-size: 35px;
@@ -225,13 +224,14 @@
 
             /* buttons should have class="btn-small button badge badge-pill" */
             .btn-small {
-                background-color: var(--background-color-inactive-dark);
+                background-color: var(--background-color-default);
                 color: var(--text-color-active);
                 text-align: center;
                 font-size: 20px;
                 padding: 5px 5px;
                 border: 3px solid var(--text-color-active);
-                border-radius: 50px;   
+                border-radius: 50px;  
+                padding-top: 15px; 
             }
 
             /* buttons should have class="btn-2 button badge badge-pill" */
@@ -271,7 +271,7 @@
                 border-radius: 50px;
                 padding: 15px;
                 padding-right: 30px;
-                /* transition: 300ms; */
+                transition: 300ms;
                 /* left: 75px; */
                 position: absolute;
                 font-size: 2em;
@@ -281,6 +281,7 @@
                 margin-right: 75px; 
                 min-width: 20vw;
                 max-height: 2.5em;
+                margin-bottom: -20%;
                 font-size: 2em;
 
             }
@@ -298,13 +299,68 @@
 
             }
 
-            .build input{
+            #rec-frame{
+                box-shadow: none;
+
+            }
+
+            .middle-form{
                 text-align: center;
-                background-color: var(--background-color-active);
+                background-color: var(--background-color-default);
+                border: 3px outset var(--text-color-active);
+                color: white;
                 margin: 5px 0;
                 border-radius: 5px;
-                color: var(--text-color-inactive)
+                font-size: 40px;
+                padding: 15px 5px 5px 5px;
+                box-shadow: 10px 20px 20px var(--text-color-active);
+                height: 100%;
+            }
+
+            .middle-form h3{
+                font-size: 40px;
+            }
+
+            .middle-form h5{
+                font-size: 30px;
+            }
+
+            .middle-form span{
+                font-size: 30px;
+                color: var(--text-color-active)
+            }
+
+            .middle-form p{
+                font-size: 20px;
+                color: var(--text-color-active)
+            }
+
+            .pantryi{
+                text-align: center;
+                background-color: var(--background-color-default);
+                border: 3px outset var(--text-color-active);
+                color: white;
+                margin: 5px 0;
+                border-radius: 5px;
+                font-size: 30px;
+                padding: 15px 5px 5px 5px;
+            }   
+
+            .build input{
+                text-align: center;
+                background-color: var(--background-color-default);
+                border: 3px outset var(--text-color-active);
+                color: white;
+                margin: 5px 0;
+                border-radius: 5px;
+                font-size: 30px;
+                padding: 15px 5px 5px 5px;
             }           
+
+            ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+                color: var(--text-color-inactive);
+                opacity: 1; /* Firefox */
+            }
 
             .right-form{
                 width: 25%;
@@ -358,7 +414,7 @@
                 height: 25vh;
                 margin-bottom: 2vh;
                 overflow: hidden;
-                background-color: var(--background-color-active);
+                /* background-color: var(--background-color-active); */
             }
 
             .single-content .text-content,
@@ -391,13 +447,18 @@
             } */
 
             .cardImg{
-                width: 85%;
-                /* height: 150%; */
-                margin: -1vh 0 0 -1vw;
+                width: 100%;
+                height: 150%;
+                /* margin: 1vh 0 0 1vw; */
             }
 
             .single-content:hover img{
                 filter: grayscale(50%);
+            }
+
+            input{
+                padding-top: 5px;
+                font-size: 1em;
             }
 
             .text-content{
@@ -426,25 +487,16 @@
 
 
 
-
-
-
-
-
-
-
-
-
         </style>
     </head> 
     <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand"></a>
         <form class="form-inline">
                 <h4>
-                    <button type="button" id="feed" class=" btn btn-2 nav-item badge badge-pill ">feed</button>
+                    <button type="button" id="feed" class="feed btn btn-2 nav-item badge badge-pill ">feed</button>
                     <button type="button" id="recipe" class="recipe btn-2 btn nav-item badge badge-pill">recipe</button>
                     <button type="button" id="pantry" class="pantry btn-2 btn nav-item badge badge-pill">pantry</button>
-                    <button type="button" id="nosh" class=" btn-2 btn nav-item badge badge-pill">nosh</button>
+                    <button type="button" id="nosh" class="nosh btn-2 btn nav-item badge badge-pill">nosh</button>
                     <!-- <button type="button" id="login" class="login btn-2 btn nav-item badge badge-pill pull-right">login</button> -->
                     <!-- <buttontype="button" class="login btn-2 btn nav-item badge badge-pill pull-right text-decoration-none">
                         <a " href="/login">Login</a>
