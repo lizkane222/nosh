@@ -19,95 +19,101 @@
     <% } %>
 
     <hr>
-    <section class="cards">
-        <div class="card">
-            <div><img src="<%= recipe.imageSource %>" class="card-img-top" alt="<%= recipe.recipeName %>"></div>
-            <div class="card-body">
-                <p class="card-title">Recipe: <a href="#"><%= recipe.recipeName %></a></p>
-                <p class="card-text">Servings: <%= recipe.servesPeople %></p> 
-                <p class="card-text">Cook Time:   <%= recipe.cookTime %>  minutes</p>
-                <p class="card-text">Recipe Instructions: <%= recipe.narrativeDescription %></p>
-            </div>
-            <button class="btn-small btn-2 button badge badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
-        </div>
-        <hr>
-                <!-- <a href="/recipe/new">create a new recipe</a>&nbsp&nbsp&nbsp -->
-                
-                <!-- <a href="/recipe">back to my recipes</a>&nbsp&nbsp&nbsp -->
-                
-    <section>
-        <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
 
-            <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
 
-            <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
-
-            <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
-
-            <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
-
-            <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
-          
-            <input type="submit" value="Update Recipe" />
-
-        </form>
-
-    </section>
-
-    </section>
-        <br><br>
-      </form>
-  </section>
-
-  <hr>
-
-  <div class="main-index">
-    <% if(recipe) { %>
-        <%= recipe.recipeName %>
-        <section class="food_item">
-            <form action="/recipe/<%= recipe._id %>/foodItem?_method=PUT" method="POST">
-                <input type="text" name="foodItem" placeholder="New Food Item" />
-                <input type="text" name="quantity" placeholder="Quantity, - (number)" />
-                <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
-                <input type="text" name="calories" placeholder="Calories" />
-                
-                <p>Recipe Instructions: 
-                    <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
-                    
-                <input id="button" type="submit" value="New Food Item"/>
-                
-                
-                <br/><br/>
-                <hr>
-                <div>
-                    <div id="rec-frame" class="single-content">
-                        <h3><%= recipe.recipeName %></h3><br/>
-                        <h5>Servings: <%= recipe.servesPeople %></h5>
-                        <h5><%= recipe.numMinutes %> minutes</h5> 
-                        <h5>Skill Level: <%= recipe.skillLevel %></h5>
-                        <h5>Instructions:</h5><p><%= recipe.narrativeDescription %></p>
-                    </div>
-
-                    <div id="rec-pic" class="single-content"><img class="new-pic" src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>">
-                    </div>
-
-                    <div id="rec-foods" class="single-content">
-                        <div class="list-group">
-                            <% recipe.foodItems.forEach(item => { %>
-                                <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
-                                    <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
-                                </a>
-                                <% }) %>
-                                <% if(recipe.foodItems.length === 0) { %>
-                                    <p>There are no food items yet</p>
-                                    <% } %>
+    
+    <div class="main-index">
+        <% if(recipe) { %>
+            <section class="food_item">
+                    <div>
+                        <div id="rec-frame" class="single-content">
+                            <h3><%= recipe.recipeName %></h3><br/>
+                            <h5>Servings: <%= recipe.servesPeople %></h5>
+                            <h5><%= recipe.numMinutes %> minutes</h5> 
+                            <h5>Skill Level: <%= recipe.skillLevel %></h5>
+                            <h5>Instructions:</h5><p><%= recipe.narrativeDescription %></p>
+                        </div>
+    
+                        <div id="rec-pic" class="single-content"><img class="new-pic" src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>">
+                        </div>
+    
+                        <div id="rec-foods" class="single-content">
+                            <div class="list-group">
+                                <% recipe.foodItems.forEach(item => { %>
+                                    <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
+                                        <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
+                                    </a>
+                                    <% }) %>
+                                    <% if(recipe.foodItems.length === 0) { %>
+                                        <p>There are no food items yet</p>
+                                        <% } %>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>	
-        </section>
-    <% } %>	
-</div> 
+                </form>	
+            </section>
+        <form action="/recipe/<%= recipe._id %>/foodItem?_method=PUT" method="POST">
+                        <input type="text" name="foodItem" placeholder="New Food Item" />
+                        <input type="text" name="quantity" placeholder="Quantity, - (number)" />
+                        <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+                        <input type="text" name="calories" placeholder="Calories" />
+                        
+                        <p>Recipe Instructions: 
+                            <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+                            
+                        <input id="button" type="submit" value="New Food Item"/>
+                        
+
+
+        <% } %>	
+    </div> 
+
+    <button class="btn-small btn-2 button badge badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
+</div>
+
+
+
+<hr>
+        <!-- <a href="/recipe/new">create a new recipe</a>&nbsp&nbsp&nbsp -->
+        
+        <!-- <a href="/recipe">back to my recipes</a>&nbsp&nbsp&nbsp -->
+        
+<section>
+<form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
+
+    <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
+
+    <p>Servings: <input type="text" name="servesPeople" value="<%= recipe.servesPeople %>"/></p>
+
+    <p>Cook Time: <input type="text" name="cookTime" value="<%= recipe.cookTime %>"> minutes</p>
+
+    <p>Photo: <input type="url" name="imageSource" value="<%= recipe.imageSource %>"/></p>
+
+    <p>Skill Level:<input type="text" name="skillLevel" value="<%= recipe.skillLevel %>"/></p>
+  
+    <input type="submit" value="Update Recipe" />
+
+</form>
+
+</section>
+
+</section>
+<br><br>
+</form>
+</section>
+
+<hr>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -2,23 +2,29 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+const loginRequired = function(req, res, next) {
+    if(!req.session.currentUser) {
+        res.redirect('/login')
+    }
+    next();
+}
 
 /* base path *//*    /recipe     */
 // for file path use /recipe/__.ejs
 
 // // index view of recipes    /recipe  //index.ejs (MAIN INDEX.EJS)
-router.get('/', (req,res) => {
-    // res.send("ROUTE'S CONNECTED TO THE ALL RECIPES PAGE")
-    db.Recipe.find({}, (error, foundRecipe) => {
-        if(error) return res.send(error)
+// router.get('/', (req,res) => {
+//     // res.send("ROUTE'S CONNECTED TO THE ALL RECIPES PAGE")
+//     db.Recipe.find({}, (error, foundRecipe) => {
+//         if(error) return res.send(error)
     
-    const context = {recipes: foundRecipe};
-    res.render('recipe/index.ejs', context);
-});
-});
+//     const context = {recipes: foundRecipe};
+//     res.render('recipe/index.ejs', context);
+// });
+// });
 
 // new recipe   /recipe    //new.ejs
-router.get('/new', async (req,res) => {
+router.get('/new', loginRequired, async (req,res) => {
     try {
         const context = {recipe: ""};
         if(req.query.recipeID){
@@ -127,8 +133,13 @@ router.get("/:id/edit", (req, res) => {
       }
       const context = { recipe: foundRecipe };
         res.render(`recipe/edit`, context);
+
     });
 });
+
+    // res.redirect(`/recipe/?recipeID=${updatedRecipe._id}`);
+
+
 // router.get("/:id", (req, res) => {
 //     // res.send('THE RECIPE IS READY TO EDIT')
 //     db.Recipe.findById(req.params.id, (error, foundRecipe) => {
