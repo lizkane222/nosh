@@ -112,7 +112,7 @@ router.post('/new', async (req,res) => {
 // });
 
 // show ONLY ONE recipe  /recipe      //show.ejs
-router.get('/:id', (req,res) => {
+router.get('/:id', loginRequired, (req,res) => {
     db.Recipe.findById(req.params.id, (error, foundRecipe) => {
         if (error) {
             console.log(error);
