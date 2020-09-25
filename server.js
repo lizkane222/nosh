@@ -4,6 +4,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 
+
+
 /* Internal Modules */
 const db = require('./models');
 const controllers = require('./controllers');
@@ -12,7 +14,7 @@ const controllers = require('./controllers');
 const app = express();
 
 /* Configuration */
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 // set view engine to ejs to leave off alldot ejs on res dot statements
 app.set('view engine', 'ejs');
@@ -21,7 +23,7 @@ app.set('view engine', 'ejs');
 // app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
-/// auth exoress session
+/// auth express session
 app.use(session({
     resave: false,
     saveUninitialized: false,

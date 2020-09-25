@@ -1,7 +1,11 @@
 const mongoose = require('mongoose');
 
 /// Updating blog to noshdb
-const connectionString = 'mongodb://localhost:27017/noshdb';
+require("dotenv").config(); // use .env file
+const connectionString = process.env.MONGODB_URI;
+
+
+// const connectionString = 'mongodb://localhost:27017/nosh-it-db';
 
 mongoose
   .connect(connectionString, {
@@ -9,6 +13,7 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
     useFindAndModify: true,
+
   })
   .then( () => {
     console.log('Mongodb connected....');
