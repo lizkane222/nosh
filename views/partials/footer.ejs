@@ -27,14 +27,15 @@
               });
             });
 
-            $("#home").on("click", function() {
-                console.log('HOME WAS CLICKED');
+
+            $("#feed").on("click", function() {
+                console.log('feed WAS CLICKED');
                 window.location.href="/";
             })
 
             $("#recipe").on("click", function() {
                 console.log('recipe WAS CLICKED');
-                window.location.href="/recipe";
+                window.location.href="/recipe/new";
             })
 
             $("#pantry").on("click", function() {
@@ -47,23 +48,18 @@
                 window.location.href="/users";
             })
 
-            // $("#login").on("click", function() {
-            //     console.log('login WAS CLICKED');
-            //     $.post("/login" method="POST")
-            //     window.location.href="/login" method="POST";
-            // })
-            
-            // $("#register").on("click", function() {
-            //     console.log('login WAS CLICKED');
-            //     window.location.href="/register" method="POST";
-            // })
+            $("#login").on("click", function() {
+                console.log('login WAS CLICKED');
+                window.location.href="";
+            })
 
 
 
 
         </script>
+
     <p><link rel="stylesheet" type="text/css" href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
-        © 2020 &nbsp | &nbsp Made with <i class="icon ion-heart"></i> &nbsp <a href="https://github.com/lizkane222">Liz Kane</a>,&nbsp <a href="https://github.com/jrandersen">Jason Andersen</an</p>
+        © 2020 &nbsp | &nbsp Made with <i class="icon ion-heart"></i> &nbsp <a href="https://github.com/lizkane222">Liz Kane</a>,&nbsp <a href="https://github.com/jrandersen">Jason Andersen</a></p>
           
                
       

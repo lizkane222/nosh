@@ -4,7 +4,7 @@ const db =  require('../models');
 const bcrypt = require('bcrypt');
 const { findByIdAndUpdate } = require('../models/User');
 
-const loginReqired = function(req, res, next) {
+const loginRequired = function(req, res, next) {
   if(!req.session.currentUser) {
       res.redirect('/login')
   }
@@ -21,7 +21,7 @@ const loginReqired = function(req, res, next) {
 // base path /users
 /* ===== USER  ROUTES ===== */
 // GET (users) index
-// router.get("/", loginReqired, (req, res) => {
+// router.get("/", loginRequired, (req, res) => {
 //   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
 //     if(error) {
 //       console.log(error);
@@ -31,7 +31,7 @@ const loginReqired = function(req, res, next) {
 //     res.render(`user/index`, context);
 //   })
 // });
-router.get("/", loginReqired, (req, res) => {
+router.get("/", loginRequired, (req, res) => {
   db.User.findById(req.session.currentUser.id)
   .populate("nosh")
   .exec(function (error, foundUser) {
@@ -47,7 +47,7 @@ router.get("/", loginReqired, (req, res) => {
 });
 
 // GET (edit) USER INFO FOR UPDATE
-router.get("/:id/edit", loginReqired, async (req, res) => {
+router.get("/:id/edit", loginRequired, async (req, res) => {
   // res.render('user/edit');
   try {
   const foundUser = await db.User.findById(req.params.id);
@@ -60,7 +60,7 @@ router.get("/:id/edit", loginReqired, async (req, res) => {
 });
 
 // PUT (update) USER INFO FOR UPDATE (USED 'UPDATEUSER' IF NOT IT CONFLICTS WITH TEH PANTRY ITEM ROUTE)
-router.put("/:id/updateUser", loginReqired, async (req, res) => {
+router.put("/:id/updateUser", loginRequired, async (req, res) => {
   try {
     // get the user from db
     const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, req.body, { new: true })
@@ -90,11 +90,11 @@ router.delete("/:id", (req, res) => {
 
 /* === NOSH ONLY ROUTES === */
 // PUT - NOSH IT ROUTE
-router.put("/:id/nosh", loginReqired, async (req, res) => {
+router.put("/:id/nosh", loginRequired, async (req, res) => {
   try {
     // get the user from db
     const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$addToSet: { nosh: req.params.id }}, { new: true })
-    // set current user.nosh equal to what hey just pressesd
+    // set current user.nosh equal to what hey just pressed
     req.session.currentUser.nosh = foundUser.nosh
     res.redirect(`/recipe/${req.params.id}`)
   } catch (error) {
@@ -104,7 +104,7 @@ router.put("/:id/nosh", loginReqired, async (req, res) => {
 });
 
 /// PUT NOSH OUT ROUTE
-router.put("/:id/noshout", loginReqired, async (req, res) => {
+router.put("/:id/noshout", loginRequired, async (req, res) => {
   try {
     // get the user from db
     const foundUser = await db.User.findByIdAndUpdate(req.session.currentUser.id, {$pull: { nosh: req.params.id }}, { new: true })
@@ -124,7 +124,7 @@ router.put("/:id/noshout", loginReqired, async (req, res) => {
 
 /* === PANTRY ROUTES === */
 // GET (show) USER PANTRY FROM NAVBAR
-router.get("/pantry", loginReqired, (req, res) => {
+router.get("/pantry", loginRequired, (req, res) => {
   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
     if(error) {
       console.log(error);
@@ -137,7 +137,7 @@ router.get("/pantry", loginReqired, (req, res) => {
 
 // GET (show) USER PANTRY AND FORM TO INPUT NEW PANTRY ITEMS
 // TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
-router.get("/:id", loginReqired, (req, res) => {
+router.get("/:id", loginRequired, (req, res) => {
     db.User.findById(req.params.id, (err, foundUser) => {
       if (err) {
         console.log(err);
@@ -149,7 +149,7 @@ router.get("/:id", loginReqired, (req, res) => {
 });
 
 // PUT  (update) PANTRY FOOD ITEM
-router.put("/:id", loginReqired, async (req, res) => {
+router.put("/:id", loginRequired, async (req, res) => {
   try {
     const updatedItem = {
       $push: {pantry: {
@@ -167,7 +167,7 @@ router.put("/:id", loginReqired, async (req, res) => {
 }); 
 
 // GET (edit) FOODITEM UPDATE FORM PANTRY
-router.get("/:id/editItem", loginReqired, (req, res) => {
+router.get("/:id/editItem", loginRequired, (req, res) => {
   // res.send("fooditem ping back!)"
   db.User.findById(req.session.currentUser.id,  (err, foundUser) => {
     if (err) {
@@ -182,7 +182,7 @@ router.get("/:id/editItem", loginReqired, (req, res) => {
 });  
 
 // PUT (updateItem) FOODITEM FROM UPDATEITEM FORM TO DB AND BACK TO USER
-router.put("/:id/updateItem", loginReqired, async (req, res) => {
+router.put("/:id/updateItem", loginRequired, async (req, res) => {
     try {
       // get the user from db
       const foundUser = await db.User.findById(req.session.currentUser.id)
@@ -208,7 +208,7 @@ router.put("/:id/updateItem", loginReqired, async (req, res) => {
 });
 
 // DELETE (PANTRY ITEM)
-router.delete("/:id/updateItem", loginReqired, async (req, res) => {
+router.delete("/:id/updateItem", loginRequired, async (req, res) => {
   try {
     // get the user from db
     const foundUser = await db.User.findById(req.session.currentUser.id)
