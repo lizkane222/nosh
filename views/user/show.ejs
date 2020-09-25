@@ -9,25 +9,30 @@
     </div>
     <section>
         <hr>
-        <section class="new__foodItem">
-            <form action="/users/<%= user._id %>?_method=PUT" method="POST">
-              <input type="text" name="foodItem" placeholder="New Food Item" />
-              <input type="text" name="quantity" placeholder="Quantity, - (number)" />
-              <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
-              <input class="btn btn-primary btn-sm" id="button" type="submit" value="New Pantry Item"/>
-            </form>
-        </section>
+
+            <section class="new__foodItem">
+                <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+                <input class="pantryi" type="text" name="foodItem" placeholder="New Food Item" />
+                <input class="pantryi" type="text" name="quantity" placeholder="Quantity, - (number)" />
+                <input class="pantryi" type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
+                <input class="btn btn-primary btn-sm" id="button" type="submit" value="New Pantry Item"/>
+                </form>
+            </section>
+       
         <hr>
-        <div class="list-group">
-            <% user.pantry.forEach(pantry => { %>
-                <a href="/users/<%= pantry._id %>/editItem" class="list-group-item list-group-item-action">
-                    <%= pantry.foodItem %>: &nbsp&nbsp <%= pantry.quantity %> <%= pantry.unit %>
-                </a>
-            <% }) %>
-            <% if(user.pantry.length === 0) { %>
-                <p>There are no pantry items yet</p>
-            <% } %>
-        </div>
+
+        <div class="constrain-food">
+            <div class="list-group">
+                <% user.pantry.forEach(pantry => { %>
+                    <a href="/users/<%= pantry._id %>/editItem" class="list-group-item list-group-item-action">
+                        <%= pantry.foodItem %>: &nbsp&nbsp <%= pantry.quantity %> <%= pantry.unit %>
+                    </a>
+                <% }) %>
+                <% if(user.pantry.length === 0) { %>
+                    <p>There are no pantry items yet</p>
+                <% } %>
+            </div>
+        </div>    
     </section>
     <footer>
         <%- include('../partials/footer') %>
