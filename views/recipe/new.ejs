@@ -4,74 +4,74 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-    <h1>Create nosh Recipe</h1>
-    <hr>
-    <section>
-        <form action="/recipe/new" method="POST">
-            <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
-            <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
-            <p>Cook Time: <input type="text" name="cookTime.numMinutes" placeholder="0 *"/> minutes
-            </p>
-            <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
-            <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
-            <p>Recipe Instructions: 
-                <textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions"></textarea></p>
+    <div class="top"><h1 class="badge-pill login pull-right create">create nosh recipe</h1></div>
+<div class="main-create-index">
+    <div class="left-form ">
+        <section >
+            <form action="/recipe/new" method="POST">
+                <h4 class="build">Recipe: <br/><input type="text" name="recipeName" placeholder="Recipe Name *"/></h4>
+                <h4 class="build">Servings: <br/><input type="text" name="servesPeople" placeholder="Serving Size *"/></h4>
+                <h4 class="build">Cook Time: (minutes) <br/><input type="text" name="cookTime.cookTime" placeholder="0 *"/> </h4>
+                <h4 class="build">Photo: <br/><input type="url" name="imageSource" placeholder="Image Link"/></h4>
+                <h4 class="build">Skill Level:<br/><input type="text" name="skillLevel" placeholder="Skill Level"/></h4>
+                <h4 class="build">Recipe Instructions:</h4> <br/>
+                    <h4 class="build"><textarea type="text" name="narrativeDescription" placeholder="Recipe Instructions" ></textarea></h4>
 
-            <br><br>
-            <input type="submit" value="Frame Recipe"/>
-        </form>
-    </section><br/><br/><br/>
+                <input type="submit" value="Frame Recipe" id="frame-rec" class="btn-small button badge-pill build"/>
+            </form>
+        </section><br/>
 
-    <div class="main-index">
+        
         <% if(recipe) { %>
-            <%= recipe.recipeName %>
-            <section class="food_item">
+            <h4 class="build"><%= recipe.recipeName %></h4>
+            <section class="food_item build">
                 <form action="/recipe/<%= recipe._id %>/foodItem?_method=PUT" method="POST">
-                    <input type="text" name="foodItem" placeholder="New Food Item" />
-                    <input type="text" name="quantity" placeholder="Quantity, - (number)" />
-                    <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)" />
-                    <input type="text" name="calories" placeholder="Calories" />
-                
-                        
-                    <input id="button" type="submit" value="New Food Item"/>
+                    <input type="text" name="foodItem" placeholder="New Food Item"/>
+                    <input type="text" name="quantity" placeholder="Quantity, - (number)"/>
+                    <input type="text" name="unit" placeholder="Unit - (lbs, cups, etc)"/>
+                    <input type="text" name="calories" placeholder="Calories"/>
+                    
+                            
+                    <input id="button" type="submit" value="New Food Item" class="btn-small button badge-pill build"/>
                     
                     <br/><br/>
-                    <button class="btn-small button badge badge-pill"><a href="/recipe/<%= recipe._id %>">view new recipe</a></button>
+                    <button class="btn-small button badge-pill build"><a href="/recipe/<%= recipe._id %>">view new recipe</a></button>
+    </div>
+
+                        <br/><br/>
+        <div class="middle-form">
+            <div>
+                <div id="rec-frame" class="single-content ">
+                    <h3><%= recipe.recipeName %></h3><br/>
+                    <h5>Servings: <%= recipe.servesPeople %></h5>
+                    <h5><%= recipe.cookTime %> minutes</h5> 
+                    <h5>Skill Level: <%= recipe.skillLevel %></h5>
+                    <h5>Instructions:</h5><p><%= recipe.narrativeDescription %></p>
+                </div>
 
 
-                    <br/><br/>
-                    <hr>
-                    <div>
-                        <div id="rec-frame" class="single-content">
-                            <h3><%= recipe.recipeName %></h3><br/>
-                            <h5>Servings: <%= recipe.servesPeople %></h5>
-                            <h5><%= recipe.numMinutes %> minutes</h5> 
-                            <h5>Skill Level: <%= recipe.skillLevel %></h5>
-                            <h5>Instructions:</h5><p><%= recipe.narrativeDescription %></p>
-                        </div>
 
-                        <div id="rec-pic" class="single-content"><img class="new-pic" src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>">
-                        </div>
-
-                        <div id="rec-foods" class="single-content">
-                            <div class="list-group">
-                                <% recipe.foodItems.forEach(item => { %>
-                                    <a href="#" class="list-group-item list-group-item-action">
-                                        <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
-                                    </a>
-                                    <% }) %>
-                                    <% if(recipe.foodItems.length === 0) { %>
-                                        <p>There are no food items yet</p>
-                                        <% } %>
-                            </div>
-                        </div>
+                <div id="rec-foods" class="single-content">
+                    <div class="list-group">
+                        <% recipe.foodItems.forEach(item => { %>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
+                            </a>
+                            <% }) %>
+                            <% if(recipe.foodItems.length === 0) { %>
+                                <p>There are no food items yet</p>
+                                <% } %>
                     </div>
-                </form>	
-            </section>
-        <% } %>	
-    </div> 
-
-    <hr>
+                </div>
+            </div>
+        </div>
+            <div id="rec-pic" class="single-content"><img class="new-pic" src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>">
+            </div>
+                    </form>	
+                </section>
+            <% } %>	
+        </div> 
+    </div>
 </body>
 
 

@@ -575,6 +575,7 @@ CODE PEN GRAB FOR CARD EDIT
                 background-size: 100% 100%;
                 filter: grayscale(100%);
             }
+/* <img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class=""> */
 
             /* .social {
                 position: absolute;

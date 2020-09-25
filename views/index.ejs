@@ -4,52 +4,46 @@
     <%- include('partials/header') %>
 </head>
 <body>
-
-    <!-- for now some login and logout buttons here -->
     <% if(user) { %>
-        <p>Welcome, <%= user.username %></p>
+      <div class="top">
+        <p class="greet-user pull-right">welcome, <%= user.username %></p>
+      </div>
+      <div class="top">  
         <form action="/logout?_method=DELETE" method="POST">
-            <input class="btn btn-primary btn-sm"type="submit" value="Logout">
+            <input id="logout-btn" class="btn-2 badge-pill login pull-right" type="submit" value="Logout">
         </form>
-    <% } else { %> 
-        <a class="btn btn-primary btn-sm" href="/login">Login</a>
-        <a class="btn btn-primary btn-sm" href="/register">Register</a>
-    <% } %>
-    <br/>
-    <hr>
-    <div id="main-index">
-      <div class="container">
-        <div class="row">
+      
+        <% } else { %> 
+            <a id="login-btn" class="btn-2 badge-pill login pull-right" href="/login">Login</a>
+            <a id="reg-btn pull-right" class="btn-2 badge-pill login" href="/register">Register</a>
+        <% } %>
+      </div>
+
+    <!-- <hr> -->
+
+
+    <div id="main-index" class="centered">
+      <div class="container cards">
+        <!-- <div class="row"> -->
           <% recipes.forEach(recipe => { %>
           <div class="col-md-4 col-sm-6">
-              <div class="single-content">
-                <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
+              <div class="single-content card pic">
+                <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="cardImg"></a>
                 <div class="text-content">
                   <h3 class=""><%= recipe.recipeName %></h3>
                   <p class=""><%= recipe.servesPeople %> servings</p>
-                  <p class=""><%= recipe.numMinutes %> min</p>
+                  <p class=""><%= recipe.cookTime %> min</p>
                   <p class=""><%= recipe.skillLevel %> </p>
               </div>
             </div>
           </div>
           <% }); %>
-        </div>
+        <!-- </div> -->
       </div>
     </div>
-<<<<<<< HEAD
 
 
 
-
-=======
-    <!-- <a href="#" id="save" class="btn btn-primary button badge badge-pill">save</a> -->
-    <!-- <button class="saver"></button> -->
-    <!-- <div>
-        <% recipes.forEach(recipe => { %>
-            <p><a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a></p>
-        <% }); %>
-    </div> -->
->>>>>>> submaster
     <!-- MODAL WINDOW IS HIDDEN ALWAYS AND USES BUTTION PUSH IN NAV TO MAKE VISIBLE THROUGH CSS, SO TEH BUTTON IN NAV JUST TOGGLES IT ON AND OFF -->
     <!-- for now some login and logout buttons here -->
   
