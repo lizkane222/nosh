@@ -10,7 +10,7 @@
         <form action="/recipe/new" method="POST">
             <p>Recipe: <input type="text" name="recipeName" placeholder="Recipe Name *"/></p>
             <p>Servings: <input type="text" name="servesPeople" placeholder="Serving Size *"/></p>
-            <p>Cook Time: <input type="text" name="cookTime.numMinutes" placeholder="0 *"/> minutes
+            <p>Cook Time: <input type="text" name="cookTime.cookTime" placeholder="0 *"/> minutes
             </p>
             <p>Photo: <input type="url" name="imageSource" placeholder="Image Link"/></p>
             <p>Skill Level:<input type="text" name="skillLevel" placeholder="Skill Level"/></p>
@@ -45,7 +45,7 @@
                         <div id="rec-frame" class="single-content">
                             <h3><%= recipe.recipeName %></h3><br/>
                             <h5>Servings: <%= recipe.servesPeople %></h5>
-                            <h5><%= recipe.numMinutes %> minutes</h5> 
+                            <h5><%= recipe.cookTime %> minutes</h5> 
                             <h5>Skill Level: <%= recipe.skillLevel %></h5>
                             <h5>Instructions:</h5><p><%= recipe.narrativeDescription %></p>
                         </div>

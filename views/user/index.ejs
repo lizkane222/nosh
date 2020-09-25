@@ -6,7 +6,7 @@
 <body>
     <h3>Welcome back,&nbsp<%= user.username %> </h3>
     <form action="/users/<%= user._id %>/edit">
-        <input class="btn btn-primary btn-sm" type="submit" value="Edit User"> &nbsp  &nbsp email: <%= user.email %>
+        <input class="btn btn-sm" type="submit" value="Edit User"> &nbsp  &nbsp email: <%= user.email %><i class="fas fa-address-card"></i>
     </form>
     <hr>
 
@@ -18,11 +18,11 @@
             <% user.nosh.forEach(recipe => { %>
             <div class="col-md-4 col-sm-6">
                 <div class="single-content">
-                  <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="pic"></a>
+                  <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="cardImg"></a>
                   <div class="text-content">
                     <h3 class=""><%= recipe.recipeName %></h3>
                     <p class=""><%= recipe.servesPeople %> servings</p>
-                    <p class=""><%= recipe.numMinutes %> min</p>
+                    <p class=""><%= recipe.cookTime %> min</p>
                     <p class=""><%= recipe.skillLevel %> </p>
                 </div>
               </div>

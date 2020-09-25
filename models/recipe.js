@@ -12,7 +12,7 @@ const recipeSchema = new mongoose.Schema({
     servesPeople: {type: Number, required: false},
             // must provide numHours, hours is already filled in NO Option to choose,
             // must provide numMinutes, minutes is already filled in NO Option to choose,
-    cookTime: {type: Number, required: false},
+    cookTime: {type: String, required: false},
         // {numHours: {type: Number, required: false}},
         // numMinutes: 
 
