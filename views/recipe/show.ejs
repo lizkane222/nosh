@@ -10,16 +10,16 @@
     <!-- Nosh button for adding to your user account, all displayed in user.index -->
     <% if(!user.nosh.includes(recipe.id)) { %>
         <form action="/users/<%= recipe._id %>/nosh?_method=PUT" method="POST">
-            <input class="btn btn-primary btn-sm" type="submit" value="Save" />
+            <input class="btn-small button badge-pill" type="submit" value="Save" />
         </form>
     <% } else { %> 
         <form action="/users/<%= recipe._id %>/noshout?_method=PUT" method="POST">
-            <input class="btn btn-danger btn-sm" type="submit" value="Un-save!" />
+            <input class="btn-small button  badge-pill" type="submit" value="Un-save!" />
         </form>
     <% } %>
 
     <hr>
-    <button class="btn-small button badge badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
+    <button class="btn-small button badge-pill"><a href="/recipe/<%= recipe._id %>/edit">Edit <%= recipe.recipeName %></a>&nbsp&nbsp&nbsp</button>
     <hr>
 
     <div id="main-index">
