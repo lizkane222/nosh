@@ -10,6 +10,9 @@ Creator: Liz Kane <br>
 
 # =====  Nosh =====
 ## Basic Concept
+
+I want to select a recipe from  a feed and see what additional ingredients , besides what is in my house,  I need to purchase to cook it.
+
 ![Imgur](https://i.imgur.com/Q96X8IWl.jpg)
 
 
