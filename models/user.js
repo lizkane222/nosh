@@ -5,7 +5,7 @@ const userSchema = new mongoose.Schema({
     // TODO  REFACTOR for now had to make these not required and not unique to get 
     email: { type: String, },
     password: { type: String },
-    // this is a person chosen recipes (ref recipe ._id) not required, it is  simlar to author/articles in example
+    // this is a person chosen recipes (ref recipe ._id) not required, it is  similar to author/articles in example
     nosh: [{ 
         type: mongoose.Schema.Types.ObjectId,
         ref: "Recipe" },
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
         quantity: { type: Number },
         unit: { type: String },
     }],
-    // placeholder for a persons own recipies this will be same as nosh above so that when a user creates a recipies we up data recipes here
+    // placeholder for a persons own recipies this will be same as nosh above so that when a user creates a recipes we up data recipes here
     // recipes: { type: String },
 
 }, { timestamps: true });
