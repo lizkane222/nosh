@@ -24,10 +24,7 @@ const recipeSchema = new mongoose.Schema({
 
     totalCalories: {type: String, required: false},
     
-    // cookTime: [
-    //     {numHours: {type: Number, required: false}},
-    //     {numMinutes: {type: Number, required: true}},
-    // ],
+
 
     foodItems: [
         {
