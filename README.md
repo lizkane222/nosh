@@ -17,31 +17,32 @@ Creator: Liz Kane <br>
 <br>
 <hr>
 
-## User Story (ser flow)
-
-// As a user, I want to be able to update/see my information.
+## User Story (for mvp)
 
 // As a user, I want to be able to login in.
 
 // As a user, I want to be able to delete my account.
 
-// As a user, I want to be able to create a recipe on nosh.
+// As a user, I want to be able to update my information.
 
-// As a user, I want to be able to create/update food items in my pantry.
+// As a user, I want to be able to create/update a Recipe on nosh.
 
-// As a user, I want to be able to save other people's recipes to my user account.
+// As a user, I want to be able to create/update food items in my Pantry.
 
-// As a user, I want to be able to update my recipe
+// As a user, I want to be able to save other people's Recipes to my user account.
 
 
 
-// [icebox] - As a user, I want to be able to see the sum of all food items in my pantry.
+## User Story (for v0.2)
+// [icebox] - As a user, I want to be able to see a list of food items to buy from Recipies saved to my user.
+
+// [icebox] - As a user, I want to be able to see a list of food item to buy from Recipies saved to my user - my Pantry food items. 
 
 // [icebox] - As a user, I want to be able to see the sum of all calories, serving, time in my nosh.
 
-// [icebox] - As a user, I want to be able to sort my pantry by category.
-/
-/ [icebox] - As a user, I want to be able to search in my pantry.
+// [icebox] - As a user, I want to be able to sort my pantry/feed by category.
+
+// [icebox] - As a user, I want to be able to search Recipes in feed
 
 
 <br>
