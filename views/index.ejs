@@ -5,8 +5,8 @@
 </head>
 <body>
     <% if(user) { %>
-      <div class="">
-        <p class="greet-user ">welcome, <%= user.username %></p>
+      <div class="top-welcome">
+        <p class="greet-user welcome">welcome, <%= user.username %></p>
       
       <div class="top feed-top">  
         <form action="/logout?_method=DELETE" method="POST">
@@ -28,7 +28,7 @@
               <div class="single-content card pic">
                 <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="cardImg"></a>
                 <div class="text-content">
-                  <h3 class=""><%= recipe.recipeName %></h3>
+                  <p class=""><%= recipe.recipeName %></hp>
                   <p class=""><%= recipe.servesPeople %> servings</p>
                   <p class=""><%= recipe.cookTime %> min</p>
                   <p class=""><%= recipe.skillLevel %> </p>

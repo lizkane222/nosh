@@ -25,13 +25,17 @@
 
     <div id="main-index m-show">
         <div class="container c-show">
-            <div class="single-content s-c-show">
-                <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="cardImg i-show"></a>
-                <div class="text-content t-show">
-                    <h3 class=""><%= recipe.recipeName %></h3>
-                    <p class=""><%= recipe.servesPeople %> servings</p>
-                    <p class=""><%= recipe.cookTime %> min</p>
-                    <p class=""><%= recipe.skillLevel %> </p>
+            <div class="s-c-show">
+                <div class="t-show">
+                    <h3 class="build"><%= recipe.recipeName %></h3>
+                    <p class="build"><%= recipe.servesPeople %> servings</p>
+                    <p class="build"><%= recipe.cookTime %> min</p>
+                    <p class="build"><%= recipe.skillLevel %> </p>
+                    <p id="instr-new"><span>Instructions:</span></h5><p><%= recipe.narrativeDescription %></p>
+                </div>
+                <div class="t-show">
+                    <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="i-show build"></a>
+                </div>
             </div>
           </div>
         </div>
