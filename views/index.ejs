@@ -5,20 +5,20 @@
 </head>
 <body>
     <% if(user) { %>
-      <div class="top">
-        <p class="greet-user pull-right">welcome, <%= user.username %></p>
-      </div>
-      <div class="top">  
+      <div class="">
+        <p class="greet-user ">welcome, <%= user.username %></p>
+      
+      <div class="top feed-top">  
         <form action="/logout?_method=DELETE" method="POST">
             <input id="logout-btn" class="btn-2 badge-pill login pull-right" type="submit" value="Logout">
         </form>
       
         <% } else { %> 
             <a id="login-btn" class="btn-2 badge-pill login pull-right" href="/login">Login</a>
-            <a id="reg-btn pull-right" class="btn-2 badge-pill login" href="/register">Register</a>
+            <!-- <a id="reg-btn pull-right" class="btn-2 badge-pill login" href="/register">Register</a> -->
         <% } %>
       </div>
-
+</div>
     <!-- <hr> -->
 
 

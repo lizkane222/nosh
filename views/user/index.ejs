@@ -4,11 +4,11 @@
     <%- include('../partials/header') %>
 </head>
 <body>
-  <div class="top">
-    <h3 class="greet-user pull-right w-back">welcome back,&nbsp<%= user.username %> <i class="fas fa-address-card"></i></h3>
-  
+    <h3 class="greet-user ">welcome back,&nbsp<%= user.username %> <i class="fas fa-address-card"></i></h3>
+    <div class="top">
+
     <form action="/users/<%= user._id %>/edit">
-        <input class="btn-2 badge-pill login pull-right" type="submit" value="Edit User"> &nbsp  &nbsp email: <%= user.email %>
+        <input class="btn-2 badge-pill login pull-right" type="submit" value="Edit User">
     </form>
   </div>
     <hr>
