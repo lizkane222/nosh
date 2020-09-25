@@ -14,7 +14,8 @@ const controllers = require('./controllers');
 const app = express();
 
 /* Configuration */
-const PORT = process.env.PORT || 4000;
+require("dotenv").config(); // use .env file
+const PORT = process.env.PORT;
 
 // set view engine to ejs to leave off alldot ejs on res dot statements
 app.set('view engine', 'ejs');
@@ -27,7 +28,7 @@ app.use(methodOverride('_method'));
 app.use(session({
     resave: false,
     saveUninitialized: false,
-    secret: "Nosh",
+    secret: process.env.SECRET,
     store: new MongoStore({
       url: "mongodb://localhost:27017/nosh_sessions",
     }),

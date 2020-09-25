@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 /// Updating blog to noshdb
 require("dotenv").config(); // use .env file
-const connectionString = process.env.MONGODB_URI;
+const connectionString = process.env.MONGODB_URI || "mongodb://localhost:27017/nosh-it-db";
 
 
 // const connectionString = 'mongodb://localhost:27017/nosh-it-db';
