@@ -8,11 +8,8 @@ Creator: Liz Kane <br>
 
 ---
 
-# Nosh
-
-
-// SECTION 02 The Pitch
-## Basic concept
+# =====  Nosh =====
+## Basic Concept
 ![Imgur](https://i.imgur.com/Q96X8IWl.jpg)
 
 
@@ -20,8 +17,7 @@ Creator: Liz Kane <br>
 <br>
 <hr>
 
-## User Story
-// SECTION 01 - Nosh User flow
+## User Story (ser flow)
 
 // As a user, I want to be able to update/see my information.
 
@@ -39,10 +35,13 @@ Creator: Liz Kane <br>
 
 
 
-// [icebox] - As a user, I want to be able to see the sum of all food items in my pantry
-// [icebox] - As a user, I want to be able to see the sum of all calories, serving, time in my nosh
-// [icebox] - As a user, I want to be able to sort my pantry by category
-// [icebox] - As a user, I want to be able to search in my pantry.
+// [icebox] - As a user, I want to be able to see the sum of all food items in my pantry.
+
+// [icebox] - As a user, I want to be able to see the sum of all calories, serving, time in my nosh.
+
+// [icebox] - As a user, I want to be able to sort my pantry by category.
+/
+/ [icebox] - As a user, I want to be able to search in my pantry.
 
 
 <br>
@@ -56,31 +55,31 @@ Creator: Liz Kane <br>
 <br>
 <hr>
 
-## SAVE TO USER AND SEE WAHT TO (NOSH)!
+## SAVE TO USER AND SEE WHAT TO (NOSH)
 ![Imgur](https://i.imgur.com/ToThCjEl.jpg)
 
 <br>
 <hr>
 
-## USER INPUT RECIPE!
+## USER INPUT RECIPE
 ![Imgur](https://i.imgur.com/e6RzcK3l.jpg)
 
 <br>
 <hr>
 
-## ADD PANTRY ITEMS TO YOUR USER (PANTRY)!
+## ADD PANTRY ITEMS TO YOUR USER (PANTRY)
 ![Imgur](https://i.imgur.com/ZL7icRWl.jpg)
 
 <br>
 <hr>
 
-## REGISTER & LOGIIN!
+## REGISTER & LOGIIN
 ![Imgur](https://i.imgur.com/hT7vSGDl.jpg)
 
 <br>
 <hr>
 
-## NOSH ERD!
+## NOSH ERD
 ![Imgur](https://i.imgur.com/NjLVJaOl.jpg)
 
 <br>
