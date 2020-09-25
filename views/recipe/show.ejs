@@ -32,6 +32,9 @@
                     <p class="build"><%= recipe.cookTime %> min</p>
                     <p class="build"><%= recipe.skillLevel %> </p>
                     <p id="instr-new"><span>Instructions:</span></h5><p><%= recipe.narrativeDescription %></p>
+                    <%recipe.foodItems.forEach(item => { %>
+                        <li class="build"><%= item.foodName %> </li>
+                    <%});%>
                 </div>
                 <div class="t-show">
                     <a href="/recipe/<%= recipe._id %>"><img src="<%= recipe.imageSource %>" alt="<%= recipe.recipeName %>" class="i-show build"></a>
