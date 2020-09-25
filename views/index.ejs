@@ -4,7 +4,7 @@
     <%- include('partials/header') %>
 </head>
 <body>
-    <h1>noshome</h1>
+
     <!-- for now some login and logout buttons here -->
     <% if(user) { %>
         <p>Welcome, <%= user.username %></p>
@@ -44,14 +44,6 @@
 
 
 
-
-
-        <div>
-            <% recipes.forEach(recipe => { %>
-                <p><a href="/recipe/<%= recipe._id %>"><%= recipe.recipeName %></a></p>
-            <% }); %>
-        </div>
-    <br/><br/>
 
     <!-- MODAL WINDOW IS HIDDEN ALWAYS AND USES BUTTION PUSH IN NAV TO MAKE VISIBLE THROUGH CSS, SO TEH BUTTON IN NAV JUST TOGGLES IT ON AND OFF -->
     <!-- button here for now -->

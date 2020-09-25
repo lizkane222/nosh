@@ -35,7 +35,10 @@
                         
                     <input id="button" type="submit" value="New Food Item"/>
                     
-                    
+                    <br/><br/>
+                    <button class="btn-small button badge badge-pill"><a href="/recipe/<%= recipe._id %>">view new recipe</a></button>
+
+
                     <br/><br/>
                     <hr>
                     <div>
@@ -53,7 +56,7 @@
                         <div id="rec-foods" class="single-content">
                             <div class="list-group">
                                 <% recipe.foodItems.forEach(item => { %>
-                                    <a href="/recipe/<%= item._id %>/" class="list-group-item list-group-item-action">
+                                    <a href="#" class="list-group-item list-group-item-action">
                                         <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %> &nbsp&nbsp <%= item.calories %>
                                     </a>
                                     <% }) %>
