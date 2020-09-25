@@ -8,6 +8,16 @@
   <section>
     <h2>Edit Your Recipe <%= recipe.recipeName %> </h2>
 
+    <hr>
+    <form action="/recipe/<%= recipe._id %>?_method=DELETE" method="POST">
+      <input class="btn btn-primary btn-sm" id="button" type="submit" value="delete" />
+  </form>
+  <hr>
+
+
+
+
+
     <form action="/recipe/<%= recipe._id %>?_method=PUT" method="POST">
     
     <p>Recipe: <input type="text" name="recipeName" value="<%= recipe.recipeName %>"/></p>
@@ -23,15 +33,23 @@
     <p>Recipe Instructions: <textarea type="text" name="narrativeDescription" value="<%= recipe.narrativeDescription %>"><%= recipe.narrativeDescription %></textarea></p>
 
     
+    <br/><br/><br/>
 
 
-      <input type="submit" value="Update Recipe" />
+
+
+
+
+
+      <input type="submit" value="Update Recipe" /><br/><br/><br/><br/><br/><br/>
       </form>
 
-      
 
 
- 
+
+
+
+
 
     </section> 
 

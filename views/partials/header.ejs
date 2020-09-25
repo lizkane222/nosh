@@ -69,51 +69,18 @@
                 border-radius: 50px;
             }
 
-            #home {
+            #feed {
                 z-index: 6;
                 margin-left: 30px;
                 position: absolute;
             }
-            .btn-2 {
-            letter-spacing: 0;
-                }
-
-                    .btn-2:hover,
-                    .btn-2:active {
-                    letter-spacing: 5px;
-                    }
-
-                    .btn-2:after,
-                    .btn-2:before {
-                    backface-visibility: hidden;
-                    border: 1px solid rgba(#fff, 0);
-                    bottom: 0px;
-                    content: " ";
-                    display: block;
-                    margin: 0 auto;
-                    position: relative;
-                    transition: all 280ms ease-in-out;
-                    width: 0;
-                    }
-
-                    .btn-2:hover:after,
-                    .btn-2:hover:before {
-                    backface-visibility: hidden;
-                    border-color: #fff;
-                    transition: width 350ms ease-in-out;
-                    width: 70%;
-                    }
-
-                    .btn-2:hover:before {
-                    bottom: auto;
-                    top: 0;
-                    width: 70%;
-                    }
+            
                 
             #recipe {
                 z-index: 5;
                 position: relative;
                 margin-left: 150px;
+                padding-left: 80px;
             }
             #pantry {
                 z-index: 4;
@@ -135,14 +102,59 @@
             }
 
             #login {
-                
+
             }
 
             .register {
                 z-index: 2;
             }
+            .btn-2 {
+            letter-spacing: 0;
+                }
 
-            /* buttons should have class="button badge badge-pill" */
+            .btn-2:hover,
+            .btn-2:active {
+            letter-spacing: 5px;
+            }
+
+            .btn-2:after,
+            .btn-2:before {
+            backface-visibility: hidden;
+            border: 1px solid rgba(#fff, 0);
+            bottom: 0px;
+            content: " ";
+            display: block;
+            margin: 0 auto;
+            position: relative;
+            transition: all 280ms ease-in-out;
+            width: 0;
+            }
+
+            .btn-2:hover:after,
+            .btn-2:hover:before {
+            backface-visibility: hidden;
+            border-color: #fff;
+            transition: width 350ms ease-in-out;
+            width: 70%;
+            }
+
+            .btn-2:hover:before {
+            bottom: auto;
+            top: 0;
+            width: 70%;
+            }
+            /* buttons should have class="btn-small button badge badge-pill" */
+            .btn-small {
+                background-color: var(--text-color-active);
+                color: var(--background-color-default);
+                text-align: center;
+                font-size: 10px;
+                padding: 5px 5px;
+                border: 2px solid var(--text-color-active);
+                border-radius: 50px;   
+            }
+
+            /* buttons should have class="btn-2 button badge badge-pill" */
             .button.badge.badge-pill {
                 background-color: var(--text-color-active);
                 color: var(--background-color-default);
@@ -254,32 +266,24 @@
 
 
 
-/* <a class="" href="/"></a> */
+
 
 
 
         </style>
     </head> 
-    <nav class="navbar navbar-light bg-light justify-content-between>
+    <nav class="navbar navbar-light bg-light justify-content-between">
         <a class="navbar-brand"></a>
         <form class="form-inline">
                 <h4>
-                    <button type="button" id="home" class=" btn btn-2 nav-item badge badge-pill ">home</button>
+                    <button type="button" id="feed" class=" btn btn-2 nav-item badge badge-pill ">feed</button>
                     <button type="button" id="recipe" class="recipe btn-2 btn nav-item badge badge-pill">recipe</button>
                     <button type="button" id="pantry" class="pantry btn-2 btn nav-item badge badge-pill">pantry</button>
                     <button type="button" id="nosh" class=" btn-2 btn nav-item badge badge-pill">nosh</button>
-                    
-                    <!-- these are different and do not have listener heer, they just do toggle class to show form -->
-                    <!-- <button type="button" class="login btn-2 btn nav-item badge badge-pill pull-right">
-                        <form action="/logout?_method=DELETE" method="POST">
-                            <input type="submit" value="Logout">
-                        </form>
-                    </button> -->
-                    
+                    <!-- <button type="button" id="login" class="login btn-2 btn nav-item badge badge-pill pull-right">login</button> -->
                     <!-- <buttontype="button" class="login btn-2 btn nav-item badge badge-pill pull-right text-decoration-none">
                         <a " href="/login">Login</a>
-                    </button> -->
-                    
+                    </button>  -->
                     <!-- <a class="recipe nav-item nav-link badge badge-pill" href="/recipe">recipe</a> &nbsp; -->
                     <!-- <a class="nav-item nav-link" href="/recipe/new">new recipe</a> &nbsp; -->
                     <!-- <a class="pantry nav-item nav-link badge badge-pill" href="/users/pantry">pantry</a> &nbsp; -->
