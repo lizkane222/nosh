@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const db = require('../models');
 
+
+
 const loginRequired = function(req, res, next) {
     if(!req.session.currentUser) {
         res.redirect('/login')

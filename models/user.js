@@ -16,8 +16,8 @@ const userSchema = new mongoose.Schema({
         quantity: { type: Number },
         unit: { type: String },
     }],
-    // placeholder for a persons own recipies this will be same as nosh above so that when a user creates a recipes we up data recipes here
-    // recipes: { type: String },
+    // placeholder for a persons own recipes this will be same as nosh above so that when a user creates a recipes we up data recipes here
+    // recipes: { type: String }, 
 
 }, { timestamps: true });
 

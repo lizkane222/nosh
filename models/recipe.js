@@ -20,7 +20,7 @@ const recipeSchema = new mongoose.Schema({
     skillLevel: {type: String, required: false},
 
     // totalCalories is a function that sums foodItem.calories
-    // DON'T PUT totalCALORIES IN FORM
+    // DON'T PUT totalCALORIES IN FORM, maybe add just the numbers...
 
     totalCalories: {type: String, required: false},
     
