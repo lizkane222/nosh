@@ -1,9 +1,8 @@
 /* ===== REQUIRE. EXPRESS, ROUTER & DB ===== */
 const router = require('express').Router();
 const db =  require('../models');
-// const bcrypt = require('bcrypt');
-// const { findByIdAndUpdate } = require('../models/User');
 
+// auth login required
 const loginRequired = function(req, res, next) {
   if(!req.session.currentUser) {
       res.redirect('/login')
@@ -20,17 +19,7 @@ const loginRequired = function(req, res, next) {
 
 // base path /users
 /* ===== USER  ROUTES ===== */
-// GET (users) index
-// router.get("/", loginRequired, (req, res) => {
-//   db.User.findById(req.session.currentUser.id, (error, foundUser) => {
-//     if(error) {
-//       console.log(error);
-//       return res.send(error)
-//     }
-//     const context = { user: foundUser }
-//     res.render(`user/index`, context);
-//   })
-// });
+
 router.get("/", loginRequired, (req, res) => {
   db.User.findById(req.session.currentUser.id)
   .populate("nosh")
@@ -88,6 +77,7 @@ router.delete("/:id", (req, res) => {
 
 
 
+
 /* === NOSH ONLY ROUTES === */
 // PUT - NOSH IT ROUTE
 router.put("/:id/nosh", loginRequired, async (req, res) => {
@@ -136,7 +126,6 @@ router.get("/pantry", loginRequired, (req, res) => {
 });
 
 // GET (show) USER PANTRY AND FORM TO INPUT NEW PANTRY ITEMS
-// TODO with recipes references (saved) similar todUsers showing articles tehy are associated with, user populte recipes
 router.get("/:id", loginRequired, (req, res) => {
     db.User.findById(req.params.id, (err, foundUser) => {
       if (err) {
@@ -229,9 +218,10 @@ router.delete("/:id/updateItem", loginRequired, async (req, res) => {
 
 
 
-/* === USER OWNER RECIPES === */
-/* TODO ===== do fourth ===== */
-/* ===== USER RECIPE ===== */
-// simialr to nosh above
+/* === USER ROUTES TODO === */
+/* TODO user owned recipies */
+// TODO calculate how many usres have saved a recipie, recipe.savers.length
+
+
 
 module.exports = router;

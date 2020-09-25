@@ -3,16 +3,16 @@ const router = require('express').Router();
 const db =  require('../models');
 const bcrypt = require('bcrypt');
 
-// base psth /
+// base path /
 
-
-// get register form
+/// =====  REGISTER
+// GET register form
 router.get('/register', (req, res) => {
     // res.send(" get a registration  ping back")
     res.render('auth/register')
 })
 
-// post register info
+// POST register info
 router.post("/register", async function(req, res) {
     // res.send(" get a login ping back")
     try {
@@ -36,13 +36,16 @@ router.post("/register", async function(req, res) {
     }
 });
 
-// get login form
+
+
+/// =====  LOGIN
+// GET login form
 router.get('/login', (req, res) => {
     // res.send(" get a login ping back")
     res.render('auth/login')
 })
 
-// post login info <== authentication
+// POST login info <== authentication
 router.post("/login", async function(req, res) {
     // res.send("post a login ping back")
     try {
@@ -75,11 +78,16 @@ router.post("/login", async function(req, res) {
     }
 })
 
-// delete, logout <= thsi destroys teh session
+
+
+/// =====  LOGOUT
+// DELETE, logout <= this destroys the session, not user
 router.delete("/logout", async function(req, res) {
     // res.send("get a logout ping back")
     await req.session.destroy();
     res.redirect("/");
 })
+
+
 
 module.exports = router;
