@@ -1,8 +1,8 @@
 /* ===== REQUIRE. EXPRESS, ROUTER & DB ===== */
 const router = require('express').Router();
 const db =  require('../models');
-const bcrypt = require('bcrypt');
-const { findByIdAndUpdate } = require('../models/User');
+// const bcrypt = require('bcrypt');
+// const { findByIdAndUpdate } = require('../models/User');
 
 const loginRequired = function(req, res, next) {
   if(!req.session.currentUser) {
