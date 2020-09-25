@@ -12,8 +12,9 @@ Creator: Liz Kane <br>
 
 
 // SECTION 02 The Pitch
-![Imgur](https://i.imgur.com/Q96X8IWm.jpg)
-/// Pitch
+## Basic concept
+![Imgur](https://i.imgur.com/Q96X8IWl.jpg)
+
 
 
 <br>
