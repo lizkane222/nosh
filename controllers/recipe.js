@@ -14,7 +14,7 @@ const loginRequired = function(req, res, next) {
 /* base path *//*    /recipe     */
 // for file path use /recipe/__.ejs
 
-// // index view of recipes    /recipe  //index.ejs (MAIN INDEX.EJS)
+// index view of recipes    /recipe  //index.ejs (MAIN INDEX.EJS)
 // router.get('/', (req,res) => {
 //     // res.send("ROUTE'S CONNECTED TO THE ALL RECIPES PAGE")
 //     db.Recipe.find({}, (error, foundRecipe) => {
