@@ -94,7 +94,7 @@ router.get("/:id/edit", (req, res) => {
       // get the recipe from db
       const foundRecipe = await db.Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true })
       const context = { recipe: foundRecipe, user: req.session.currentUser };
-      res.redirect('/')
+      res.render('recipe/show.ejs', context);
     } catch (error) {
     console.log(error);
     res.send( {message: "Something went horribly wrong [in your PUT UpdateRecipe route] please go back... in time"} );
