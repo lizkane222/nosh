@@ -53,7 +53,7 @@
                 <div id="rec-foods" class="single-content">
                     <div class="list-group">
                         <% recipe.foodItems.forEach(item => { %>
-                            <a href="#" class="list-group-item list-group-item-action">
+                            <a href="/recipe/<%= item._id %>/editItem" class="list-group-item list-group-item-action">
                                 <%= item.foodName %>: &nbsp&nbsp <%= item.quantity %> <%= item.unit %>
                             </a>
                             <% }) %>
