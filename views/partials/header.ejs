@@ -18,7 +18,7 @@
             /* box-sizing: border-box; */
             }
             
-            :root {
+            /* :root {
                 --background-color-default: #D65B4D;
                 --background-color-inactive: #a14c43;
                 --background-color-inactive-dark: #8b433b;
@@ -28,10 +28,28 @@
                 --text-color-inactive: #682824;
                 --slider-dark: #3D0622;
                 --saver: #CC4E00;
+            }  */
+            
+            :root {
+                --background-color-default: #3C9953;
+                --background-color-inactive: #79ca8e;
+                --background-color-inactive-dark: #006F75;
+                --background-color-active: #438E60;
+                --background-color-active-dark: #5c1109;
+                --text-color-active:#43C460;
+                --text-color-inactive: #015242;
+                --slider-dark:#010d42;
+                --saver: #55D975;
+                --light-text: #61F8B0;
+                --second-text: #757D9D;
+                --d-bkg-1: #3C9953;
+                --white:#AAE3B2;
+                --shadow: #253A2B;
             } 
 
             body {
-               background-color:var(--background-color-default);
+               background-color:var(--background-color-active);
+               /* background-color:var(--d-bkg-1); */
                color: var(--text-color-active);
                margin: 20px;
                width: 100vw;
@@ -41,13 +59,13 @@
 
             .nav-item:visited {
                 background-color: var(--background-color-inactive);
-                color: var(--text-color-inactive) !important;
+                color: var(--text-color-active) !important;
                 border: 3px solid var(--text-color-inactive);
             }
 
             .nav-item {
                 font-size: 3em;
-                background-color: var(--background-color-default);
+                background-color: var(--saver);
                 color: var(--text-color-inactive) !important;
                 border: 3px solid var(--text-color-inactive); 
                 border-radius: 50px;
@@ -63,7 +81,7 @@
 
             .nav-item:hover {
                 font-size: 55px;
-                background-color: var(--background-color-default);
+                background-color: var(--background-color-active) ;
                 color: var(--text-color-active) !important;
                 border: 3px solid var(--text-color-active);
                 border-radius: 50px;
@@ -73,7 +91,7 @@
                 font-size: 35px;
                 background-color: var(--background-color-active);
                 color: var(--text-color-active) !important;
-                border: 3px solid var(--text-color-active); 
+                border: 3px solid var(--saver); 
                 border-radius: 50px;
             }
 
@@ -110,7 +128,7 @@
             }
 
             #pantry-button{
-                background-color: var(--background-color-inactive-dark);
+                background-color: var(--background-color-inactive);
                 color: var(--text-color-active);
                 text-align: center;
                 font-size: 20px;
@@ -121,9 +139,9 @@
 
             .greet-user{
                 font-size: 35px;
-                background-color: var(--background-color-default);
+                background-color: var(--saver);
                 color: var(--text-color-inactive) !important;
-                border: 3px solid var(--text-color-inactive); 
+                border: 3px solid var(--text-color-inactive);
                 border-radius: 50px;
                 padding: 12px;
                 padding-right: 0px;
@@ -146,9 +164,9 @@
             }
 
             .login {
-                background-color: var(--background-color-default);
+                background-color: var(--saver);
                 color: var(--text-color-inactive) !important;
-                border: 3px solid var(--text-color-inactive); 
+                border: 3px solid var(--text-color-inactive);
                 border-radius: 50px;
                 padding: 12px;
                 padding-right: 90px;
@@ -170,7 +188,7 @@
             .register {
                 z-index: 15;
                 font-size: 35px;
-                background-color: var(--background-color-default);
+                background-color: var(--background-color-inactive);
                 color: var(--text-color-inactive) !important;
                 border: 3px solid var(--text-color-inactive); 
                 border-radius: 50px;
@@ -191,45 +209,46 @@
             }
 
             .btn-2 {
-            letter-spacing: 0;
+                letter-spacing: 0;
             }
 
             .btn-2:hover,
             .btn-2:active {
-            letter-spacing: 10px;
+                
+                letter-spacing: 10px;
             }
 
             .btn-2:after,
             .btn-2:before {
-            backface-visibility: hidden;
-            border: 1px solid rgba(#fff, 0);
-            bottom: 0px;
-            content: " ";
-            display: block;
-            margin: 0 auto;
-            position: relative;
-            transition: all 280ms ease-in-out;
-            width: 0;
+                backface-visibility: hidden;
+                border: 1px solid rgba(#fff, 0);
+                bottom: 0px;
+                content: " ";
+                display: block;
+                margin: 0 auto;
+                position: relative;
+                transition: all 280ms ease-in-out;
+                width: 0;
             }
 
             .btn-2:hover:after,
             .btn-2:hover:before {
-            backface-visibility: hidden;
-            border-color: #fff;
-            transition: width 350ms ease-in-out;
-            width: 70%;
+                backface-visibility: hidden;
+                border-color: #fff;
+                transition: width 350ms ease-in-out;
+                width: 70%;
             }
 
             .btn-2:hover:before {
-            bottom: auto;
-            top: 0;
-            width: 70%;
+                bottom: auto;
+                top: 0;
+                width: 70%;
             }
 
             /* buttons should have class="btn-small button badge badge-pill" */
             .btn-small {
-                background-color: var(--background-color-default);
-                color: var(--text-color-active);
+                background-color: var(--d-bkg-1);
+                color: var(--white);
                 text-align: center;
                 font-size: 20px;
                 padding: 5px 5px;
@@ -240,8 +259,8 @@
 
             /* buttons should have class="btn-2 button badge badge-pill" */
             .button.badge.badge-pill {
-                background-color: var(--text-color-active);
-                color: var(--background-color-default);
+                background-color: var(--d-bkg-1);
+                color: var(--white);
                 padding: 10px 20px;
                 border: 3px solid var(--text-color-active);
                 border-radius: 50px;
@@ -276,8 +295,8 @@
             }
 
             .create{
-                background-color: var(--background-color-default);
-                color: var(--text-color-inactive) !important;
+                background-color: var(--saver);
+                color: var(--background-color-active) !important;
                 border: 3px solid var(--text-color-inactive); 
                 border-radius: 50px;
                 padding: 15px;
@@ -324,7 +343,7 @@
                 border-radius: 5px;
                 font-size: 40px;
                 padding: 15px 5px 5px 5px;
-                box-shadow: 10px 20px 20px var(--text-color-active);
+                box-shadow: 10px 20px 20px var(--shadow);
                 height: 100%;
                 display: flex;
                 justify-content: space-between;
@@ -438,7 +457,7 @@
             .t-show{
                 position: relative;
                 transition: .3s;
-                box-shadow: 10px 20px 20px var(--text-color-active);
+                box-shadow: 10px 20px 20px var(--shadow);
                 width: 45vw;
                 height: 55vh;
                 margin-bottom: 2vh;
@@ -461,7 +480,7 @@
             .single-content{
                 position: relative;
                 transition: .3s;
-                box-shadow: 10px 20px 20px var(--text-color-active);
+                box-shadow: 10px 20px 20px var(--shadow);
                 width: 25vw;
                 height: 25vh;
                 margin-bottom: 2vh;
@@ -521,7 +540,7 @@
                 transition: .3s;
                 text-align: right;
                 color: #fff;
-                text-shadow: 2px 2px 6px var(--text-color-active);
+                text-shadow: 2px 2px 6px var(--shadow);
                 font-size: 2.5em;
             }
 
@@ -533,7 +552,7 @@
                 opacity: 1;
                 transform: translate(0, -50%);
                 transition-delay: .3s;
-                text-shadow: -2px -1 3px #1f0805;
+                text-shadow: -2px -1 3px --shadow;
             }
  
 
@@ -548,7 +567,7 @@
         <form class="form-inline">
                 <h4>
                     <button type="button" id="feed" class="feed btn btn-2 nav-item badge badge-pill ">feed</button>
-                    <button type="button" id="recipe" class="recipe btn-2 btn nav-item badge badge-pill">recipe</button>
+                    <button type="button" id="recipe" class="recipe btn-2 btn nav-item badge badge-pill">create</button>
                     <button type="button" id="pantry" class="pantry btn-2 btn nav-item badge badge-pill">pantry</button>
                     <button type="button" id="nosh" class="nosh btn-2 btn nav-item badge badge-pill">nosh</button>
                     <!-- <button type="button" id="login" class="login btn-2 btn nav-item badge badge-pill pull-right">login</button> -->
@@ -561,6 +580,8 @@
                     <!-- <a class="users nav-item nav-link badge badge-pill" href="/users">user</a> &nbsp; -->
                     <!-- <a class="nav-item nav-link" href="/login">login</a> &nbsp; -->
                     <!-- <a class="nav-item nav-link" href="/register">register</a> &nbsp; -->
+                
+                
                 </h4>
             </form>
       </nav>
